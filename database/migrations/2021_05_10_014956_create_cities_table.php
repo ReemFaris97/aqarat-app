@@ -17,7 +17,7 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('ar_name');
             $table->string('en_name');
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

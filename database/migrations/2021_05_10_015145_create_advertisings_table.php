@@ -15,6 +15,15 @@ class CreateAdvertisingsTable extends Migration
     {
         Schema::create('advertisings', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\Neighborhood::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->decimal('views');
+            $table->string('title');
+            $table->string('image');
+            $table->string('lat');
+            $table->string('lng');
+            $table->longText('description')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CreateCommonQuestionsTable extends Migration
             $table->string('en_question');
             $table->longText('ar_answer');
             $table->longText('en_answer');
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

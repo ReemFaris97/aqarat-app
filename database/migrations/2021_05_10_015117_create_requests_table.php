@@ -15,6 +15,22 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\Neighborhood::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->decimal('views');
+            $table->string('title');
+            $table->string('image');
+            $table->enum('estate_type', ['landvilla', 'floor', 'Aِpartment', 'building', 'office', 'showrooms', 'warehouses', 'rest'])->default('floor');
+            $table->enum('contract_type', ['sell', 'rent'])->default('rent');
+            $table->decimal('price');
+            $table->string('number_of_rooms')->nullable();
+            $table->string('number_of_halls')->nullable();
+            $table->string('number_of_boards')->nullable();
+            $table->string('number_of_vents')->nullable();
+            $table->string('number_of_toilets')->nullable();
+            $table->string('number_of_kitchens')->nullable();
+            $table->string('facilities')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class CreateBlogsTable extends Migration
             $table->longText('ar_description');
             $table->longText('en_description');
             $table->string('image');
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
