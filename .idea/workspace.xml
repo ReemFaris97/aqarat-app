@@ -140,6 +140,7 @@
       <path value="$PROJECT_DIR$/vendor/giggsey/locale" />
       <path value="$PROJECT_DIR$/vendor/league/iso3166" />
       <path value="$PROJECT_DIR$/vendor/bmatovu/multi-auth" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
     </include_path>
   </component>
   <component name="ProjectId" id="1sJvsjgZUHiJZBcz6xQNIHvgSXN" />
@@ -178,6 +179,7 @@
       <workItem from="1620603716861" duration="5266000" />
       <workItem from="1620638869649" duration="610000" />
       <workItem from="1620643300829" duration="9122000" />
+      <workItem from="1620725889105" duration="3829000" />
     </task>
     <servers />
   </component>
@@ -193,9 +195,9 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="383" y="174" key="run.anything.popup/72.27.1294.741@72.27.1294.741" timestamp="1620651451891" />
-    <state x="382" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1620655031704">
+    <state x="382" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1620726720957">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state x="382" y="89" width="672" height="678" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1620655031704" />
+    <state x="382" y="89" width="672" height="678" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1620726720957" />
   </component>
 </project>
