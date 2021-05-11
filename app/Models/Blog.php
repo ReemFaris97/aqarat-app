@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Http\Traits\ImageOperations;
-use App\Http\Traits\TranslationOperations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Blog extends Model
 {
-    use HasFactory,ImageOperations,TranslationOperations;
+    use HasFactory, ImageOperations, HasTranslations;
 
-    protected $fillable = ['ar_title','en_title','ar_description','en_description','image','status'];
+    public $translatable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'image', 'status'];
 }

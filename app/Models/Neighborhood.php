@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Http\Traits\TranslationOperations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Neighborhood extends Model
 {
-    use HasFactory,TranslationOperations;
+    use HasFactory, HasTranslations;
 
-    protected $fillable = ['city_id','ar_name','en_name','status'];
+    protected $fillable = ['city_id', 'name', 'status'];
+    public $translatable = ['name'];
 
     public function city()
     {

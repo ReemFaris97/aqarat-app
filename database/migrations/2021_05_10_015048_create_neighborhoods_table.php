@@ -15,8 +15,7 @@ class CreateNeighborhoodsTable extends Migration
     {
         Schema::create('neighborhoods', function (Blueprint $table) {
             $table->id();
-            $table->string('ar_name');
-            $table->string('en_name');
+            $table->string('name');
             $table->foreignIdFor(\App\Models\City::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('status')->default(true);
             $table->softDeletes();

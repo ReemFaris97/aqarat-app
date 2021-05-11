@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use App\Http\Traits\TranslationOperations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class CommonQuestion extends Model
 {
-    use HasFactory,TranslationOperations;
+    use HasFactory, HasTranslations;
 
-    protected $fillable = ['ar_question','en_question','ar_answer','en_answer','status'];
+    public $translatable = ['question', 'answer'];
+    protected $fillable = ['question', 'answer', 'status'];
 }
