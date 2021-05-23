@@ -1,0 +1,259 @@
+﻿button.btn.btn-primary.waves-effect,
+button.btn.btn-success {
+    background-image: linear-gradient(#cae2fd, #0962B0);
+}
+
+button.btn.btn-primary.waves-effect:hover,
+button.btn.btn-success:hover {
+    background-image: linear-gradient(#1d6caa, #0962B0);
+}
+form button.btn.btn-primary.waves-effect {
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+    min-width: 120px;
+    background-image: none;
+}
+.btn-danger1 {
+    background-color: #222222 !important;
+    border-color: #222222 !important;
+        color: #ffff;
+    transition: all .4s ease-in-out;
+}
+.btn-danger1:hover , .btn-danger1:focus {
+    background-color: #0962B0 !important;
+    border-color: #0962B0 !important;
+    color: #fff;
+}
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:focus {
+    background-image: linear-gradient(#1082db, #0962b0, #052339);
+}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+    text-align: right;
+}
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+    left: 12px;
+    right: auto;
+}
+tbody tr:nth-child(even), tbody tr:nth-child(even):hover {
+    background: #fff;
+    color: #222222;
+}
+.btn-danger {
+    background-color: #0962B0 !important;
+}
+
+button.btn.btn-default.buttons-html5,
+button.btn.btn-default.buttons-print {
+    transition: all .4s ease-in-out
+}
+
+button.btn.btn-default.buttons-html5:hover,
+button.btn.btn-default.buttons-print:hover {
+    background-color: #0962B0 !important;
+}
+
+.sidebar .user-info {
+    background: url(../../admin/images/build.jpg);
+}
+
+.theme-red .navbar, .menu.active, .menu {
+    background: #222222 !important;
+}
+.theme-red .sidebar .menu .list .toggled {
+    background-color: #0962b0;
+}
+.info-box.bg-red.hover-expand-effect, .info-box.bg-lime.hover-expand-effect, .info-box.bg-yellow.hover-expand-effect {
+    cursor: pointer;
+}
+.theme-red .sidebar .menu .list li.active > :first-child i, .theme-red .sidebar .menu .list li.active > :first-child span {
+    color: #fff;
+}
+
+.sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle):before {
+    content: '\E314';
+    color: inherit;
+}
+
+thead {
+    background-color: #3c7abc;
+}
+
+.btn-danger {
+    background-color: #fa503a !important;
+    border-color: #fa503a !important;
+}
+
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus {
+    background-color: #ce3925 !important;
+    border-color: #fa503a !important;
+}
+
+a.forget {
+    display: block;
+    margin-top: 14px;
+    color: #f9f9f9;
+}
+.pagination li.active a:hover{
+    background-color: #064c96;
+}
+/*
+.card div.body {
+    overflow-x: hidden;
+}
+*/
+table#DataTables_Table_0{
+    width: 100% !important
+}
+textarea.form-control{
+border: 1px solid #3b79bc !important; 
+}
+.sidebar .user-info .info-container .user-helper-dropdown {
+    position: absolute;
+    left: -3px;
+    bottom: 9px;}
+.dropdown-menu>li>a:hover {
+    background-color: rgb(57, 120, 188);
+    color: #fff;
+}
+
+@font-face {
+    font-family: STC;
+    src: url('../fonts/STC-Regular.ttf')
+}
+@font-face {
+    font-family: STC-Bold;
+    src: url('../fonts/STC-Bold.ttf')
+}
+body , .sidebar .menu{
+    font-family: 'STC' !important
+}
+.card-header {
+    color: #fff;
+    margin-bottom: 15px;
+}
+.login-page {
+    background-image: url(../images/back.jpg);
+    background-size: 100% 108%;
+    display: block !important;
+    height: 100vh;
+    overflow: hidden;
+}
+body.login-page::after {
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+.login-page .login-box .msg {
+    margin-bottom: 0;
+}
+.login-page .login-box .logo {
+    margin-bottom: 0;
+}
+img.logo-login {
+    max-width: 220px;
+}
+.login-box {
+    background-color: rgba(34, 34, 34, .5);
+    border-radius: 8px;
+    padding: 20px;
+        width: 80%;
+    position: relative;
+    overflow-y: auto;
+        overflow-x: hidden;
+    height: 100%;
+        display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+}
+.login-box .card{
+    background: none;
+    margin: 0;
+}
+.login-box button.btn.btn-block.bg-blue.waves-effect {
+    height: 42px;
+    max-width: 200px;
+    border-radius: 8px;
+    transition: all .3s ease-in-out;
+}
+.login-box button.btn.btn-block.bg-blue.waves-effect:hover,
+.login-box button.btn.btn-block.bg-blue.waves-effect:focus{
+    background-color: #222222 !important;
+}
+.hint-size {
+    color: red;
+    display: block;
+    padding: 20px 40px;
+    font-size: 17px;
+}
+@media (max-width: 991px) {
+    .login-box
+    {
+        width: 100%
+    }
+}
+@media (max-width: 600px) {
+    img.logo-login {
+    max-width: 160px;
+}
+    .login-box {
+        padding: 10px 4px;
+    width: 100%;
+}
+    .card .body {
+    padding: 20px 10px;
+}
+}
+/**********************************/
+
+@media only screen and (max-width: 600px) {
+  .dataTables_wrapper .dt-buttons {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+    .btn {
+    display: inline-block;
+        padding: 6px 10px;
+    }
+    .hint-size {
+    padding: 10px;
+    font-size: 15px;
+}
+}
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+   
+    background-color: #5d8dbf;
+}
+.signForm span.invalid-feedback.mapchecker {
+    color: #fff;
+}
+.login1 .form__input{
+    width: 100%;
+}
+.login-page .login-box .msg {
+    margin-bottom: 30px;
+}
+.login-page .login-box .logo a {
+    width: max-content;
+    margin: 0 auto;
+}
+.login-page .login-box a.another-link {
+    color: #fff;
+    margin: 0 auto;
+    display: table;
+}
+.alert.alert-info, .alert.alert-info li {
+    color: #000000 !important;
+    font-weight: bold;
+}
+.signForm .form__group, .login-page .input-group {
+    max-width: 500px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}

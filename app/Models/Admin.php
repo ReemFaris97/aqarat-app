@@ -59,4 +59,10 @@ class Admin extends Authenticatable
     {
         $this->notify(new VerifyEmail);
     }
+
+    public function setPasswordAttribute($value)
+    {
+        if ($value != '')
+            $this->attributes['password'] = bcrypt($value);
+    }
 }

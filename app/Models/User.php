@@ -56,4 +56,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Advertising::class);
     }
+
+    public function setPasswordAttribute($value)
+    {
+        if ($value != '')
+            $this->attributes['password'] = bcrypt($value);
+    }
 }

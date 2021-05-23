@@ -1,0 +1,199 @@
+$white: #fff;
+$lightgray: #F5F5F5;
+$midgray: #aaa;
+
+$font-display: 'Raleway', serif;
+$font-body: 'Open Sans', sans-serif;
+
+$drop-shadow-large: 0 0 100px 0 rgba(0,0,0,0.20), 30px 30px 50px 0 rgba(0,0,0,0.06);
+$drop-shadow-modal: 0 0 40px 0 rgba(0,0,0,0.30), 30px 30px 40px 0 rgba(0,0,0,0.20);
+$drop-shadow-light: 0 0 20px 0 rgba(0,0,0,0.15), 3px 3px 5px 0 rgba(0,0,0,0.06);
+
+// no xs as this is the default styling
+// these are all used as 'min-width' settings for media queries
+$bootstrap-sm: 576px;
+$bootstrap-md: 768px;
+$bootstrap-lg: 992px;
+$bootstrap-xl: 1200px;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  transition: all 0.24s;
+  font-size: 16px;
+  font-family: $font-body;
+  border-radius: 5px;
+}
+
+html, body {
+  padding: 0; margin: 0;
+  background: white;
+}
+
+body {
+  background-color: $lightgray;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hidden-2 {
+  opacity: 0;
+  pointer-events: none;
+  max-height: 0;
+  transform: scale(0.92);
+  transform-origin: left top;
+}
+
+#colour-picker-section {
+  padding-top: 80px; padding-bottom: 80px;
+  min-height: 80vh;
+}
+
+#colour-picker-container {
+  padding: 40px; margin: 0 auto;
+  background: white;
+  max-width: 600px;
+  box-shadow: $drop-shadow-large;
+}
+
+#colour-picker-title {
+  padding-bottom: 15px;
+}
+
+#colours-container {
+  background: $lightgray;
+  padding: 20px;
+  padding-top: 40px;
+  user-select: none;
+}
+
+.colour {
+  height: 50px;
+  width: calc(33.33% - 10px);
+  background: #555;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: $drop-shadow-light;
+  transition: none;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+#colour-primary {
+  background: hsl(252, 80%, 68%);
+}
+#colour-accent {
+  background: hsl(160, 80%, 40%);
+}
+#colour-neutral {
+  background: hsl(0, 0%, 100%);
+}
+
+.colour-label {
+  position: relative;
+  top: -25px;
+  font-size: 0.85rem;
+}
+
+.header {
+  padding-top: 30px;
+}
+
+#colour-picker-output {
+  position: relative;
+  background: $lightgray;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+#colour-picker-output-copy {
+  position: absolute;
+  top: 8px; right: 8px;
+  height: 38px; width: 38px;
+  padding: 8px; padding-top: 6px;
+  cursor: pointer;
+  user-select: none;
+  background: #eee;
+
+  &:hover {
+    background: #ddd;
+  }
+}
+
+#colour-picker {
+  position: absolute;
+  margin: 0 auto;
+  padding: 10px;
+  background: white;
+  width: 280px;
+  box-shadow: $drop-shadow-modal;
+  transition: transform 0.15s ease-out;
+
+  & > div > svg {
+    width: 100%; height: 100%;
+
+    rect {
+      rx: 5px;
+      ry: 5px;
+    }
+  }
+
+  div:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+}
+
+#colour-picker-exit {
+  position: absolute;
+  top: 0; right: calc(100% - 8px);
+  height: 40px; width: 40px;
+  padding-right: 6px;
+  background: white;
+  text-align: center;
+  vertical-align: center;
+  line-height: 40px;
+  font-size: 22px;
+  color: #777;
+  user-select: none;
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+}
+
+.circle-selector, #colour-picker-panel {
+  transition: none;
+}
+
+
+
+//#################################
+@media screen and (max-width: $bootstrap-md - 1) {
+  #colour-picker {
+    max-width: 220px;
+  }
+  #colour-picker-section {
+    padding-top: 50px; padding-bottom: 50px;
+  }
+  #colour-picker-container {
+    padding: 20px;
+  }
+  #colour-picker-title {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .colour {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 35px;
+    }
+  }
+}

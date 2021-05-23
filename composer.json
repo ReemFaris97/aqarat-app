@@ -16,7 +16,8 @@
         "propaganistas/laravel-phone": "^4.3",
         "realrashid/sweet-alert": "^3.2",
         "spatie/laravel-translatable": "^4.6",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+        "laravel/ui": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",
