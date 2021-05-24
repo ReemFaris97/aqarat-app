@@ -5,28 +5,20 @@
     {{ $item->name }}
 @stop
 @section('content')
-
-    <!-- Basic Validation -->
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>تعديل المستخدم {{ $item->name }}</h2>
-                    <ul class="header-dropdown m-r--5">
-                        <a href="{{route('admin.users.index')}}">
-                            <button class="btn btn-danger1">كل المستخدمين</button>
-                        </a>
-                    </ul>
-                </div>
-                <div class="body">
-                    {!!Form::model($item , ['route' => ['admin.users.update' , $item->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'files' => true]) !!}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box">
+                <h4 class="header-title m-t-0 m-b-30">تعديل المستخدم {{ $item->name }} </h4>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {!!Form::model($item , ['route' => ['admin.users.update' , $item->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
                         @include('admin.users.form')
-                    {!!Form::close() !!}
-                </div>
+                        {!!Form::close() !!}
+                    </div><!-- end col -->
+
+                </div><!-- end row -->
             </div>
-        </div>
+        </div><!-- end col -->
     </div>
-
-
-    <!-- #END# Basic Validation -->
+    <!-- end row -->
 @endsection

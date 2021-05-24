@@ -63,7 +63,7 @@ class AdminsController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('admin.admins.edit',compact('admin'));
+        return view('admin.admins.edit',['item'=>$admin]);
     }
 
     /**
