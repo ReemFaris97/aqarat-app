@@ -5,32 +5,21 @@
 @endsection
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h1>إضافة صلاحية جديد</h1>
-            <div class="section-header-breadcrumb">
-                <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-primary">الرجوع لكل الصلاحيات</a>
-            </div>
-        </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-12">
-                    @include('admin.common.errors')
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>إضافة صلاحية جديد</h4>
-                        </div>
-                        <div class="card-body">
-                            <form method="post" action="{{ route('admin.roles.store') }}"
-                                  enctype="multipart/form-data">
-                                @csrf
-                                @include('admin.roles.form')
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box">
+                <h4 class="header-title m-t-0 m-b-30">اضافة حى جديدة </h4>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {!!Form::open( ['route' => 'admin.roles.store' ,'class'=>'form phone_validate', 'method' => 'Post', 'enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
+                        @csrf
+                        @include('admin.roles.form')
+                        {!!Form::close() !!}
+                    </div><!-- end col -->
 
-        </div>
-    </section>
+                </div><!-- end row -->
+            </div>
+        </div><!-- end col -->
+    </div>
+    <!-- end row -->
 @endsection

@@ -1,3 +1,4 @@
+@include('admin.common.errors')
 <div class="form-group form-float">
     <label class="form-label">اسم الدور</label>
     <div class="form-line">
