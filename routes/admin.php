@@ -21,6 +21,7 @@ Route::group(['middleware'=>'admin'], function () {
     Route::resource('blogs', BlogsController::class);
     Route::resource('commonQuestions', CommonQuestionsController::class);
     Route::resource('settings', SettingController::class);
+    Route::resource('roles', RoleController::class);
 
     //change status
     Route::get('change-admins-status/{id}', [AdminsController::class,'changeStatus'])->name('admins.status');

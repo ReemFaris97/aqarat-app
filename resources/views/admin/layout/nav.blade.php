@@ -8,6 +8,13 @@
     <a href="{{route('admin.contacts.index')}}" class="waves-effect"><i class="zmdi zmdi-email"></i><span class="label label-purple pull-right">New</span><span> البريد </span></a>
 </li>
 
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> صلاحيات أعضاء الإدارة </span> <span class="menu-arrow"></span></a>
+    <ul class="list-unstyled">
+        <li><a href="{{route('admin.roles.index')}}">جميع الصلاحيات</a></li>
+        <li><a href="{{route('admin.roles.create')}}">اضافة صلاحية جديد</a></li>
+    </ul>
+</li>
 
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> أعضاء الإدارة </span> <span class="menu-arrow"></span></a>

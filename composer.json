@@ -12,12 +12,13 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.2",
         "laravelcollective/html": "^6.1",
         "propaganistas/laravel-phone": "^4.3",
         "realrashid/sweet-alert": "^3.2",
+        "spatie/laravel-permission": "^4.0",
         "spatie/laravel-translatable": "^4.6",
-        "yoeunes/toastr": "^1.2",
-        "laravel/ui": "^3.2"
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",
