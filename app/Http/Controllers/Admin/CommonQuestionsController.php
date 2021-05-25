@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonQuestionsRequest;
+use App\Models\Comment;
+use App\Models\CommonQuestion;
 use Illuminate\Http\Request;
 
 class CommonQuestionsController extends Controller
@@ -14,7 +17,8 @@ class CommonQuestionsController extends Controller
      */
     public function index()
     {
-        //
+        $items=CommonQuestion::all();
+        return view('admin.commonQuestions.index',compact('items'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CommonQuestionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.commonQuestions.add');
     }
 
     /**
@@ -33,21 +37,15 @@ class CommonQuestionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommonQuestionsRequest  $request)
     {
-        //
+        $data=$request->validated();
+        CommonQuestion::create($data);
+        toastr()->success('تم اضافة سؤال شائع بنجاح');
+        return redirect()->route('admin.commonQuestions.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +53,9 @@ class CommonQuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CommonQuestion $blog)
     {
-        //
+        return view('admin.commonQuestions.edit',['item'=>$blog]);
     }
 
     /**
@@ -67,9 +65,11 @@ class CommonQuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CommonQuestionsRequest $request, CommonQuestion $commonQuestion)
     {
-        //
+        $commonQuestion->update($request->validated());
+        toastr()->success('تم تعديل السؤال بنجاح');
+        return redirect()->route('admin.commonQuestions.index');
     }
 
     /**
@@ -78,8 +78,19 @@ class CommonQuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CommonQuestion $commonQuestion)
     {
-        //
+        $commonQuestion->delete();
+        toastr()->success('تم حذف السؤال بنجاح');
+        return redirect()->back();
+    }
+    public function changeStatus($id)
+    {
+        $item = CommonQuestion::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
 }

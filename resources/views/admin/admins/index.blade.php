@@ -33,23 +33,32 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
-                            <td>{{AccountStatus($item->status)}}</td>
                             <td>
                                 <img src="{{$item->image}}" style="width: 50px; height: 50px">
                             </td>
-                            <td>$320,800</td>
+                            <td>{{AccountStatus($item->status)}}</td>
+                            <td>
+                                @if ($item->status == 1)
+                                    <a class="btn btn-danger"
+                                       href="{{ route('admin.admins.status', $item->id) }}">
+                                        تعطيل</a>
+                                @else
+                                    <a href="{{ route('admin.admins.status', $item->id) }}"
+                                       class="btn btn-success">
+                                        تفعيل </a>
+                                @endif
+                            </td>
                             <td>
 
                                 <a href="{{route('admin.admins.edit',$item->id)}}"
                                          class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
                                                                             class="fa fa-pencil"></i></a>
 
-                                <a href="#" onclick="Delete({{$item->id}})" data-toggle="tooltip"
+                                <a data-url="{{ route('admin.admins.destroy', $item) }}"
+                                   onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
                                    data-original-title="حذف" class="btn btn-danger btn-circle"><i
                                         style="padding-top: 5px;padding-left: 4px;"
                                         class="fa fa-trash-o"></i></a>
-                                {!!Form::open( ['route' => ['admin.admins.destroy',$item->id] ,'id'=>'delete-form'.$item->id, 'method' => 'Delete']) !!}
-                                {!!Form::close() !!}
                             </td>
                         </tr>
                     @endforeach

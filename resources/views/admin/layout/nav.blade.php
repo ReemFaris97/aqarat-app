@@ -18,14 +18,6 @@
 </li>
 
 <li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i><span> المستخدمين </span> </a>
-    <ul class="list-unstyled">
-        <li><a href="{{route('admin.users.index')}}">جميع المستخدمين</a></li>
-        <li><a href="{{route('admin.users.create')}}">اضافة مستخدم جديد</a></li>
-    </ul>
-</li>
-
-<li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-view-list"></i> <span> المدن </span> <span class="menu-arrow"></span></a>
     <ul class="list-unstyled">
         <li><a href="{{route('admin.cities.index')}}">جميع المدن</a></li>
@@ -39,6 +31,19 @@
         <li><a href="{{route('admin.neighborhoods.index')}}">جميع الأحياء</a></li>
         <li><a href="{{route('admin.neighborhoods.create')}}">اضافة حى</a></li>
     </ul>
+</li>
+
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i><span> المستخدمين </span> </a>
+    <ul class="list-unstyled">
+        <li><a href="{{route('admin.users.index')}}">جميع المستخدمين</a></li>
+        <li><a href="{{route('admin.users.create')}}">اضافة مستخدم جديد</a></li>
+    </ul>
+</li>
+
+
+<li>
+    <a href="{{ route('admin.advertisings.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i> <span> الإعلانات </span> </a>
 </li>
 
 <li class="has_sub">

@@ -18,6 +18,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
 <script src="{{asset('_admin/assets/js/modernizr.min.js')}}"></script>
-
+<link href="{{ asset('_admin/assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet"
+      type="text/css" />
 <link href="{{ asset('_admin/assets/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 @toastr_css

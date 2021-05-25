@@ -17,24 +17,6 @@
         {!! Form::number("phone",null,['class'=>'form-control','placeholder'=>'رقم الهاتف'])!!}    </div>
 </div>
 <div class="form-group">
-    <label class="col-md-2 control-label">facebook</label>
-    <div class="col-md-10">
-        {!! Form::text("facebook",null,['class'=>'form-control','placeholder'=>'  رابط حساب ال facebook  '])!!}
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">instagram</label>
-    <div class="col-md-10">
-        {!! Form::text("instagram",null,['class'=>'form-control','placeholder'=>'  رابط حساب ال instagram '])!!}
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">twitter</label>
-    <div class="col-md-10">
-        {!! Form::text("twitter",null,['class'=>'form-control','placeholder'=>'   رابط حساب ال twitter '])!!}
-    </div>
-</div>
-<div class="form-group">
     <label class="col-md-2 control-label">كلمة المرور</label>
     <div class="col-md-10">
         {!! Form::input('password','password',null,['class'=>'form-control','placeholder'=>'كلمة المرور']) !!}

@@ -33,12 +33,11 @@
                             <td>{{$item->phone}}</td>
                             <td>{{$item->message}}</td>
                             <td>
-                                <a href="#" onclick="Delete({{$item->id}})" data-toggle="tooltip"
+                                <a data-url="{{ route('admin.contacts.destroy', $item) }}"
+                                   onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
                                    data-original-title="حذف" class="btn btn-danger btn-circle"><i
                                         style="padding-top: 5px;padding-left: 4px;"
                                         class="fa fa-trash-o"></i></a>
-                                {!!Form::open( ['route' => ['admin.contacts.destroy',$item->id] ,'id'=>'delete-form'.$item->id, 'method' => 'Delete']) !!}
-                                {!!Form::close() !!}
                             </td>
                         </tr>
                     @endforeach

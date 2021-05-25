@@ -17,7 +17,8 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index.html" class="logo"><span>تطبيق <span>عقارات </span></span><i class="zmdi zmdi-layers"></i></a>
+            <a href="index.html" class="logo"><span>تطبيق <span>عقارات </span></span><i
+                    class="zmdi zmdi-layers"></i></a>
         </div>
 
         <!-- Button mobile view to collapse sidebar menu -->
@@ -43,47 +44,53 @@
     <!-- Top Bar End -->
 
 
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="left side-menu">
-            <div class="sidebar-inner slimscrollleft">
-                <!-- User -->
-                <div class="user-box">
-                    <div class="user-img">
-                        <img src="{{asset('_admin/assets/images/users/avatar-1.jpg')}}" alt="user-img" title="Mat Helme"
-                             class="img-circle img-thumbnail img-responsive">
-                        <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
-                    </div>
-                    <h5><a href="#">{{auth('admin')->user()->name}}</a></h5>
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">
-                                <i class="zmdi zmdi-settings"></i>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-custom">
-                                <i class="zmdi zmdi-power"></i>
-                            </a>
-                        </li>
-                    </ul>
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="sidebar-inner slimscrollleft">
+            <!-- User -->
+            <div class="user-box">
+                <div class="user-img">
+                    <img src="{{auth('admin')->user()->image}}" alt="user-img" title="Mat Helme"
+                         class="img-circle img-thumbnail img-responsive">
+                    <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
                 </div>
-                <!-- End User -->
+                <h5><a href="#">{{auth('admin')->user()->name}}</a></h5>
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{route('admin.settings.index')}}">
+                            <i class="zmdi zmdi-settings"></i>
+                        </a>
+                    </li>
 
-                <!--- Sidemenu -->
-                <div id="sidebar-menu">
-                    <ul>
-                        @include('admin.layout.nav')
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <!-- Sidebar -->
-                <div class="clearfix"></div>
-
+                    <li>
+                        <!-- item-->
+                        <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger"
+                           onclick="event.preventDefault(); document.getElementById('logout_form').submit()">
+                            <i class="zmdi zmdi-power"></i>
+                        </a>
+                        <form id="logout_form" action="{{ route('admin.logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
             </div>
+            <!-- End User -->
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <ul>
+                    @include('admin.layout.nav')
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
 
         </div>
+
     </div>
+</div>
 <!-- Start content -->
 <div class="content-page">
 
@@ -93,7 +100,7 @@
         </div>
     </div>
     <footer class="footer text-right">
-    الحقوق محفوظة لبانوراما القصيم 2021
+        الحقوق محفوظة لبانوراما القصيم 2021
     </footer>
 </div>
 @include('admin.layout.scripts')

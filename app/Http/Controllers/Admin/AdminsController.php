@@ -92,4 +92,14 @@ class AdminsController extends Controller
         toastr()->success('تم حذف المدير بنجاح');
         return redirect()->back();
     }
+
+    public function changeStatus($id)
+    {
+        $item = Admin::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
+    }
 }

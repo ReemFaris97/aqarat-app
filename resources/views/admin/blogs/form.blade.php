@@ -1,54 +1,38 @@
 @include('admin.common.errors')
 <div class="form-group">
-    <label class="col-md-2 control-label">الاسم</label>
+    <label class="col-md-2 control-label">العنوان باللغة العربية</label>
     <div class="col-md-10">
-        {!! Form::text("name",null,['class'=>'form-control','placeholder'=>'  الاسم  '])!!}
+        {!! Form::text("title[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('title',
+'ar'),['class'=>'form-control','placeholder'=>'  العنوان باللغة العربية  '])!!}
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-2 control-label">العنوان باللغة الإنجليزية</label>
+    <div class="col-md-10">
+        {!! Form::text("title[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('title',
+'en'),['class'=>'form-control','placeholder'=>'  العنوان باللغة الإنجليزية  '])!!}
     </div>
 </div>
 <div class="form-group">
-    <label class="col-md-2 control-label" for="example-email">الإيميل</label>
+    <label class="col-md-2 control-label">المحتوى باللغة العربية</label>
     <div class="col-md-10">
-        {!! Form::email("email",null,['class'=>'form-control','placeholder'=>'  الايميل '])!!}
+        {!! Form::textarea("description[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
+  'ar'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة العربية  '])!!}
     </div>
 </div>
+
 <div class="form-group">
-    <label class="col-md-2 control-label" for="example-email">رقم الهاتف</label>
+    <label class="col-md-2 control-label">المحتوى باللغة الإنجليزية</label>
     <div class="col-md-10">
-        {!! Form::number("phone",null,['class'=>'form-control','placeholder'=>'رقم الهاتف'])!!}    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">facebook</label>
-    <div class="col-md-10">
-        {!! Form::text("facebook",null,['class'=>'form-control','placeholder'=>'  رابط حساب ال facebook  '])!!}
+        {!! Form::textarea("description[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
+  'en'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة الإنجليزية  '])!!}
     </div>
 </div>
-<div class="form-group">
-    <label class="col-md-2 control-label">instagram</label>
-    <div class="col-md-10">
-        {!! Form::text("instagram",null,['class'=>'form-control','placeholder'=>'  رابط حساب ال instagram '])!!}
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">twitter</label>
-    <div class="col-md-10">
-        {!! Form::text("twitter",null,['class'=>'form-control','placeholder'=>'   رابط حساب ال twitter '])!!}
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">كلمة المرور</label>
-    <div class="col-md-10">
-        {!! Form::input('password','password',null,['class'=>'form-control','placeholder'=>'كلمة المرور']) !!}
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">تكرار كلمة المرور</label>
-    <div class="col-md-10">
-        {!! Form::input('password','password_confirmation',null,['class'=>'form-control','placeholder'=>'تكرار كلمة المرور']) !!}
-    </div>
-</div>
+
 @if (isset($item->image))
     <div class="form-group">
-        <label class="col-md-2 control-label">الصورة الحالية للمستخدم :</label>
+        <label class="col-md-2 control-label">الصورة الحالية للمدونة :</label>
         <div class="col-md-10">
             <img class="img-preview" src="{{$item->image}}" style="width: 50px; height: 50px">
         </div>
@@ -56,12 +40,11 @@
 @endif
 
 <div class="form-group">
-    <label class="col-md-2 control-label">صورة للمستخدم </label>
+    <label class="col-md-2 control-label">صورة للمدونة </label>
     <div class="col-md-10">
         {!! Form::file("image",null,['class'=>'form-control'])!!}
     </div>
 </div>
-
 
 <span class="input-group-btn">
     <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>

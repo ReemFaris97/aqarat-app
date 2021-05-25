@@ -52,9 +52,10 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        //
+        $items =$blog->comments;
+        return view('admin.blogs.show',compact('items','blog'));
     }
 
     /**
@@ -93,5 +94,14 @@ class BlogsController extends Controller
         $blog->delete();
         toastr()->success('تم حذف المدونة بنجاح');
         return redirect()->back();
+    }
+    public function changeStatus($id)
+    {
+        $item = Blog::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
 }

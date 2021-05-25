@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title')
-  جميع المستخدمين
+  جميع المدن
 @endsection
 @section('header')
     @include('admin.datatable.headers')
@@ -10,18 +10,15 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
-                <h4 class="header-title m-t-0 m-b-30">كل المستخدمين</h4>
+                <h4 class="header-title m-t-0 m-b-30">كل المدن</h4>
 
                 <table id="datatable-buttons" class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>الإسم</th>
-                        <th>الايميل</th>
-                        <th>الهاتف</th>
-                        <th>صورة العضو</th>
-                        <th>حالة الحساب</th>
-                        <th>تغيير حالة الحساب</th>
+                        <th>اسم المدينة</th>
+                        <th>حالة العرض</th>
+                        <th>تغيير الحالة</th>
                         <th>العمليات</th>
                     </tr>
                     </thead>
@@ -31,31 +28,24 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->phone}}</td>
-                            <td>
-                                <img src="{{$item->image}}" style="width: 50px; height: 50px">
-                            </td>
                             <td>{{AccountStatus($item->status)}}</td>
                             <td>
                                 @if ($item->status == 1)
                                     <a class="btn btn-danger"
-                                       href="{{ route('admin.users.status', $item->id) }}">
+                                       href="{{ route('admin.cities.status', $item->id) }}">
                                         تعطيل</a>
                                 @else
-                                    <a href="{{ route('admin.users.status', $item->id) }}"
+                                    <a href="{{ route('admin.cities.status', $item->id) }}"
                                        class="btn btn-success">
                                         تفعيل </a>
                                 @endif
                             </td>
-
                             <td>
-
-                                <a href="{{route('admin.users.edit',$item->id)}}"
+                                <a href="{{route('admin.cities.edit',$item->id)}}"
                                    class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
                                                                       class="fa fa-pencil"></i></a>
 
-                                <a data-url="{{ route('admin.users.destroy', $item) }}"
+                                <a data-url="{{ route('admin.cities.destroy', $item) }}"
                                    onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
                                    data-original-title="حذف" class="btn btn-danger btn-circle"><i
                                         style="padding-top: 5px;padding-left: 4px;"

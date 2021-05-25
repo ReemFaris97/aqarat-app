@@ -26,22 +26,19 @@ class UsersRequest extends FormRequest
 
         $rules = [
             'name' => 'required|string|max:191|unique:users',
-            'email' => 'required|email:rfc,dns|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
             'phone'=>'required|phone:sa,eg|unique:users,phone',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'facebook'=>'sometimes|string',
-            'twitter'=>'sometimes|string',
-            'instagram'=>'sometimes|string',
 
         ];
 
         if ($this->getMethod() == 'PATCH') {
             $rules = [
                 'name' => 'required|string|max:191|unique:users,name,' . request()->id,
-                'email' => 'required|email:rfc,dns|max:255|unique:users,email,' . request()->id,
+                'email' => 'required|email|max:255|unique:users,email,' . request()->id,
                 'phone' => 'required|phone:sa,eg|unique:users,phone,' . request()->id,
-                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ];
         }
         return $rules;

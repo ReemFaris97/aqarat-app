@@ -14,6 +14,11 @@
 <script src="{{asset('_admin/assets/plugins/datatables/responsive.bootstrap.min.js')}}"></script>
 <script src="{{asset('_admin/assets/plugins/datatables/dataTables.scroller.min.js')}}"></script>
 
+
+<form style="display: none;" id="delete_form" method="post">
+    @csrf @method('DELETE')
+</form>
+
 <!-- Datatable init js -->
 <script src="{{asset('_admin/assets/pages/datatables.init.js')}}"></script>
 
@@ -26,5 +31,30 @@
         var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
     } );
     TableManageButtons.init();
+
+</script>
+<script src="{{asset('_admin/assets/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script src="{{asset('_admin/assets/js/sweet-alerts.init.js')}}"></script>
+
+
+<script>
+    function delete_form(element) {
+        var name = $(element).data('name');
+        var swalTitle = 'حذف: ' + name;
+        var swalText = 'انت علي وشك حذف '+name+ 'هل تود المتابعة؟';
+        swal({
+            title: swalTitle,
+            text: swalText,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-warning",
+            confirmButtonText: "متابعة",
+            cancelButtonText: "الغاء"
+        }).then(function(isConfirm) {
+            if(isConfirm.value){
+                $('#delete_form').attr('action',$(element).data('url')).submit();
+            }
+        });
+    }
 
 </script>
