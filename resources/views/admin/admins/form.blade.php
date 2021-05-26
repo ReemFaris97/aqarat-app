@@ -44,6 +44,21 @@
     </div>
 </div>
 
+<div class="form-group ">
+    <label class="col-md-2 control-label">الصلاحيات:</label>
+    <div class="col-sm-12 col-md-7">
+        @if (isset($userRole))
+            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+        @else
+            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+        @endif
+    </div>
+
+    @if(isset($item->id))
+        {!! Form::input('hidden','id',$item->id,['class'=>'form-control']) !!}
+    @endif
+</div>
+
 
 <span class="input-group-btn">
     <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>

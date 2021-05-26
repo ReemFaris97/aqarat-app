@@ -16,116 +16,210 @@ class PermissionTableSeeder extends Seeder
     {
         $permissions = [
 
-            [
-                'name' => 'role-list',
-                'guard_name' => 'admin',
-                'title' => 'قائمة الصلاحيات',
-            ],
-            [
-                'name' => 'role-create',
-                'guard_name' => 'admin',
-                'title' => 'اضافة صلاحية',
-            ],
-            [
-                'name' => 'role-edit',
-                'guard_name' => 'admin',
-                'title' => 'تعديل صلاحية',
-            ],
-            [
-                'name' => 'role-delete',
-                'guard_name' => 'admin',
-                'title' => 'حذف صلاحية',
-            ],
+//            [
+//                'name' => 'role-list',
+//                'guard_name' => 'admin',
+//                'title' => 'قائمة الصلاحيات',
+//                'route_name'=>'admin.roles.index'
+//            ],
+//            [
+//                'name' => 'role-create',
+//                'guard_name' => 'admin',
+//                'title' => 'اضافة صلاحية',
+//                'route_name'=>'admin.roles.create'
+//            ],
+//            [
+//                'name' => 'role-edit',
+//                'guard_name' => 'admin',
+//                'title' => 'تعديل صلاحية',
+//                'route_name'=>'admin.roles.edit'
+//            ],
+//            [
+//                'name' => 'role-delete',
+//                'guard_name' => 'admin',
+//                'title' => 'حذف صلاحية',
+//                'route_name'=>'admin.roles.delete'
+//            ],
             [
                 'name' => 'admin-list',
                 'guard_name' => 'admin',
                 'title' => 'قائمة اعضاء الإدارة',
+                'route_name'=>'admin.admins.index'
             ],
             [
                 'name' => 'admin-create',
                 'guard_name' => 'admin',
                 'title' => 'اضافة عضو إدارة',
+                'route_name'=>'admin.admins.create'
             ],
             [
                 'name' => 'admin-edit',
                 'guard_name' => 'admin',
                 'title' => 'تعديل عضو الإدارة',
+                'route_name'=>'admin.admins.edit'
             ],
             [
                 'name' => 'admin-delete',
                 'guard_name' => 'admin',
                 'title' => 'حذف اعضاء الإدارة',
+                'route_name'=>'admin.admins.delete'
             ],
             [
                 'name' => 'users-list',
                 'guard_name' => 'admin',
                 'title' => 'قائمة المستخدمين',
+                'route_name'=>'admin.users.index'
             ],
             [
                 'name' => 'users-create',
                 'guard_name' => 'admin',
                 'title' => 'اضافة مستخدم جديد',
+                'route_name'=>'admin.users.create'
             ],
             [
                 'name' => 'users-edit',
                 'guard_name' => 'admin',
                 'title' => 'تعديل المستخدم',
+                'route_name'=>'admin.users.edit'
             ],
             [
                 'name' => 'users-delete',
                 'guard_name' => 'admin',
                 'title' => 'حذف المستخدمين',
+                'route_name'=>'admin.users.delete'
             ],
             [
-                'name' => 'categories-list',
+                'name' => 'cities-list',
                 'guard_name' => 'admin',
-                'title' => 'قائمة الأقسام',
+                'title' => 'قائمة المدن',
+                'route_name'=>'admin.cities.index'
             ],
             [
-                'name' => 'categories-create',
+                'name' => 'cities-create',
                 'guard_name' => 'admin',
-                'title' => 'اضافة الأقسام',
+                'title' => 'اضافة المدن',
+                'route_name'=>'admin.cities.create'
             ],
             [
-                'name' => 'categories-edit',
+                'name' => 'cities-edit',
                 'guard_name' => 'admin',
-                'title' => 'تعديل الأقسام',
+                'title' => 'تعديل المدن',
+                'route_name'=>'admin.cities.edit'
             ],
             [
-                'name' => 'categories-delete',
+                'name' => 'cities-delete',
                 'guard_name' => 'admin',
-                'title' => 'حذف الأقسام',
-            ],
-            [
-                'name' => 'posts-list',
-                'guard_name' => 'admin',
-                'title' => 'قائمة المنشورات',
-            ],
-            [
-                'name' => 'posts-delete',
-                'guard_name' => 'admin',
-                'title' => 'حذف المنشورات',
+                'title' => 'حذف المدن',
+                'route_name'=>'admin.cities.delete'
             ], [
-                'name' => 'posts-report',
+                'name' => 'neighborhoods-list',
                 'guard_name' => 'admin',
-                'title' => 'بلاغات المنشورات',
-            ], [
-                'name' => 'comment-report',
+                'title' => 'قائمة الأحياء',
+                'route_name'=>'admin.neighborhoods.index'
+            ],
+            [
+                'name' => 'neighborhoods-create',
                 'guard_name' => 'admin',
-                'title' => 'بلاغات التعليقات',
+                'title' => 'اضافة الأحياء',
+                'route_name'=>'admin.neighborhoods.create'
+            ],
+            [
+                'name' => 'neighborhoods-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل الأحياء',
+                'route_name'=>'admin.neighborhoods.edit'
+            ],
+            [
+                'name' => 'neighborhoods-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف الأحياء',
+                'route_name'=>'admin.neighborhoods.delete'
             ], [
+                'name' => 'advertisings-list',
+                'guard_name' => 'admin',
+                'title' => 'قائمة الإعلانات',
+                'route_name'=>'admin.advertisings.index'
+            ],
+            [
+                'name' => 'advertisings-create',
+                'guard_name' => 'admin',
+                'title' => 'اضافة الإعلانات',
+                'route_name'=>'admin.advertisings.create'
+            ],
+            [
+                'name' => 'advertisings-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل الإعلانات',
+                'route_name'=>'admin.advertisings.edit'
+            ],
+            [
+                'name' => 'advertisings-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف الإعلانات',
+                'route_name'=>'admin.advertisings.delete'
+            ], [
+                'name' => 'blogs-list',
+                'guard_name' => 'admin',
+                'title' => 'قائمة المدونات',
+                'route_name'=>'admin.blogs.index'
+            ],
+            [
+                'name' => 'blogs-create',
+                'guard_name' => 'admin',
+                'title' => 'اضافة المدونات',
+                'route_name'=>'admin.blogs.create'
+            ],
+            [
+                'name' => 'blogs-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل المدونات',
+                'route_name'=>'admin.blogs.edit'
+            ],
+            [
+                'name' => 'blogs-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف المدونات',
+                'route_name'=>'admin.blogs.index'
+            ], [
+                'name' => 'commonQuestions-list',
+                'guard_name' => 'admin',
+                'title' => 'قائمة الأسئلة الشائعة',
+                'route_name'=>'admin.commonQuestions.index'
+            ],
+            [
+                'name' => 'commonQuestions-create',
+                'guard_name' => 'admin',
+                'title' => 'اضافة  الأسئلة الشائعة',
+                'route_name'=>'admin.commonQuestions.create'
+            ],
+            [
+                'name' => 'commonQuestions-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل الأسئلة الشائعة',
+                'route_name'=>'admin.commonQuestions.edite'
+            ],
+            [
+                'name' => 'commonQuestions-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف الأسئلة الشائعة',
+                'route_name'=>'admin.commonQuestions.delete'
+            ],
+            [
                 'name' => 'contact-list',
                 'guard_name' => 'admin',
                 'title' => 'قائمة اتصل بنا',
+                'route_name'=>'admin.contacts.index'
             ], [
                 'name' => 'contact-delete',
                 'guard_name' => 'admin',
                 'title' => 'حذف البريد',
+                'route_name'=>'admin.contacts.delete'
             ],
             [
                 'name' => 'setting-list',
                 'guard_name' => 'admin',
                 'title' => 'قائمة الإعدادات',
+                'route_name'=>'admin.settings.index'
             ],
 
 

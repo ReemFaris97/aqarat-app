@@ -10,12 +10,17 @@ class AdminCheck
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (auth('admin')->check() && auth('admin')->user()->status == 1)
+            return $next($request);
+        else
+            \Auth::guard('admin')->logout();
+        toastr()->success('عفوا الحساب غير مفعل');
+        return redirect()->route('admin.login');
     }
 }

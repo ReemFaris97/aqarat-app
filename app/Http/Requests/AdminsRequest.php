@@ -24,8 +24,8 @@ class AdminsRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|string|max:191|unique:users',
-            'email' => 'required|email:rfc,dns|max:255|unique:users',
+            'name' => 'required|string|max:191|unique:admins',
+            'email' => 'required|email|max:255|unique:admins',
             'password' => 'required|min:6|confirmed',
             'phone'=>'required|phone:sa,eg|unique:admins,phone',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -33,9 +33,9 @@ class AdminsRequest extends FormRequest
 
         if ($this->getMethod() == 'PATCH') {
             $rules = [
-                'name' => 'required|string|max:191|unique:users,name,' . request()->id,
-                'email' => 'required|email:rfc,dns|max:255|unique:users,email,' . request()->id,
-                'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:users,phone,' . request()->id,
+                'name' => 'required|string|max:191|unique:admins,name,' . request()->id,
+                'email' => 'required|email|max:255|unique:admins,email,' . request()->id,
+                'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:admins,phone,' . request()->id,
                 'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ];
         }
