@@ -16,6 +16,8 @@ Route::group(['middleware'=>['admin','check-permissions']], function () {
     Route::resource('cities', CitiesController::class);
     Route::resource('neighborhoods', NeighborhoodsController::class);
     Route::resource('users', UsersController::class);
+    Route::resource('offers', OffersController::class);
+    Route::resource('requests', RequestsController::class);
     Route::resource('advertisings', AdvertisingsController::class);
     Route::resource('blogs', BlogsController::class);
     Route::resource('commonQuestions', CommonQuestionsController::class);

@@ -16,30 +16,30 @@ class PermissionTableSeeder extends Seeder
     {
         $permissions = [
 
-//            [
-//                'name' => 'role-list',
-//                'guard_name' => 'admin',
-//                'title' => 'قائمة الصلاحيات',
-//                'route_name'=>'admin.roles.index'
-//            ],
-//            [
-//                'name' => 'role-create',
-//                'guard_name' => 'admin',
-//                'title' => 'اضافة صلاحية',
-//                'route_name'=>'admin.roles.create'
-//            ],
-//            [
-//                'name' => 'role-edit',
-//                'guard_name' => 'admin',
-//                'title' => 'تعديل صلاحية',
-//                'route_name'=>'admin.roles.edit'
-//            ],
-//            [
-//                'name' => 'role-delete',
-//                'guard_name' => 'admin',
-//                'title' => 'حذف صلاحية',
-//                'route_name'=>'admin.roles.delete'
-//            ],
+            [
+                'name' => 'role-list',
+                'guard_name' => 'admin',
+                'title' => 'قائمة الصلاحيات',
+                'route_name'=>'admin.roles.index'
+            ],
+            [
+                'name' => 'role-create',
+                'guard_name' => 'admin',
+                'title' => 'اضافة صلاحية',
+                'route_name'=>'admin.roles.create'
+            ],
+            [
+                'name' => 'role-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل صلاحية',
+                'route_name'=>'admin.roles.edit'
+            ],
+            [
+                'name' => 'role-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف صلاحية',
+                'route_name'=>'admin.roles.delete'
+            ],
             [
                 'name' => 'admin-list',
                 'guard_name' => 'admin',
@@ -134,7 +134,46 @@ class PermissionTableSeeder extends Seeder
                 'guard_name' => 'admin',
                 'title' => 'حذف الأحياء',
                 'route_name'=>'admin.neighborhoods.delete'
-            ], [
+            ],
+            [
+                'name' => 'offers-list',
+                'guard_name' => 'admin',
+                'title' => 'قائمة العروض',
+                'route_name'=>'admin.offers.index'
+            ],
+            [
+                'name' => 'offers-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل العروض',
+                'route_name'=>'admin.offers.edit'
+            ],
+            [
+                'name' => 'offers-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف العروض',
+                'route_name'=>'admin.offers.delete'
+            ],
+
+            [
+                'name' => 'requests-list',
+                'guard_name' => 'admin',
+                'title' => 'قائمة الطلبات',
+                'route_name'=>'admin.requests.index'
+            ],
+            [
+                'name' => 'requests-edit',
+                'guard_name' => 'admin',
+                'title' => 'تعديل الطلبات',
+                'route_name'=>'admin.requests.edit'
+            ],
+            [
+                'name' => 'requests-delete',
+                'guard_name' => 'admin',
+                'title' => 'حذف الطلبات',
+                'route_name'=>'admin.requests.delete'
+            ],
+
+            [
                 'name' => 'advertisings-list',
                 'guard_name' => 'admin',
                 'title' => 'قائمة الإعلانات',

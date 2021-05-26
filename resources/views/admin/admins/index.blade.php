@@ -38,6 +38,7 @@
                             </td>
                             <td>{{AccountStatus($item->status)}}</td>
                             <td>
+                                @if(auth('admin')->user()->can('admin-edit'))
                                 @if ($item->status == 1)
                                     <a class="btn btn-danger"
                                        href="{{ route('admin.admins.status', $item->id) }}">
@@ -50,15 +51,17 @@
                             </td>
                             <td>
 
-                                <a href="{{route('admin.admins.edit',$item->id)}}"
-                                         class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
-                                                                            class="fa fa-pencil"></i></a>
-
-                                <a data-url="{{ route('admin.admins.destroy', $item) }}"
-                                   onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
-                                   data-original-title="حذف" class="btn btn-danger btn-circle"><i
-                                        style="padding-top: 5px;padding-left: 4px;"
-                                        class="fa fa-trash-o"></i></a>
+                                    <a href="{{route('admin.admins.edit',$item->id)}}"
+                                       class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
+                                                                          class="fa fa-pencil"></i></a>
+                                @endif
+                                @if(auth('admin')->user()->can('admin-delete'))
+                                    <a data-url="{{ route('admin.admins.destroy', $item) }}"
+                                       onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
+                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                            style="padding-top: 5px;padding-left: 4px;"
+                                            class="fa fa-trash-o"></i></a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

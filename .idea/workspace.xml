@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1127e262-5f5c-4bf5-863f-1fca2580c05e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/3aqarat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/3aqarat.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/offers/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/offers/form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/offers/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requests/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requests/form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requests/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminCheck.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminCheck.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AdminsRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AdminsRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Offer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Offer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Offer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_26_130824_create_requests_table.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/PermissionTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/PermissionTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admins/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admins/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,18 +184,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.ns.project" value="true" />
     <property name="js.ns.project.flavor" value="JavaScript" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/roles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/requests" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin/requests" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/offers" />
       <recent name="$PROJECT_DIR$/resources/views/admin/roles" />
       <recent name="$PROJECT_DIR$/resources/views/admin/commonQuestions" />
       <recent name="$PROJECT_DIR$/resources/views/admin" />
-      <recent name="$PROJECT_DIR$/resources/views/admin/advertisings" />
-      <recent name="$PROJECT_DIR$/resources/views/admin/neighborhoods" />
     </key>
   </component>
   <component name="RunManager">
@@ -221,7 +222,7 @@
       <workItem from="1621848916770" duration="978000" />
       <workItem from="1621852931531" duration="17431000" />
       <workItem from="1621931784129" duration="22874000" />
-      <workItem from="1622020269083" duration="12571000" />
+      <workItem from="1622020269083" duration="16226000" />
     </task>
     <servers />
   </component>
