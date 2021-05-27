@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UsersRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -14,7 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $items=User::all();
+        return view('admin.users.index',compact('items'));
     }
 
     /**
@@ -24,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.add');
     }
 
     /**
@@ -33,9 +36,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsersRequest $request)
     {
-        //
+        $data=$request->validated();
+        User::create($data);
+        toastr()->success('تم اضافة المستخدم بنجاح');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -55,9 +61,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $admin)
     {
-        //
+        return view('admin.users.edit',['item'=>$admin]);
     }
 
     /**
@@ -67,9 +73,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersRequest $request, User $user)
     {
-        //
+        $user->update($request->validated());
+        toastr()->success('تم تعديل المستخدم بنجاح');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -78,8 +86,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        toastr()->success('تم حذف المستخدم بنجاح');
+        return redirect()->back();
+    }
+
+    public function changeStatus($id)
+    {
+        $item = User::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
 }

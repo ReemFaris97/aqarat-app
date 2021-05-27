@@ -13,6 +13,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $users = [
+            [
+                'name' => 'admin',
+                'phone' => '0112287909',
+                'email' => 'user@user.com',
+                'password' => '123456',
+                'status'=>1
+            ],
+
+        ];
+
+        foreach ($users as $item) {
+            \App\Models\User::create($item);
+        }
     }
 }

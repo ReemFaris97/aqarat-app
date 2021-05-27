@@ -13,4 +13,9 @@ class Blog extends Model
 
     public $translatable = ['title', 'description'];
     protected $fillable = ['title', 'description', 'image', 'status'];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

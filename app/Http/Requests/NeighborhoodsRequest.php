@@ -13,7 +13,7 @@ class NeighborhoodsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,17 @@ class NeighborhoodsRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'name' => 'required',
+            'city_id'=>'required|exists:cities,id'
         ];
+
+        if ($this->getMethod() == 'PATCH') {
+            $rules = [
+                'name' => 'required',
+                'city_id'=>'required|exists:cities,id'
+            ];
+        }
+        return $rules;
     }
 }

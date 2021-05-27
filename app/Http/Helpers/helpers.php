@@ -109,17 +109,17 @@ function notification()
 
 function city()
 {
-    $cities = App\City::all()->mapWithKeys(function ($item) {
-        return [$item['id'] => $item['ar_name']];
+    $cities = App\Models\City::all()->mapWithKeys(function ($item) {
+        return [$item['id'] => $item['name']];
     });
 
     return $cities;
 }
 
-function area()
+function neighborhood()
 {
-    $cities = App\Area::all()->mapWithKeys(function ($item) {
-        return [$item['id'] => $item['ar_name']];
+    $cities = App\Models\Neighborhood::all()->mapWithKeys(function ($item) {
+        return [$item['id'] => $item['name']];
     });
 
     return $cities;
@@ -343,8 +343,8 @@ function sendFCMTopic($data, $target)
 
 
 function users(){
-   return \App\User::where('role','user')->get()->mapWithKeys(function ($q){
-        return [$q['id']=>$q['phone']];
+   return \App\Models\User::get()->mapWithKeys(function ($q){
+        return [$q['id']=>$q['name']];
     });
 }
 function sessionQty($id)

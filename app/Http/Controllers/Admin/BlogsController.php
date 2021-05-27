@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BlogsRequest;
+use App\Http\Requests\UsersRequest;
+use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -14,7 +18,8 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        //
+        $items=Blog::all();
+        return view('admin.blogs.index',compact('items'));
     }
 
     /**
@@ -24,7 +29,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blogs.add');
     }
 
     /**
@@ -33,9 +38,12 @@ class BlogsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogsRequest $request)
     {
-        //
+        $data=$request->validated();
+        Blog::create($data);
+        toastr()->success('تم اضافة مدونة بنجاح');
+        return redirect()->route('admin.blogs.index');
     }
 
     /**
@@ -44,9 +52,10 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        //
+        $items =$blog->comments;
+        return view('admin.blogs.show',compact('items','blog'));
     }
 
     /**
@@ -55,9 +64,9 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Blog $blog)
     {
-        //
+        return view('admin.blogs.edit',['item'=>$blog]);
     }
 
     /**
@@ -67,9 +76,11 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogsRequest $request, Blog $blog)
     {
-        //
+        $blog->update($request->validated());
+        toastr()->success('تم تعديل المدونة بنجاح');
+        return redirect()->route('admin.blogs.index');
     }
 
     /**
@@ -78,8 +89,19 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        toastr()->success('تم حذف المدونة بنجاح');
+        return redirect()->back();
+    }
+    public function changeStatus($id)
+    {
+        $item = Blog::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
 }

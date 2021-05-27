@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminsRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AdminsController extends Controller
 {
@@ -27,7 +28,8 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        return view('admin.admins.add');
+        $roles = Role::pluck('name','name')->all();
+        return view('admin.admins.add',compact('roles'));
     }
 
     /**
@@ -39,7 +41,8 @@ class AdminsController extends Controller
     public function store(AdminsRequest $request)
     {
         $data=$request->validated();
-        Admin::create($data);
+        $admin=Admin::create($data);
+        $admin->assignRole($request->input('roles'));
         toastr()->success('تم اضافة المدير بنجاح');
         return redirect()->route('admin.admins.index');
     }
@@ -63,7 +66,9 @@ class AdminsController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('admin.admins.edit',compact('admin'));
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $admin->roles->pluck('name','name')->all();
+        return view('admin.admins.edit',['item'=>$admin,'userRole'=>$userRole,'roles'=>$roles]);
     }
 
     /**
@@ -76,6 +81,8 @@ class AdminsController extends Controller
     public function update(AdminsRequest $request, Admin $admin)
     {
         $admin->update($request->validated());
+        \DB::table('model_has_roles')->where('model_id',$admin)->delete();
+        $admin->assignRole($request->input('roles'));
         toastr()->success('تم تعديل المدير بنجاح');
         return redirect()->route('admin.admins.index');
     }
@@ -91,5 +98,15 @@ class AdminsController extends Controller
         $admin->delete();
         toastr()->success('تم حذف المدير بنجاح');
         return redirect()->back();
+    }
+
+    public function changeStatus($id)
+    {
+        $item = Admin::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
 }

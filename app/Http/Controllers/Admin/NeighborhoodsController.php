@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NeighborhoodsRequest;
+use App\Models\Neighborhood;
 use Illuminate\Http\Request;
 
 class NeighborhoodsController extends Controller
@@ -14,7 +16,8 @@ class NeighborhoodsController extends Controller
      */
     public function index()
     {
-        //
+        $items=Neighborhood::all();
+        return view('admin.neighborhoods.index',compact('items'));
     }
 
     /**
@@ -24,7 +27,7 @@ class NeighborhoodsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.neighborhoods.add');
     }
 
     /**
@@ -33,9 +36,12 @@ class NeighborhoodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NeighborhoodsRequest $request)
     {
-        //
+        $data=$request->validated();
+        Neighborhood::create($data);
+        toastr()->success('تم اضافة الحى بنجاح');
+        return redirect()->route('admin.neighborhoods.index');
     }
 
     /**
@@ -55,9 +61,9 @@ class NeighborhoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Neighborhood $neighborhood)
     {
-        //
+        return view('admin.neighborhoods.edit',['item'=>$neighborhood]);
     }
 
     /**
@@ -67,9 +73,11 @@ class NeighborhoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NeighborhoodsRequest $request, Neighborhood $neighborhood)
     {
-        //
+        $neighborhood->update($request->validated());
+        toastr()->success('تم تعديل الحى بنجاح');
+        return redirect()->route('admin.neighborhoods.index');
     }
 
     /**
@@ -78,8 +86,20 @@ class NeighborhoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Neighborhood $neighborhood)
     {
-        //
+        $neighborhood->delete();
+        toastr()->success('تم حذف الحى بنجاح');
+        return redirect()->back();
+    }
+
+    public function changeStatus($id)
+    {
+        $item = Neighborhood::find($id);
+        $status = $item->status == 1 ? 0 : 1;
+        $item->status = $status;
+        $item->save();
+        toastr()->success('تم تغير الحالة بنجاح');
+        return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
 }

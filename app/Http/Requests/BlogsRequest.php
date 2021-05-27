@@ -13,7 +13,7 @@ class BlogsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,21 @@ class BlogsRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules= [
+            'title'=>'required',
+            'description'=>'required',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
+
+        if ($this->getMethod() == 'PATCH') {
+            $rules = [
+                'title'=>'nullable',
+                'description'=>'nullable',
+                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg',
+            ];
+        }
+        // dd('hi');
+        return $rules;
     }
+
 }

@@ -1,41 +1,24 @@
-<!-- Favicon-->
- <link rel="icon" href="{{asset('_admin/images/logo.png')}}" type="image/x-icon">
+<link rel="shortcut icon" href="{{asset('_admin/assets/images/favicon.ico')}}">
+<!--Morris Chart CSS -->
+<link rel="stylesheet" href="{{asset('_admin/assets/plugins/morris/morris.css')}}">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Changa" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+<!-- App css -->
+<link href="{{asset('_admin/assets/css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('_admin/assets/css/core.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('_admin/assets/css/components.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('_admin/assets/css/icons.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('_admin/assets/css/pages.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('_admin/assets/css/menu.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('_admin/assets/css/responsive.css')}}" rel="stylesheet" type="text/css" />
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-
-
-<!-- Multi Select Css -->
-{!!Html::style('_admin/plugins/multi-select/css/multi-select.css')!!}
-<!-- Bootstrap Core Css -->
-{!!Html::style('_admin/plugins/bootstrap/css/bootstrap.min.css')!!}
-<!-- Waves Effect Css -->
-{!!Html::style('_admin/plugins/node-waves/waves.min.css')!!}
-<!-- Animation Css -->
-{!!Html::style('_admin/plugins/animate-css/animate.min.css')!!}
-<!-- Custom Css -->
-{!!Html::style('_admin/css/style.min.css')!!}
-<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-{!!Html::style('_admin/css/themes/theme-red.min.css')!!}
-{!!Html::style('_admin/css/rtl.css')!!}
-{!!Html::style('_admin/cus/sweetalert.css')!!}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-{!!Html::style('_admin/css/custome-style.css')!!}
-<style>
-    /* .navbar {
-         background-color: #f7921f !important;
-     }*/
-    .sidebar .user-info {
-        height: 82px;
-    }
-</style>
-
+<!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+<script src="{{asset('_admin/assets/js/modernizr.min.js')}}"></script>
+<link href="{{ asset('_admin/assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet"
+      type="text/css" />
+<link href="{{ asset('_admin/assets/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+@toastr_css
