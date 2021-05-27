@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title')
-  جميع المدونات
+    جميع المدونات
 @endsection
 @section('header')
     @include('admin.datatable.headers')
@@ -37,14 +37,16 @@
                             </td>
                             <td>{{AccountStatus($item->status)}}</td>
                             <td>
-                                @if ($item->status == 1)
-                                    <a class="btn btn-danger"
-                                       href="{{ route('admin.blogs.status', $item->id) }}">
-                                        تعطيل</a>
-                                @else
-                                    <a href="{{ route('admin.blogs.status', $item->id) }}"
-                                       class="btn btn-success">
-                                        تفعيل </a>
+                                @if(auth('admin')->user()->can('blogs-edit'))
+                                    @if ($item->status == 1)
+                                        <a class="btn btn-danger"
+                                           href="{{ route('admin.blogs.status', $item->id) }}">
+                                            تعطيل</a>
+                                    @else
+                                        <a href="{{ route('admin.blogs.status', $item->id) }}"
+                                           class="btn btn-success">
+                                            تفعيل </a>
+                                    @endif
                                 @endif
                             </td>
                             <td>
@@ -54,15 +56,19 @@
                             </td>
 
                             <td>
+                                @if(auth('admin')->user()->can('blogs-edit'))
 
-                                <a href="{{route('admin.blogs.edit',$item->id)}}"
-                                   class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
-                                                                      class="fa fa-pencil"></i></a>
-                                <a data-url="{{ route('admin.blogs.destroy', $item) }}"
-                                   onclick="delete_form(this)" data-name="{{ $item->title }}" data-toggle="tooltip"
-                                   data-original-title="حذف" class="btn btn-danger btn-circle"><i
-                                        style="padding-top: 5px;padding-left: 4px;"
-                                        class="fa fa-trash-o"></i></a>
+                                    <a href="{{route('admin.blogs.edit',$item->id)}}"
+                                       class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
+                                                                          class="fa fa-pencil"></i></a>
+                                @endif
+                                @if(auth('admin')->user()->can('blogs-delete'))
+                                    <a data-url="{{ route('admin.blogs.destroy', $item) }}"
+                                       onclick="delete_form(this)" data-name="{{ $item->title }}" data-toggle="tooltip"
+                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                            style="padding-top: 5px;padding-left: 4px;"
+                                            class="fa fa-trash-o"></i></a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

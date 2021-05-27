@@ -39,21 +39,23 @@
                             <td>{{AccountStatus($item->status)}}</td>
                             <td>
                                 @if(auth('admin')->user()->can('admin-edit'))
-                                @if ($item->status == 1)
-                                    <a class="btn btn-danger"
-                                       href="{{ route('admin.admins.status', $item->id) }}">
-                                        تعطيل</a>
-                                @else
-                                    <a href="{{ route('admin.admins.status', $item->id) }}"
-                                       class="btn btn-success">
-                                        تفعيل </a>
-                                @endif
+                                    @if(auth('admin')->user()->email!= $item->email)
+                                        @if ($item->status == 1)
+                                            <a class="btn btn-danger"
+                                               href="{{ route('admin.admins.status', $item->id) }}">
+                                                تعطيل</a>
+                                        @else
+                                            <a href="{{ route('admin.admins.status', $item->id) }}"
+                                               class="btn btn-success">
+                                                تفعيل </a>
+                                        @endif
+                                    @endif
                             </td>
                             <td>
 
-                                    <a href="{{route('admin.admins.edit',$item->id)}}"
-                                       class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
-                                                                          class="fa fa-pencil"></i></a>
+                                <a href="{{route('admin.admins.edit',$item->id)}}"
+                                   class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
+                                                                      class="fa fa-pencil"></i></a>
                                 @endif
                                 @if(auth('admin')->user()->can('admin-delete'))
                                     <a data-url="{{ route('admin.admins.destroy', $item) }}"

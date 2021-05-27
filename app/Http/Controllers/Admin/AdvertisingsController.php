@@ -16,14 +16,14 @@ class AdvertisingsController extends Controller
      */
     public function index()
     {
-            $items=Advertising::all();
-        return view('admin.advertisings.index',compact('items'));
+        $items = Advertising::all();
+        return view('admin.advertisings.index', compact('items'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -34,19 +34,19 @@ class AdvertisingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Advertising $advertising)
     {
-        return view('admin.advertisings.edit',['item'=>$advertising]);
+        return view('admin.advertisings.edit', ['item' => $advertising]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(AdvertisingRequest $request, Advertising $advertising)
@@ -59,7 +59,7 @@ class AdvertisingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Advertising $advertising)
