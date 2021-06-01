@@ -9,7 +9,7 @@ Route::post('login', [Auth\LoginController::class,'login']);
 Route::post('logout', [Auth\LoginController::class,'logout'])->name('logout');
 // Dashboard
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::group(['middleware'=>['admin']], function () {
+Route::group(['middleware'=>['admin','check-permissions']], function () {
 
     Route::resource('contacts', ContactController::class);
     Route::resource('admins',AdminsController::class);
