@@ -18,6 +18,7 @@
         "realrashid/sweet-alert": "^3.2",
         "spatie/laravel-permission": "^4.0",
         "spatie/laravel-translatable": "^4.6",
+        "tymon/jwt-auth": "^1.0",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
@@ -36,7 +37,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Http/Helpers/helpers.php"
+            "app/Helpers/helpers.php"
         ]
     },
     "autoload-dev": {

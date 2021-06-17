@@ -84,12 +84,9 @@ class CommonQuestionsController extends Controller
         toastr()->success('تم حذف السؤال بنجاح');
         return redirect()->back();
     }
-    public function changeStatus($id)
+    public function changeStatus(CommonQuestion $commonQuestion)
     {
-        $item = CommonQuestion::find($id);
-        $status = $item->status == 1 ? 0 : 1;
-        $item->status = $status;
-        $item->save();
+        $commonQuestion->update(['status'=>!$commonQuestion->status]);
         toastr()->success('تم تغير الحالة بنجاح');
         return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }

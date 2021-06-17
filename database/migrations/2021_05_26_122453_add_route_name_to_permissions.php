@@ -26,7 +26,7 @@ class AddRouteNameToPermissions extends Migration
     public function down()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            //
+            $table->dropColumn('route_name');
         });
     }
 }

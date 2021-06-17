@@ -3,6 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Arr;
+use Illuminate\Validation\ValidationException;
+use responder;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +40,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return responder::error(Arr::first(Arr::first($exception->errors())));
     }
 }
