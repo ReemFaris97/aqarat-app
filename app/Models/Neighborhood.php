@@ -39,6 +39,6 @@ class Neighborhood extends Model
 
     public function city()
     {
-        return $this->belongsTo(City::class)->withDefault();
+        return $this->belongsTo(City::class);
     }
 }

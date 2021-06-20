@@ -46,6 +46,14 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $is_active
+ * @property string|null $reset_code
+ * @property string|null $reset_sent_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Advertisement[] $advertisements
+ * @property-read int|null $advertisements_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereResetCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereResetSentAt($value)
  */
 class User extends Authenticatable implements JWTSubject
 {
@@ -57,7 +65,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'password', 'is_active', 'fcm_token_android', 'fcm_token_ios', 'image'
+        'name', 'phone', 'email', 'password', 'is_active', 'fcm_token_android', 'fcm_token_ios', 'image','reset_code','reset_sent_at'
     ];
 
     /**
@@ -99,5 +107,10 @@ class User extends Authenticatable implements JWTSubject
     {
         if ($value != '')
             $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function advertisements()
+    {
+        return $this->hasMany(Advertisement::class);
     }
 }

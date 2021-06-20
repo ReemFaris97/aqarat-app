@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Auth;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use responder;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Auth
 {
@@ -57,5 +61,48 @@ class AuthController extends Auth
     public function resource()
     {
         return UserResource::class;
+    }
+
+    public function forgetPassword(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|exists:users,phone',
+        ]);
+        $user = User::where('phone', $request->phone);
+        $user->first()->update([
+            'reset_code' => 123456,
+            'reset_sent_at' => now()->toDateTimeString()
+        ]);
+
+        return \responder::success(__('reset code sent successfully !'));
+    }
+
+    public function checkCode(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|exists:users,phone',
+            'code' => 'required'
+        ]);
+        $user = User::where('phone', $request->phone)->where('reset_code', $request->code)->exists();
+
+        return responder::success($user);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|exists:users,phone',
+            'code' => 'required',
+            'password' => 'required'
+        ]);
+        $user = User::where('phone', $request->phone)->where('reset_code', $request->code)->first();
+        if (!$user) return responder::error(__('wrong reset code '));
+
+        $user->update([
+            'password' => $request->password,
+            'reset_code' => Str::random(15)
+        ]);
+        $user->token = JWTAuth::fromUser($user);
+        return responder::success(new UserResource($user));
     }
 }
