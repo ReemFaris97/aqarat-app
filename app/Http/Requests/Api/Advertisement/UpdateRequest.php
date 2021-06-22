@@ -32,7 +32,8 @@ class UpdateRequest extends FormRequest
             'lng'=>'sometimes|numeric|min:180-|max:190',
             'images'=>'sometimes|array',
             'images.*'=>'sometimes|image',
-            'address'=>'sometimes|string'
+            'address'=>'sometimes|string',
+            'is_active'=>'sometimes|boolean'
         ];
     }
 }

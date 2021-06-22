@@ -25,11 +25,11 @@ class AdvertisementResource extends JsonResource
             'name'=>$this->name,
             'image'=>$this->image,
             'images'=>ImageResource::collection($this->getMedia()),
-            'views_counter'=>$this->view_counter,
             'location'=>[
                 'lat'=>$this->lat,
                 'lng'=>$this->lng
             ],
+            'views_counter'=>0,
             'description'=>$this->description,
             'user'=>new UserResource($this->user),
             'Neighborhood'=>new NeighborhoodResource($this->neighborhood)

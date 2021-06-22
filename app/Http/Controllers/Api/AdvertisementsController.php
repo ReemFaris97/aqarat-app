@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\PreventRequestsDuringMaintenance;
+use App\Http\Requests\Api\Advertisement\DestroyRequest;
 use App\Http\Requests\Api\Advertisement\StoreRequest;
 use App\Http\Requests\Api\Advertisement\UpdateRequest;
 use App\Http\Resources\AdvertisementResource;
 use App\Http\Resources\BaseCollection;
 use App\Models\Advertisement;
-use Illuminate\Http\Request;
 
 class AdvertisementsController extends Controller
 {
@@ -44,16 +43,6 @@ class AdvertisementsController extends Controller
         return  \responder::success(__('advertisement added successfully !'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Advertisement $advertisement)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -81,8 +70,10 @@ class AdvertisementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DestroyRequest $request,Advertisement $advertisement)
     {
+        $advertisement->delete();
+        return  \responder::success(__('deleted successfully'));
         //
     }
 }
