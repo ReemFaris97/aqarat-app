@@ -123,6 +123,45 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            8 => 
+            array (
+                'id' => 9,
+                'name' => 'add-advertisement',
+                'type' => 'long_text',
+                'ar_value' => 'privacy blabal',
+                'en_value' => 'privacy balbala',
+                'page' => 'النصوص',
+                'slug' => 'text',
+                'title' => 'شروط اضافة اعلان',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'name' => 'add-request',
+                'type' => 'long_text',
+                'ar_value' => 'privacy blabal',
+                'en_value' => 'privacy balbala',
+                'page' => 'النصوص',
+                'slug' => 'text',
+                'title' => 'شروط اضافة طلب',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'name' => 'add-offer',
+                'type' => 'long_text',
+                'ar_value' => 'privacy blabal',
+                'en_value' => 'privacy balbala',
+                'page' => 'النصوص',
+                'slug' => 'text',
+                'title' => 'شروط اضافة عرض',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         
