@@ -23,6 +23,8 @@ Route::group(['middleware'=>['admin']], function () {
     Route::resource('commonQuestions', CommonQuestionsController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('roles', RoleController::class);
+    Route::resource('attributes', AttributesController::class);
+    Route::resource('categories', CategoriesController::class);
 
     //change status
     Route::get('change-admins-status/{id}', [AdminsController::class,'changeStatus'])->name('admins.status');

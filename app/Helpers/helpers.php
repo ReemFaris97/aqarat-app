@@ -38,6 +38,17 @@ function AccountStatus($status = null)
     return $array[$status];
 }
 
+function AttributeType($status = null)
+{
+    $array = [
+        'number' => 'رقم',
+        'boolean' => '',
+        'text' => 'نص',
+    ];
+    if ($status) return $array[$status];
+    return $array;
+}
+
 class responder
 {
     public static function success($data)

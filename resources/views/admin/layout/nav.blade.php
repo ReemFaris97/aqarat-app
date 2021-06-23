@@ -74,8 +74,32 @@
         @if(auth('admin')->user()->can('users-list'))
             <li><a href="{{route('admin.users.index')}}">جميع المستخدمين</a></li>
         @endif
-        @if(auth('admin')->user()->can('users-list'))
+        @if(auth('admin')->user()->can('users-create'))
             <li><a href="{{route('admin.users.create')}}">اضافة مستخدم جديد</a></li>
+        @endif
+    </ul>
+</li>
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i
+            class="zmdi zmdi-collection-text"></i><span> الخصائص </span> </a>
+    <ul class="list-unstyled">
+        @if(auth('admin')->user()->can('attributes-list'))
+            <li><a href="{{route('admin.attributes.index')}}">جميع الخصائص</a></li>
+        @endif
+        @if(auth('admin')->user()->can('attributes-create'))
+            <li><a href="{{route('admin.attributes.create')}}">اضافة خاصية جديد</a></li>
+        @endif
+    </ul>
+</li>
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i
+            class="zmdi zmdi-collection-text"></i><span> التصنيفات </span> </a>
+    <ul class="list-unstyled">
+        @if(auth('admin')->user()->can('categories-list'))
+            <li><a href="{{route('admin.categories.index')}}">جميع التصنيفات</a></li>
+        @endif
+        @if(auth('admin')->user()->can('categories-create'))
+            <li><a href="{{route('admin.categories.create')}}">اضافة تصنيف جديد</a></li>
         @endif
     </ul>
 </li>

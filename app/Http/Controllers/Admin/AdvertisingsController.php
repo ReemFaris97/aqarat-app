@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertisingRequest;
-use App\Models\Advertising;
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 
 class AdvertisingsController extends Controller
@@ -16,7 +16,7 @@ class AdvertisingsController extends Controller
      */
     public function index()
     {
-        $items = Advertising::all();
+        $items = Advertisement::all();
         return view('admin.advertisings.index', compact('items'));
     }
 
@@ -37,9 +37,9 @@ class AdvertisingsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advertising $advertising)
+    public function edit(Advertisement $advertisement)
     {
-        return view('admin.advertisings.edit', ['item' => $advertising]);
+        return view('admin.advertisings.edit', ['item' => $advertisement]);
     }
 
     /**
@@ -49,9 +49,9 @@ class AdvertisingsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdvertisingRequest $request, Advertising $advertising)
+    public function update(AdvertisingRequest $request, Advertisement $advertisement)
     {
-        $advertising->update($request->validated());
+        $advertisement->update($request->validated());
         toastr()->success('تم تعديل الإعلان بنجاح');
         return redirect()->route('admin.advertisings.index');
     }
@@ -62,16 +62,16 @@ class AdvertisingsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advertising $advertising)
+    public function destroy(Advertisement $advertisement)
     {
-        $advertising->delete();
+        $advertisement->delete();
         toastr()->success('تم حذف الإعلان بنجاح');
         return redirect()->back();
     }
 
     public function changeStatus($id)
     {
-        $item = Advertising::find($id);
+        $item = Advertisement::find($id);
         $status = $item->status == 1 ? 0 : 1;
         $item->status = $status;
         $item->save();
