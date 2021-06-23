@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
@@ -13,19 +14,21 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+        \DB::table('admins')->delete();
+
         $admins = [
             [
                 'name' => 'admin',
                 'phone' => '0112287909',
                 'email' => 'admin@admin.com',
                 'password' => '123456',
-                'status'=>1
             ],
 
         ];
 
         foreach ($admins as $item) {
-            \App\Models\Admin::create($item);
+          $admin=  \App\Models\Admin::create($item);
+          $admin->assignRole(Role::where('name','Super Admin')->first());
         }
     }
 }

@@ -14,6 +14,10 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
+
+        \DB::table('permissions')->delete();
+
+
         $permissions = [
 
             [
@@ -264,11 +268,7 @@ class PermissionTableSeeder extends Seeder
 
         ];
 
-        foreach ($permissions as $permission) {
-
-            Permission::create($permission);
-
-        }
+  \DB::table('permissions')->insert($permissions)   ;
 
 
     }

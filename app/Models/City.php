@@ -37,7 +37,7 @@ class City extends Model
 
     public $translatable = ['name'];
 
-    public function neighborhood()
+    public function neighborhoods()
     {
         return $this->hasMany(Neighborhood::class);
     }
