@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'phone' => '0112287909',
                 'email' => 'user@user.com',
                 'password' => '123456',
-                'status'=>1
+                'is_active'=>1
             ],
 
         ];
