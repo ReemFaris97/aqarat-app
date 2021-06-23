@@ -37,11 +37,17 @@ class Setting extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $appends=['value'];
     public function value()
     {
         if (app()->getLocale() == 'en')
             return $this->en_value;
         else
             return $this->ar_value;
+    }
+
+    public function getValueAttribute()
+    {
+        return $this->{app()->getLocale().'_value'};
     }
 }
