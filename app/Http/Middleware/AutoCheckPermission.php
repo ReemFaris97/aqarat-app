@@ -19,8 +19,9 @@ class AutoCheckPermission
     {
         $route_name = $request->route()->getName();
         $permission =Permission ::whereRaw("FIND_IN_SET ('$route_name',route_name)")->first();
+        $user=auth('admin')->user();
         if ($permission) {
-            if (auth('admin')->user()->can($permission->name)) {
+            if ($user->can($permission->name) or  $user->hasRole('Super Admin')) {
                 return $next($request);
             }
             abort(403);
