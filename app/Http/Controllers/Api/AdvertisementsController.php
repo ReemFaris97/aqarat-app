@@ -74,6 +74,5 @@ class AdvertisementsController extends Controller
     {
         $advertisement->delete();
         return  \responder::success(__('deleted successfully'));
-        //
     }
 }

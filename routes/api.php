@@ -30,4 +30,6 @@ Route::group([], function () {
             ]);
         });
     });
+
+    Route::get('cities',CityController::class);
 });
