@@ -28,6 +28,15 @@ function uploader($value, $path = 'uploads')
     return '/storage/' . Storage::disk('public')->putFile($path, $value);
 }
 
+function AccountStatus($status = null)
+{
+    $array = [
+        '1' => 'مفعل',
+        '0' => 'غير مفعل',
+    ];
+
+    return $array[$status];
+}
 
 class responder
 {
