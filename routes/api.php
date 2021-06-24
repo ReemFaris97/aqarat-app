@@ -26,7 +26,8 @@ Route::group([], function () {
             Route::get('profile', [AuthController::class, 'profile']);
             Route::put('profile', [AuthController::class, 'update']);
             Route::apiResources([
-                'advertisements'=>AdvertisementsController::class
+                'advertisements'=>AdvertisementsController::class,
+                'medias'=>MediaController::class
             ]);
         });
     });
