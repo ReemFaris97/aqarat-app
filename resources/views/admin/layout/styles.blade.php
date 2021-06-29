@@ -23,7 +23,15 @@
 <link href="{{ asset('_admin/assets/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 @toastr_css
 
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&display=swap&subset=arabic" rel="stylesheet">
+
 <style>
+    body, html {
+        font-family: 'Cairo', sans-serif !important;
+        /*font-size: 16px;*/
+    }
+
     .slimScrollBar {
         display: block !important;
         background: rgb(88 6 6) !important;
