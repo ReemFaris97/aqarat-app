@@ -35,4 +35,9 @@ Route::group([], function () {
 
     Route::get('cities',CityController::class);
     Route::get('settings',SettingController::class);
+
 });
+
+/////////////////////////////////////////////
+Route::resource('blogs',BlogController::class);
+/////////////////////////////////////////////

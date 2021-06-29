@@ -30,7 +30,7 @@
 <script src="{{asset('_admin/assets/js/jquery.core.js')}}"></script>
 <script src="{{asset('_admin/assets/js/jquery.app.js')}}"></script>
 
-@jquery
+{{--@jquery--}}
 @toastr_js
 @toastr_render
 

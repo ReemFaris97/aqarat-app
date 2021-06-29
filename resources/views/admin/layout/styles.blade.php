@@ -22,3 +22,11 @@
       type="text/css" />
 <link href="{{ asset('_admin/assets/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 @toastr_css
+
+<style>
+    .slimScrollBar {
+        display: block !important;
+        background: rgb(88 6 6) !important;
+        width: 7px !important;
+    }
+</style>
