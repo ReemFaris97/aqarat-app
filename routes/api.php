@@ -32,8 +32,10 @@ Route::group([], function () {
                 'advertisements' => AdvertisementsController::class,
                 'favourites' => FavouriteController::class,
                 'medias' => MediaController::class,
-
             ]);
+            Route::get('advertisement-favourites', [FavouriteController::class, 'advertisements']);
+            Route::get('order-favourites', [FavouriteController::class, 'orders']);
+            Route::post('blogs/{id}', [BlogController::class, 'update']);
         });
     });
 

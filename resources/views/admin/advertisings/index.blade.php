@@ -42,10 +42,10 @@
                             <td>{{$item->user->name}}</td>
                             <td>{{$item->neighborhood->city->name}}</td>
                             <td>{{$item->neighborhood->name}}</td>
-                            <td>{{AccountStatus($item->status)}}</td>
+                            <td>{{AccountStatus($item->is_active)}}</td>
                             <td>
                                 @if(auth('admin')->user()->can('advertisings-edit'))
-                                    @if ($item->status == 1)
+                                    @if ($item->is_active == 1)
                                         <a class="btn btn-danger"
                                            href="{{ route('admin.advertisings.status', $item->id) }}">
                                             تعطيل</a>
