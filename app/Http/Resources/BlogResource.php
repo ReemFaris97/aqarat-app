@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class BlogResource extends JsonResource
 {
@@ -17,7 +18,8 @@ class BlogResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
+            'body' => $this->description,
+            'description' =>Str::limit(strip_tags( $this->description),200),
             'image' => $this->image ?? '',
             'created_at' => $this->created_at->format('Y/m/d'),
             'comments_count'=> count($this->comments),
