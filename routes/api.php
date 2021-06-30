@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Api\Auth\AdvertisementsController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\FavouriteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,7 @@ Route::group([], function () {
             Route::put('profile', [AuthController::class, 'update']);
             Route::apiResources([
                 'advertisements' => AdvertisementsController::class,
+                'favourites' => FavouriteController::class,
                 'medias' => MediaController::class,
 
             ]);

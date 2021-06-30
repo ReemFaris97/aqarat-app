@@ -104,20 +104,20 @@
     </ul>
 </li>
 
-@if(auth('admin')->user()->can('offers-list'))
-    <li>
-        <a href="{{ route('admin.offers.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
-            <span> العروض </span>
-        </a>
-    </li>
-@endif
-@if(auth('admin')->user()->can('requests-list'))
-    <li>
-        <a href="{{ route('admin.requests.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
-            <span> الطلبات </span>
-        </a>
-    </li>
-@endif
+{{--@if(auth('admin')->user()->can('offers-list'))--}}
+{{--    <li>--}}
+{{--        <a href="{{ route('admin.offers.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>--}}
+{{--            <span> العروض </span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
+{{--@endif--}}
+{{--@if(auth('admin')->user()->can('requests-list'))--}}
+{{--    <li>--}}
+{{--        <a href="{{ route('admin.requests.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>--}}
+{{--            <span> الطلبات </span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
+{{--@endif--}}
 @if(auth('admin')->user()->can('advertisings-list'))
     <li>
         <a href="{{ route('admin.advertisings.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
