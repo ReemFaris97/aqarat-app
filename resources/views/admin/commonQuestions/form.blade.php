@@ -10,7 +10,7 @@
 <div class="form-group">
     <label class="col-md-2 control-label">السؤال باللغة الإنجليزية</label>
     <div class="col-md-10">
-        {!! Form::text("title[en]",(isset($item) ? $item: new \App\Models\CommonQuestion())->getTranslation('question',
+        {!! Form::text("question[en]",(isset($item) ? $item: new \App\Models\CommonQuestion())->getTranslation('question',
 'en'),['class'=>'form-control','placeholder'=>'  السؤال باللغة الإنجليزية  '])!!}
     </div>
 </div>

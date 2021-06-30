@@ -3,22 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\BaseCollection;
-use App\Http\Resources\BlogResource;
-use App\Models\Blog;
+use App\Http\Resources\QuestionResource;
+use App\Models\CommonQuestion;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return
      */
     public function index()
     {
-//        return \responder::success(BlogResource::collection(Blog::with('comments')->active()->latest()->get()));
-    return \responder::success(new BaseCollection(Blog::with('comments')->active()->latest()->paginate(10),BlogResource::class));
+        return \responder::success(QuestionResource::collection(CommonQuestion::active()->get()));
     }
 
     /**

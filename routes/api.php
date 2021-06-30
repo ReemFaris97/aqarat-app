@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,8 @@ Route::group([], function () {
 
 /////////////////////////////////////////////
 Route::resources([
-    'blogs' => BlogController::class
+    'blogs' => BlogController::class,
+    'questions' => QuestionController::class,
+    'contacts' => ContactController::class,
 ]);
 /////////////////////////////////////////////

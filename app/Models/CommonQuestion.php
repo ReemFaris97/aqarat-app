@@ -33,4 +33,9 @@ class CommonQuestion extends Model
 
     public $translatable = ['question', 'answer'];
     protected $fillable = ['question', 'answer', 'status'];
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(1);
+    }
 }

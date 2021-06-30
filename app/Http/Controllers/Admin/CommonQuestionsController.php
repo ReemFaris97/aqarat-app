@@ -53,9 +53,9 @@ class CommonQuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(CommonQuestion $blog)
+    public function edit(CommonQuestion $commonQuestion)
     {
-        return view('admin.commonQuestions.edit',['item'=>$blog]);
+        return view('admin.commonQuestions.edit',['item'=>$commonQuestion]);
     }
 
     /**
@@ -84,8 +84,9 @@ class CommonQuestionsController extends Controller
         toastr()->success('تم حذف السؤال بنجاح');
         return redirect()->back();
     }
-    public function changeStatus(CommonQuestion $commonQuestion)
+    public function changeStatus($id)
     {
+        $commonQuestion = CommonQuestion::findOrFail($id);
         $commonQuestion->update(['status'=>!$commonQuestion->status]);
         toastr()->success('تم تغير الحالة بنجاح');
         return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');

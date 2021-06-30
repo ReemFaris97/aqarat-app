@@ -19,22 +19,9 @@ class BlogResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'image' => $this->image ?? '',
-            'created_at' => $this->created_at->format('Y-m-d'),
-
-            'comments' => $this->comments()->get()->transform(function ($comment) {
-                return [
-                    'id' => $comment->id,
-                    'user' => [
-                        'id' => $comment->user_id ?? 0,
-                        'name' => $comment->user->name ?? '',
-                        'phone' => $comment->user->phone ?? '',
-                        'email' => $comment->user->email ?? '',
-                        'image' => $comment->user()->exists() ? $comment->user->image : '',
-                    ],
-                    'comment' => $comment->text,
-                    'created' => $comment->created_at->format('Y-m-d'),
-                ];
-            }),
+            'created_at' => $this->created_at->format('Y/m/d'),
+            'comments_count'=> count($this->comments),
+            'comments' => CommentResource::collection($this->comments),
         ];
     }
 }
