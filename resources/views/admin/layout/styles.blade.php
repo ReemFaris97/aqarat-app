@@ -38,3 +38,4 @@
         width: 7px !important;
     }
 </style>
+<link href="{{asset('_admin/assets/css/customDashboard.css')}}" rel="stylesheet" type="text/css">

@@ -1,4 +1,6 @@
 @include('admin.common.errors')
+<div class="row">
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">السؤال باللغة العربية</label>
     <div class="col-md-10">
@@ -6,7 +8,9 @@
 'ar'),['class'=>'form-control','placeholder'=>'  السؤال باللغة العربية  '])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">السؤال باللغة الإنجليزية</label>
     <div class="col-md-10">
@@ -14,6 +18,8 @@
 'en'),['class'=>'form-control','placeholder'=>'  السؤال باللغة الإنجليزية  '])!!}
     </div>
 </div>
+</div>
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">الإجابة باللغة العربية</label>
     <div class="col-md-10">
@@ -21,7 +27,9 @@
   'ar'),['class'=>'form-control','placeholder'=>'  الإجابة باللغة العربية  '])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">الإجابة باللغة الإنجليزية</label>
     <div class="col-md-10">
@@ -29,8 +37,12 @@
   'en'),['class'=>'form-control','placeholder'=>'  الإجابة باللغة الإنجليزية  '])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 
-<span class="input-group-btn">
+<div class="input-group-btn">
     <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>
-</span>
+</div>
+</div>
+</div>

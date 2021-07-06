@@ -1,4 +1,6 @@
 @include('admin.common.errors')
+<div class="row">
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">العنوان باللغة العربية</label>
     <div class="col-md-10">
@@ -6,7 +8,9 @@
 'ar'),['class'=>'form-control','placeholder'=>'  العنوان باللغة العربية  '])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">العنوان باللغة الإنجليزية</label>
     <div class="col-md-10">
@@ -14,6 +18,8 @@
 'en'),['class'=>'form-control','placeholder'=>'  العنوان باللغة الإنجليزية  '])!!}
     </div>
 </div>
+</div>
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">المحتوى باللغة العربية</label>
     <div class="col-md-10">
@@ -21,7 +27,9 @@
   'ar'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة العربية  '])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">المحتوى باللغة الإنجليزية</label>
     <div class="col-md-10">
@@ -29,23 +37,31 @@
   'en'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة الإنجليزية  '])!!}
     </div>
 </div>
+</div>
 
 @if (isset($item->image))
+<div class="col-xs-12">
     <div class="form-group">
         <label class="col-md-2 control-label">الصورة الحالية للمدونة :</label>
         <div class="col-md-10">
             <img class="img-preview" src="{{$item->image}}" style="width: 50px; height: 50px">
         </div>
     </div>
+    </div>
 @endif
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">صورة للمدونة </label>
     <div class="col-md-10">
         {!! Form::file("image",null,['class'=>'form-control'])!!}
     </div>
 </div>
+</div>
 
-<span class="input-group-btn">
+<div class="col-xs-12">
+<div class="input-group-btn">
     <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>
-</span>
+</div>
+</div>
+</div>
