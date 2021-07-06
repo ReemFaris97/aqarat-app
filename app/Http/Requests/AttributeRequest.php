@@ -24,7 +24,8 @@ class AttributeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
+            'name.ar'=>'required',
+            'name.en'=>'required',
             'type'=>'required|in:number,boolean,text'
         ];
     }

@@ -26,7 +26,7 @@ class AdvertisingRequest extends FormRequest
         return [
             'user_id' => 'required',
             'neighborhood_id' => 'required',
-            'views' => 'required',
+            'views' => 'nullable',
             'title' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 //            'lat' => 'required',

@@ -14,7 +14,7 @@
 <div class="form-group">
     <label class="col-md-2 control-label" for="example-email">رقم الهاتف</label>
     <div class="col-md-10">
-        {!! Form::number("phone",null,['class'=>'form-control','placeholder'=>'رقم الهاتف'])!!}    </div>
+        {!! Form::text("phone",null,['class'=>'form-control','placeholder'=>'رقم الهاتف'])!!}    </div>
 </div>
 <div class="form-group">
     <label class="col-md-2 control-label">كلمة المرور</label>
@@ -28,11 +28,11 @@
         {!! Form::input('password','password_confirmation',null,['class'=>'form-control','placeholder'=>'تكرار كلمة المرور']) !!}
     </div>
 </div>
-@if (isset($item->image))
+@if (isset($user->image))
     <div class="form-group">
         <label class="col-md-2 control-label">الصورة الحالية للمستخدم :</label>
         <div class="col-md-10">
-            <img class="img-preview" src="{{$item->image}}" style="width: 50px; height: 50px">
+            <img class="img-preview" src="{{$user->image}}" style="width: 50px; height: 50px">
         </div>
     </div>
 @endif

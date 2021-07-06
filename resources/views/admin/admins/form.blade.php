@@ -14,7 +14,7 @@
 <div class="form-group">
     <label class="col-md-2 control-label" for="example-email">رقم الهاتف</label>
     <div class="col-md-10">
-        {!! Form::number("phone",null,['class'=>'form-control','placeholder'=>'رقم الهاتف'])!!}    </div>
+        {!! Form::text("phone",null,['class'=>'form-control','placeholder'=>'رقم الهاتف'])!!}    </div>
 </div>
 <div class="form-group">
     <label class="col-md-2 control-label">كلمة المرور</label>

@@ -42,7 +42,7 @@ function AttributeType($status = null)
 {
     $array = [
         'number' => 'رقم',
-        'boolean' => '',
+        'boolean' => 'نعم / لا',
         'text' => 'نص',
     ];
     if ($status) return $array[$status];

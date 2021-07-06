@@ -1,34 +1,47 @@
 @include('admin.common.errors')
-<div class="form-group">
-    <label class="col-md-2 control-label">العنوان باللغة العربية</label>
-    <div class="col-md-10">
-        {!! Form::text("title[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('title',
-'ar'),['class'=>'form-control','placeholder'=>'  العنوان باللغة العربية  '])!!}
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-2 control-label">العنوان باللغة العربية</label>
+            <div class="col-md-10">
+                {!! Form::text("title[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('title',
+        'ar'),['class'=>'form-control','placeholder'=>'  العنوان باللغة العربية  '])!!}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-2 control-label">العنوان باللغة الإنجليزية</label>
+            <div class="col-md-10">
+                {!! Form::text("title[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('title',
+        'en'),['class'=>'form-control','placeholder'=>'  العنوان باللغة الإنجليزية  '])!!}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-2 control-label">المحتوى باللغة العربية</label>
+            <div class="col-md-10">
+                {!! Form::textarea("description[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
+          'ar'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة العربية  ','rows'=>3])!!}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-2 control-label">المحتوى باللغة الإنجليزية</label>
+            <div class="col-md-10">
+                {!! Form::textarea("description[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
+          'en'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة الإنجليزية  ','rows'=>3])!!}
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="form-group">
-    <label class="col-md-2 control-label">العنوان باللغة الإنجليزية</label>
-    <div class="col-md-10">
-        {!! Form::text("title[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('title',
-'en'),['class'=>'form-control','placeholder'=>'  العنوان باللغة الإنجليزية  '])!!}
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">المحتوى باللغة العربية</label>
-    <div class="col-md-10">
-        {!! Form::textarea("description[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
-  'ar'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة العربية  '])!!}
-    </div>
-</div>
 
-<div class="form-group">
-    <label class="col-md-2 control-label">المحتوى باللغة الإنجليزية</label>
-    <div class="col-md-10">
-        {!! Form::textarea("description[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
-  'en'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة الإنجليزية  '])!!}
-    </div>
-</div>
 
 @if (isset($item->image))
     <div class="form-group">
