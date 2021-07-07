@@ -24,8 +24,10 @@ class BlogsRequest extends FormRequest
     public function rules()
     {
         $rules= [
-            'title'=>'required',
-            'description'=>'required',
+            'title.ar'=>'required',
+            'title.en'=>'required',
+            'description.ar'=>'required',
+            'description.en'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
 

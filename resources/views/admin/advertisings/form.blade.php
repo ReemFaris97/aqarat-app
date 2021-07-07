@@ -32,34 +32,30 @@
 <div class="form-group">
     <label class="col-md-2 control-label">اسم المستخدم</label>
     <div class="col-md-10">
-        {!! Form::select("user_id",users(),null,['class'=>'form-control','placeholder'=>'اختر اسم المستخدم','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
+        {!! Form::select("user_id",$users,null,['class'=>'form-control','placeholder'=>'اختر اسم المستخدم','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
     </div>
 </div>
 </div>
 
-<div class="col-xs-12">
-<div class="form-group">
-    <label class="col-md-2 control-label">اسم المدينة</label>
-    <div class="col-md-10">
-        {!! Form::select("city_id",city(),null,['class'=>'form-control','placeholder'=>'اختر اسم المدينة','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
-    </div>
-</div>
-</div>
+{{--<div class="form-group">--}}
+{{--    <label class="col-md-2 control-label">اسم المدينة</label>--}}
+{{--    <div class="col-md-10">--}}
+{{--        {!! Form::select("city_id",$cities,null,['class'=>'form-control','placeholder'=>'اختر اسم المدينة','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">اسم الحى</label>
     <div class="col-md-10">
-        {!! Form::select("neighborhood_id",neighborhood(),null,['class'=>'form-control','placeholder'=>'اختر اسم الحى','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
+        {!! Form::select("neighborhood_id",$neighborhoods,null,['class'=>'form-control','placeholder'=>'اختر اسم الحى','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
     </div>
 </div>
-</div>
-@if (isset($item->image))
-<div class="col-xs-12">
+@if (isset($advertising->image))
     <div class="form-group">
         <label class="col-md-2 control-label">الصورة الحالية للإعلان :</label>
         <div class="col-md-10">
-            <img class="img-preview" src="{{$item->image}}" style="width: 50px; height: 50px">
+            <img class="img-preview" src="{{$advertising->image}}" style="width: 50px; height: 50px">
         </div>
     </div>
     </div>

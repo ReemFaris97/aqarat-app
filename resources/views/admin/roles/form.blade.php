@@ -13,23 +13,26 @@
 
     <div class="form-group">
 
-        <strong>Permission:</strong>
+        <strong>قائمة الصلاحيات :</strong>
+        <hr>
 
         <br/>
-        <div class="contentRadiobtns">
-            @foreach($permission as $value)
-                @isset($rolePermissions)
-                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                        {{ $value->title }}</label>
-                @else
-                    <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                        {{ $value->title }}</label>
-                @endisset
 
+            <div class="row">
+                @foreach($permission as $value)
+                    <div class="col-md-4">
+                        @isset($rolePermissions)
+                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                {{ $value->title }}</label>
+                        @else
+                            <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                                {{ $value->title }}</label>
+                        @endisset
+                    </div>
+                @endforeach
 
+            </div>
 
-            @endforeach
-        </div>
     </div>
 
 </div>

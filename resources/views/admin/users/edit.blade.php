@@ -2,7 +2,7 @@
 
 @section('title')
     تعديل المستخدم
-    {{ $item->name }}
+    {{ $user->name }}
 @stop
 @section('content')
     <div class="row">

@@ -39,7 +39,7 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $data = $request->validated();
-        City::create($data);
+        Category::create($data);
         toastr()->success('تم اضافة التصنيف بنجاح');
         return redirect()->route('admin.categories.index');
     }

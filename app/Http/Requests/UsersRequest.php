@@ -35,9 +35,10 @@ class UsersRequest extends FormRequest
 
         if ($this->getMethod() == 'PATCH') {
             $rules = [
-                'name' => 'required|string|max:191|unique:users,name,' . request()->id,
-                'email' => 'required|email|max:255|unique:users,email,' . request()->id,
-                'phone' => 'required|phone:sa,eg|unique:users,phone,' . request()->id,
+                'name' => 'required|string|max:191|unique:users,name,' . $this->user->id,
+                'email' => 'required|email|max:255|unique:users,email,' . $this->user->id,
+                'phone' => 'required|phone:sa,eg|unique:users,phone,' . $this->user->id,
+                'password' => 'nullable|min:6|confirmed',
                 'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ];
         }

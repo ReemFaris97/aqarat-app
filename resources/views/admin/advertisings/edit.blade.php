@@ -2,13 +2,13 @@
 
 @section('title')
     تعديل الإعلان
-    {{ $item->title }}
+    {{ $advertising->title }}
 @stop
 @section('content')
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">تعديل الإعلان {{ $item->title }} </h4>
+                <h4 class="header-title m-t-0 m-b-30">تعديل الإعلان {{ $advertising->title }} </h4>
                 <a class="input-group-btn" href="{{route('admin.advertisings.index')}}">
                     <button type="button" class="btn waves-effect waves-light btn-primary">رجوع</button>
                 </a>

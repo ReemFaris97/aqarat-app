@@ -24,8 +24,10 @@ class CommonQuestionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'question'=>'required',
-            'answer'=>'required'
+            'question.ar'=>'required',
+            'question.en'=>'required',
+            'answer.ar'=>'required',
+            'answer.en'=>'required',
         ];
     }
 }

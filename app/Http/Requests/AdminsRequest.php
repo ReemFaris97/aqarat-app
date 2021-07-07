@@ -35,6 +35,7 @@ class AdminsRequest extends FormRequest
             $rules = [
                 'name' => 'required|string|max:191|unique:admins,name,' . request()->id,
                 'email' => 'required|email|max:255|unique:admins,email,' . request()->id,
+                'password' => 'nullable|min:6|confirmed',
                 'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:admins,phone,' . request()->id,
                 'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ];

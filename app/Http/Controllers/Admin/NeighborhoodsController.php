@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NeighborhoodsRequest;
+use App\Models\City;
 use App\Models\Neighborhood;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,10 @@ class NeighborhoodsController extends Controller
      */
     public function create()
     {
-        return view('admin.neighborhoods.add');
+        $cities = City::whereStatus(1)->get()->mapWithKeys(function ($item) {
+            return [$item['id'] => $item['name']];
+        });
+        return view('admin.neighborhoods.add',compact('cities'));
     }
 
     /**
@@ -63,7 +67,10 @@ class NeighborhoodsController extends Controller
      */
     public function edit(Neighborhood $neighborhood)
     {
-        return view('admin.neighborhoods.edit',['item'=>$neighborhood]);
+        $cities = City::get()->mapWithKeys(function ($item) {
+            return [$item['id'] => $item['name']];
+        });
+        return view('admin.neighborhoods.edit',['item'=>$neighborhood,'cities'=>$cities]);
     }
 
     /**
@@ -96,9 +103,7 @@ class NeighborhoodsController extends Controller
     public function changeStatus($id)
     {
         $item = Neighborhood::find($id);
-        $status = $item->status == 1 ? 0 : 1;
-        $item->status = $status;
-        $item->save();
+        $item->update(['status' => !$item->status]);
         toastr()->success('تم تغير الحالة بنجاح');
         return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }

@@ -13,7 +13,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,19 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules =  [
+            'name.ar'=>'required',
+            'name.en'=>'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+        if ($this->getMethod() == 'PATCH') {
+            $rules = [
+                'name.ar'=>'required',
+                'name.en'=>'required',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ];
+        }
+        return $rules;
+
     }
 }

@@ -23,7 +23,7 @@
 <div class="form-group">
     <label class="col-md-2 control-label">اسم المدينة</label>
     <div class="col-md-10">
-        {!! Form::select("city_id",city(),null,['class'=>'form-control','placeholder'=>'اختر اسم المدينة','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
+        {!! Form::select("city_id",$cities,null,['class'=>'form-control','placeholder'=>'اختر اسم المدينة','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
     </div>
 </div>
 </div>

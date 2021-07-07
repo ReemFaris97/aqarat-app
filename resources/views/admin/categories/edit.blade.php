@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title')
-    تعديل المدينة
+    تعديل التصنيف
     {{ $item->name }}
 @stop
 @section('content')

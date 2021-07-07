@@ -24,7 +24,8 @@ class CitiesRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name.ar' => 'required',
+            'name.en' => 'required',
         ];
     }
 }

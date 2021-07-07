@@ -39,6 +39,8 @@
 </div>
 </div>
 
+
+
 @if (isset($item->image))
 <div class="col-xs-12">
     <div class="form-group">
