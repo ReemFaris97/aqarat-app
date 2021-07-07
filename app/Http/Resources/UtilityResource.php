@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\OrderAttribute;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AttributeResource extends JsonResource
+class UtilityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +16,7 @@ class AttributeResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->name,
-            'type'=>$this->type,
-            'value'=>$this->whenPivotLoaded('order_attributes',$this->pivot->value)
+            'name'=>$this->name
         ];
     }
 }

@@ -125,4 +125,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->morphedByMany(Order::class, 'model',Favourite::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }
