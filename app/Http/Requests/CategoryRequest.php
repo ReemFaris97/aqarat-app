@@ -27,12 +27,14 @@ class CategoryRequest extends FormRequest
             'name.ar'=>'required',
             'name.en'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'attributes' => 'required|array',
         ];
         if ($this->getMethod() == 'PATCH') {
             $rules = [
                 'name.ar'=>'required',
                 'name.en'=>'required',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'attributes' => 'required|array',
             ];
         }
         return $rules;

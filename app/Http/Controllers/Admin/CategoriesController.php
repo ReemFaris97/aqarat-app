@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Attribute;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use function React\Promise\all;
 
 class CategoriesController extends Controller
 {
@@ -27,7 +29,10 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.add');
+        $attributes = Attribute::get()->mapWithKeys(function ($item) {
+            return [$item['id'] => $item['name']];
+        });
+        return view('admin.categories.add', compact('attributes'));
     }
 
     /**
@@ -39,7 +44,8 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $data = $request->validated();
-        Category::create($data);
+        $category = Category::create($data);
+        $category->attributes()->attach($data['attributes']);
         toastr()->success('تم اضافة التصنيف بنجاح');
         return redirect()->route('admin.categories.index');
     }
@@ -63,7 +69,10 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', ['item' => $category]);
+        $attributes = Attribute::get()->mapWithKeys(function ($item) {
+            return [$item['id'] => $item['name']];
+        });
+        return view('admin.categories.edit', ['item' => $category,'attributes'=>$attributes]);
     }
 
     /**
@@ -76,6 +85,7 @@ class CategoriesController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $category->update($request->validated());
+        $category->attributes()->sync($request['attributes']);
         toastr()->success('تم تعديل التصنيف بنجاح');
         return redirect()->route('admin.categories.index');
     }
