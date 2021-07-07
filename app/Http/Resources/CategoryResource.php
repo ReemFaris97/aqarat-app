@@ -2,13 +2,13 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Attribute;
+use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class CategoryResource
  * @package App\Http\Resources
- * @mix Category
+ * @mixin Category
  */
 class CategoryResource extends JsonResource
 {
@@ -23,6 +23,7 @@ class CategoryResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
+            'image'=>$this->image,
             'attributes'=>AttributeResource::collection($this->attributes)
         ];
     }

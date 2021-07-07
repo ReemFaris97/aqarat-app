@@ -21,12 +21,15 @@ class CreateOrdersTable extends Migration
             $table->foreignIdFor(\App\Models\Category::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Neighborhood::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('contract',['buy','sell']);
+            $table->enum('type',['request','offer']);
             $table->enum('advertiser',['owner','agent','marketer']);
             $table->double('lat');
             $table->double('lng');
             $table->string('address');
             $table->decimal('price');
             $table->text('description');
+            $table->boolean('is_reviewed')->default(0);
+            $table->boolean('is_active')->default(1);
 
             $table->timestamps();
         });

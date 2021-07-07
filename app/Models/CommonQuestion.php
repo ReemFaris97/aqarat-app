@@ -26,6 +26,7 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|CommonQuestion whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CommonQuestion whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|CommonQuestion active()
  */
 class CommonQuestion extends Model
 {

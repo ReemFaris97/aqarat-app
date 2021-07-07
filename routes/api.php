@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Api\Auth\AdvertisementsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\FavouriteController;
+use App\Http\Controllers\Api\Auth\OrderController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,7 @@ Route::group([], function () {
                 'advertisements' => AdvertisementsController::class,
                 'favourites' => FavouriteController::class,
                 'medias' => MediaController::class,
+                'orders'=>OrderController::class
 
             ]);
         });
@@ -39,13 +42,14 @@ Route::group([], function () {
 
     Route::get('cities', CityController::class);
     Route::get('settings', SettingController::class);
-
+    Route::get('categories', CategoryController::class);
+    Route::resources([
+        'blogs' => BlogController::class,
+        'questions' => QuestionController::class,
+        'contacts' => ContactController::class,
+    ]);
 });
 
 /////////////////////////////////////////////
-Route::resources([
-    'blogs' => BlogController::class,
-    'questions' => QuestionController::class,
-    'contacts' => ContactController::class,
-]);
+
 /////////////////////////////////////////////

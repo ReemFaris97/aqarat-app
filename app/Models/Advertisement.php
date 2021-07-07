@@ -41,6 +41,12 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|Advertisement whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Advertisement whereViewsCounter($value)
  * @mixin \Eloquent
+ * @property string $address
+ * @property int $is_reviewed
+ * @property int $is_active
+ * @method static \Illuminate\Database\Eloquent\Builder|Advertisement whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Advertisement whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Advertisement whereIsReviewed($value)
  */
 class Advertisement extends Model implements HasMedia
 {
