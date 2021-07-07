@@ -26,4 +26,5 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryAttribute extends Model
 {
     use HasFactory;
+    protected $fillable = ['category_id','attribute_id'];
 }

@@ -34,8 +34,11 @@
 
     .slimScrollBar {
         display: block !important;
-        background: rgb(88 6 6) !important;
+        background: #FFFFFF !important;
         width: 7px !important;
     }
 </style>
 <link href="{{asset('_admin/assets/css/customDashboard.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('_admin/assets/plugins/multiselect/css/multi-select.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('_admin/assets/plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('_admin/assets/plugins/select2/dist/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">

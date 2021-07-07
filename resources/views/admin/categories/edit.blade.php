@@ -8,13 +8,20 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">تعديل المدينة {{ $item->name }} </h4>
-               
-                        {!!Form::model($item , ['route' => ['admin.cities.update' , $item->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
-                        @include('admin.cities.form')
+                <h4 class="header-title m-t-0 m-b-30">تعديل التصنيف {{ $item->name }} </h4>
+
+                        {!!Form::model($item , ['route' => ['admin.categories.update' , $item->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
+                        @include('admin.categories.form')
                         {!!Form::close() !!}
             </div>
         </div><!-- end col -->
     </div>
     <!-- end row -->
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2()
+        })
+    </script>
+@endpush

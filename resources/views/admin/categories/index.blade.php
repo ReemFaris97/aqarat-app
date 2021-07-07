@@ -32,9 +32,13 @@
                                 <img src="{{$item->image}}" style="width: 50px; height: 50px">
                             </td>
                             <td>
-                                <li>
-
-                                </li>
+                                @if(count($item->attributes) > 0)
+                                    @foreach($item->attributes as $attr)
+                                        <li>
+                                            {{$attr->name}}
+                                        </li>
+                                    @endforeach
+                                @endif
                             </td>
 
                             <td>
