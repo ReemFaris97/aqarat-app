@@ -12,14 +12,9 @@
                 <a class="input-group-btn" href="{{route('admin.advertisings.index')}}">
                     <button type="button" class="btn waves-effect waves-light btn-primary">رجوع</button>
                 </a>
-                <div class="row">
-                    <div class="col-lg-6">
                         {!!Form::model($item , ['route' => ['admin.offers.update' , $item->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
                         @include('admin.offers.form')
                         {!!Form::close() !!}
-                    </div><!-- end col -->
-
-                </div><!-- end row -->
             </div>
         </div><!-- end col -->
     </div>

@@ -17,8 +17,9 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index.html" class="logo"><span>تطبيق <span>عقارات </span></span><i
-                    class="zmdi zmdi-layers"></i></a>
+            <a href="index.html" class="logo">
+            <img src="{{asset('_admin/assets/images/logo.png')}}">
+            <i class="zmdi zmdi-layers"></i></a>
         </div>
 
         <!-- Button mobile view to collapse sidebar menu -->

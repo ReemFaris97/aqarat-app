@@ -1,31 +1,40 @@
 @include('admin.common.errors')
+<div class="row">
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">العنوان</label>
     <div class="col-md-10">
         {!! Form::text("title",null,['class'=>'form-control','placeholder'=>'  العنوان  '])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">عدد المشاهدات</label>
     <div class="col-md-10">
         {!! Form::number("views",null,['class'=>'form-control','placeholder'=>'  عدد المشاهدات  ','readonly'])!!}
     </div>
 </div>
+</div>
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">الوصف</label>
     <div class="col-md-10">
         {!! Form::textarea("description",null,['class'=>'form-control','placeholder'=>'  الوصف  '])!!}
     </div>
 </div>
+</div>
 
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">اسم المستخدم</label>
     <div class="col-md-10">
         {!! Form::select("user_id",$users,null,['class'=>'form-control','placeholder'=>'اختر اسم المستخدم','required',"data-parsley-required-message"=>"هذا الحقل مطلوب"])!!}
     </div>
+</div>
 </div>
 
 {{--<div class="form-group">--}}
@@ -35,6 +44,7 @@
 {{--    </div>--}}
 {{--</div>--}}
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">اسم الحى</label>
     <div class="col-md-10">
@@ -48,15 +58,19 @@
             <img class="img-preview" src="{{$advertising->image}}" style="width: 50px; height: 50px">
         </div>
     </div>
+    </div>
 @endif
 
+<div class="col-xs-12">
 <div class="form-group">
     <label class="col-md-2 control-label">صورة الإعلان </label>
     <div class="col-md-10">
         {!! Form::file("image",null,['class'=>'form-control'])!!}
     </div>
 </div>
+</div>
 
-<span class="input-group-btn">
+<div class="input-group-btn">
     <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>
-</span>
+</div>
+</div>

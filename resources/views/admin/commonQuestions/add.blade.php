@@ -11,14 +11,9 @@
                 <a class="input-group-btn" href="{{route('admin.commonQuestions.index')}}">
     <button type="submit" class="btn waves-effect waves-light btn-primary">رجوع</button>
 </a>
-                <div class="row">
-                    <div class="col-12">
                         {!!Form::open( ['route' => 'admin.commonQuestions.store' ,'class'=>'form phone_validate', 'method' => 'Post', 'enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
                         @include('admin.commonQuestions.form')
                         {!!Form::close() !!}
-                    </div><!-- end col -->
-
-                </div><!-- end row -->
             </div>
         </div><!-- end col -->
     </div>

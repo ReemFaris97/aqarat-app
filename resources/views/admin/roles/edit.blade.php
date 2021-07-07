@@ -10,14 +10,9 @@
                 <a class="input-group-btn" href="{{route('admin.roles.index')}}">
                     <button type="button" class="btn waves-effect waves-light btn-primary">رجوع</button>
                 </a>
-                <div class="row">
-                    <div class="col-lg-6">
                             {!!Form::model($role , ['route' => ['admin.roles.update' , $role->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'files' => true]) !!}
                             @include('admin.roles.form')
                             {!!Form::close() !!}
-                    </div><!-- end col -->
-
-                </div><!-- end row -->
             </div>
         </div><!-- end col -->
     </div>
