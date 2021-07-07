@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Traits\ImageOperations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 /**
  * App\Models\Category
@@ -26,11 +27,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
-    use HasFactory, ImageOperations;
+    use HasFactory, ImageOperations,HasTranslations;
 
     protected $fillable = ['name', 'image'];
-
-
+    public $translatable = ['name'];
     public function attributes()
     {
         return $this->belongsToMany(Attribute::class,CategoryAttribute::class);

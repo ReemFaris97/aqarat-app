@@ -61,9 +61,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $admin)
+    public function edit(User $user)
     {
-        return view('admin.users.edit',['item'=>$admin]);
+        return view('admin.users.edit',compact('user'));
     }
 
     /**
@@ -96,9 +96,7 @@ class UsersController extends Controller
     public function changeStatus($id)
     {
         $item = User::find($id);
-        $status = $item->status == 1 ? 0 : 1;
-        $item->status = $status;
-        $item->save();
+        $item->update(['is_active' => !$item->is_active]);
         toastr()->success('تم تغير الحالة بنجاح');
         return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }

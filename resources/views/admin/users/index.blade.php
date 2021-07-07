@@ -36,9 +36,9 @@
                             <td>
                                 <img src="{{$item->image}}" style="width: 50px; height: 50px">
                             </td>
-                            <td>{{AccountStatus($item->status)}}</td>
+                            <td>{{AccountStatus($item->is_active)}}</td>
                             <td>
-                                @if ($item->status == 1)
+                                @if ($item->is_active == 1)
                                     <a class="btn btn-danger"
                                        href="{{ route('admin.users.status', $item->id) }}">
                                         تعطيل</a>

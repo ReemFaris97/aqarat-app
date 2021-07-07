@@ -72,7 +72,15 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'comment'=>'required|string'
+        ]);
+        $blog = Blog::findOrFail($id);
+        $blog->comments()->create([
+            'user_id'=>auth()->user()->id,
+            'text'=>$request->comment
+        ]);
+        return \responder::success('Success');
     }
 
     /**

@@ -15,7 +15,7 @@
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="index.html" class="logo"><span>تطبيق <span>عقارات </span></span></a>
+    <img src="{{asset('_admin/assets/images/logo.png')}}" class="logo_im">
         <h5 class="text-muted m-t-0 font-600">تسجيل الدخول للوحة تحكم </h5>
     </div>
     <div class="m-t-40 card-box">

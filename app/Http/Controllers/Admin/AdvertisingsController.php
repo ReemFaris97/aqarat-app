@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertisingRequest;
 use App\Models\Advertisement;
+use App\Models\City;
+use App\Models\Neighborhood;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdvertisingsController extends Controller
@@ -37,9 +40,18 @@ class AdvertisingsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advertisement $advertisement)
+    public function edit(Advertisement $advertising)
     {
-        return view('admin.advertisings.edit', ['item' => $advertisement]);
+        $users = User::get()->mapWithKeys(function ($q){
+            return [$q['id']=>$q['name']];
+        });
+        $cities = City::get()->mapWithKeys(function ($q){
+            return [$q['id']=>$q['name']];
+        });
+        $neighborhoods = Neighborhood::get()->mapWithKeys(function ($q){
+            return [$q['id']=>$q['name']];
+        });
+        return view('admin.advertisings.edit',compact('advertising','users','cities','neighborhoods'));
     }
 
     /**
@@ -72,9 +84,7 @@ class AdvertisingsController extends Controller
     public function changeStatus($id)
     {
         $item = Advertisement::find($id);
-        $status = $item->status == 1 ? 0 : 1;
-        $item->status = $status;
-        $item->save();
+        $item->update(['is_active' => !$item->is_active]);
         toastr()->success('تم تغير الحالة بنجاح');
         return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
