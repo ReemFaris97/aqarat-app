@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Order\DeleteRequest;
 use App\Http\Requests\Api\Order\StoreRequest;
+use App\Http\Requests\Api\Order\UpdateRequest;
 use App\Http\Resources\BaseCollection;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderController extends Controller
 {
@@ -25,36 +28,16 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreRequest $request)
     {
         $inputs = $request->validated();
         $inputs['user_id'] = auth()->id();
         $order = Order::create($inputs);
-        if ($request->has('images'))
-        $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-            $fileAdder->toMediaCollection();
-        });;
-        if ($request->has('attributes'))
-            $order->attributes()->attach($request->get('attributes'));
-
-        if ($request->has('utilities'))
-            $order->utilities()->attach($request->utilities);
-
-        return \responder::success(__('success'));
-    }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return \responder::success(new OrderResource($order));
     }
 
     /**
@@ -62,21 +45,28 @@ class OrderController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Order $order)
     {
-        //
+        $order->update($request->validated());
+
+        if ($request->has('images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {$fileAdder->toMediaCollection();});
+        if ($request->has('attributes')) $order->attributes()->sync($request->get('attributes'));
+        if ($request->has('utilities')) $order->utilities()->sync($request->utilities);
+
+        return \responder::success(new OrderResource($order));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(DeleteRequest $request , Order $order)
     {
-        //
+        $order->delete();
+        return  \responder::success(__('deleted successfully !'));
     }
 }

@@ -46,6 +46,7 @@ Route::group([], function () {
     Route::get('cities', CityController::class);
     Route::get('settings', SettingController::class);
     Route::get('categories', CategoryController::class);
+    Route::get('utilities', UtilityController::class);
     Route::resources([
         'blogs' => BlogController::class,
         'questions' => QuestionController::class,
