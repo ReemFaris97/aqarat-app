@@ -28,6 +28,7 @@ Route::group(['middleware' => ['admin']], function () {
         'roles' => RoleController::class,
         'attributes' => AttributesController::class,
         'categories' => CategoriesController::class,
+        'orders' => OrderController::class,
     ]);
 
     //change status

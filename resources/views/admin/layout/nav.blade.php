@@ -125,6 +125,13 @@
     </li>
 @endif
 
+{{--@if(auth('admin')->user()->can('advertisings-list'))--}}
+    <li>
+        <a href="{{ route('admin.orders.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
+            <span> الطلبات </span> </a>
+    </li>
+{{--@endif--}}
+
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>  المدونات </span>
         <span class="menu-arrow"></span></a>

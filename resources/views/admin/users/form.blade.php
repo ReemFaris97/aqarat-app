@@ -39,7 +39,7 @@
     </div>
 </div>
 </div>
-@if (isset($item->image))
+@if (isset($user->image))
 <div class="col-xs-12">
     <div class="form-group">
         <label class="col-md-2 control-label">الصورة الحالية للمستخدم :</label>
