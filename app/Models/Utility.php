@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 /**
  * App\Models\Utility
@@ -23,5 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Utility extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
+
+    protected $fillable = ['name'];
+    public $translatable = ['name'];
 }

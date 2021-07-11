@@ -6,8 +6,8 @@
 </li>
 @if(auth('admin')->user()->can('contact-list'))
     <li>
-        <a href="{{route('admin.contacts.index')}}" class="waves-effect"><i class="zmdi zmdi-email"></i><span
-                class="label label-purple pull-right">New</span><span> البريد </span></a>
+        <a href="{{route('admin.contacts.index')}}" class="waves-effect"><i class="zmdi zmdi-email"></i>
+            <span> البريد </span></a>
     </li>
 @endif
 <li class="has_sub">
@@ -88,6 +88,18 @@
         @endif
         @if(auth('admin')->user()->can('attributes-create'))
             <li><a href="{{route('admin.attributes.create')}}">اضافة خاصية جديد</a></li>
+        @endif
+    </ul>
+</li>
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i
+            class="zmdi zmdi-collection-text"></i><span> utilities </span> </a>
+    <ul class="list-unstyled">
+        @if(auth('admin')->user()->can('attributes-list'))
+            <li><a href="{{route('admin.utilities.index')}}">جميع utilities</a></li>
+        @endif
+        @if(auth('admin')->user()->can('attributes-create'))
+            <li><a href="{{route('admin.utilities.create')}}">اضافة utilities جديد</a></li>
         @endif
     </ul>
 </li>

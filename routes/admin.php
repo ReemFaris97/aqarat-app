@@ -27,6 +27,7 @@ Route::group(['middleware' => ['admin']], function () {
         'settings' => SettingController::class,
         'roles' => RoleController::class,
         'attributes' => AttributesController::class,
+        'utilities' => UtilityController::class,
         'categories' => CategoriesController::class,
         'orders' => OrderController::class,
     ]);
