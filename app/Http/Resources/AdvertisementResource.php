@@ -32,7 +32,9 @@ class AdvertisementResource extends JsonResource
             'views_counter'=>0,
             'description'=>$this->description,
             'user'=>new UserResource($this->user),
-            'Neighborhood'=>new NeighborhoodResource($this->neighborhood)
+            'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
+            'views'=>(int)$this->views()->count()
+
         ];
     }
 }

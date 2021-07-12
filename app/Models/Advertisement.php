@@ -64,4 +64,9 @@ class Advertisement extends Model implements HasMedia
         return $this->belongsTo(Neighborhood::class);
     }
 
+    public function views()
+    {
+        return $this->morphMany(View::class,'model');
+    }
+
 }

@@ -1,0 +1,35 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\CommonQuestion;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class CommonQuestionFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = CommonQuestion::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'question' => [
+                'ar'=>$this->faker->text,
+                'en'=>$this->faker->text,
+            ],
+            'answer' => [
+                'ar'=>$this->faker->text,
+                'en'=>$this->faker->text,
+            ]
+        ];
+    }
+}

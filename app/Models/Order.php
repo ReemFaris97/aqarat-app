@@ -85,5 +85,10 @@ class Order extends Model implements HasMedia
         return $this->belongsToMany(Utility::class,OrderUtility::class);
     }
 
+    public function views()
+    {
+        return $this->morphMany(View::class,'model');
+    }
+
 
 }

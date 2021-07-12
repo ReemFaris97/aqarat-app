@@ -52,6 +52,8 @@ Route::group([], function () {
         'questions' => QuestionController::class,
         'contacts' => ContactController::class,
     ]);
+
+    Route::post('view',ViewController::class);
 });
 
 /////////////////////////////////////////////

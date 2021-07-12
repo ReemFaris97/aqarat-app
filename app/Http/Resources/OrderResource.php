@@ -31,7 +31,8 @@ class OrderResource extends JsonResource
             'address'=>$this->address,
             'description'=>$this->description,
             'attributes'=>AttributeResource::collection($this->attributes),
-            'utilities'=>UtilityResource::collection($this->utilities)
+            'utilities'=>UtilityResource::collection($this->utilities),
+            'views'=>(int)$this->views()->count()
 
         ];
     }
