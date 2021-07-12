@@ -1,10 +1,15 @@
-@include('admin.common.errors')
+{{--@include('admin.common.errors')--}}
 <div class="row">
 <div class="col-xs-12">
 <div class="form-group form-float">
     <label class="form-label">اسم الدور</label>
     <div class="form-line">
         {!! Form::text("name",null,['class'=>'form-control','placeholder'=>' اسم الدور'])!!}
+        @error('name')
+        <div class="invalid-feedback" style="color: #ef1010">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
 </div>
 </div>
@@ -14,9 +19,13 @@
     <div class="form-group">
 
         <strong>قائمة الصلاحيات :</strong>
-        <hr>
+        @error('permission')
+        <div class="invalid-feedback" style="color: #ef1010">
+            {{ $message }}
+        </div>
+        @enderror
+        <br>
 
-        <br/>
 
             <div class="row">
                 @foreach($permission as $value)
