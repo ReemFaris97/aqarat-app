@@ -20,3 +20,8 @@
     <!-- end row -->
 
 @endsection
+@push('scripts')
+    <script>
+        CKEDITOR.replaceClass = 'ck-editor';
+    </script>
+@endpush

@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$item->title}}</td>
-                            <td>{{$item->description}}</td>
+                            <td>{!! Str::limit(strip_tags( $item->description),10) !!}</td>
                             <td>
                                 <img src="{{$item->image}}" style="width: 50px; height: 50px">
                             </td>

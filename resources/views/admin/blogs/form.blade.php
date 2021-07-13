@@ -34,7 +34,7 @@
             <label class="col-md-2 control-label">المحتوى باللغة العربية</label>
             <div class="col-md-10">
                 {!! Form::textarea("description[ar]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
-          'ar'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة العربية  '])!!}
+          'ar'),['class'=>'form-control ck-editor','placeholder'=>'  المحتوى باللغة العربية  '])!!}
                 @error('description.ar')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}
@@ -49,7 +49,7 @@
             <label class="col-md-2 control-label">المحتوى باللغة الإنجليزية</label>
             <div class="col-md-10">
                 {!! Form::textarea("description[en]",(isset($item) ? $item: new \App\Models\Blog())->getTranslation('description',
-          'en'),['class'=>'form-control','placeholder'=>'  المحتوى باللغة الإنجليزية  '])!!}
+          'en'),['class'=>'form-control ck-editor','placeholder'=>'  المحتوى باللغة الإنجليزية  '])!!}
                 @error('description.en')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}

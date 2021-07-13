@@ -104,4 +104,18 @@ class BlogsController extends Controller
         toastr()->success('تم تغير الحالة بنجاح');
         return redirect()->back()->with('success', ' تم تعديل الحاله بنجاح');
     }
+
+    public function ckeditor(Request $request)
+    {
+
+        $validation = \Validator::make($request->all(), [
+            'upload' => 'required|image'
+        ]);
+        if ($validation->fails()) {
+            $data = ['uploaded' => 0, 'error' => ['message' => 'the file must be an image']];
+        } else {
+            $data = ['url' => getimg(uploader($request->upload, 'blogs')), 'uploaded' => 1, 'fileName' => $request['upload']->getClientOriginalName()];
+        }
+        return response()->json($data);
+    }
 }

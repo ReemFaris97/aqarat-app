@@ -25,7 +25,7 @@ class FavouriteController extends Controller
 
     public function orders()
     {
-        return \responder::success(new BaseCollection(auth()->user()->favouriteOrders()->paginate(10),
+        return \responder::success(new BaseCollection(auth('api')->user()->favouriteOrders()->paginate(10),
                                 OrderResource::class));
     }
 
@@ -44,7 +44,7 @@ class FavouriteController extends Controller
         $validator['user_id'] = auth()->user()->id;
 //dd($validator['model_type']);
 
-        $fav = Favourite::whereModelId($validator['model_id'])->whereModelType($validator['model_type'])->whereUserId(auth()->user()->id);
+        $fav = Favourite::whereModelId($validator['model_id'])->whereModelType($validator['model_type'])->whereUserId(auth('api')->user()->id);
         if ($fav->exists()) {
             $fav->delete();
         } else {
