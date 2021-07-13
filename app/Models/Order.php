@@ -122,14 +122,21 @@ class Order extends Model implements HasMedia
                 $query->whereIn('utilities.id', \request('utilities'));
             });
         });
+        $query->when($request->get('attributes'), function ($q) {
+            foreach (\request('attributes') as $attribute) {
+                $q->whereHas('attributes', function ($query) use($attribute) {
+                    $query->where('attributes.id', $attribute['id'])->where('order_attributes.value', $attribute['value']);
+                });
+            }
+        });
 
-        $query->select('*')->selectRaw('( 6356 * acos( cos( radians(?) ) *
+   /*     $query->select('*')->selectRaw('( 6356 * acos( cos( radians(?) ) *
                            cos( radians( `lat` ) )
                            * cos( radians( `lng` ) - radians(?)
                            ) + sin( radians(?) ) *
                            sin( radians( `lat` ) ) )
                          ) AS distance', [request()->lat, request()->lng, request()->lat])
-            ->havingRaw("20 >=  distance")->orderBy('distance');
+            ->havingRaw("20 >=  distance")->orderBy('distance');*/
         $query->limit(50)->with('user', 'neighborhood', 'attributes', 'utilities')->withCount('views');
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
