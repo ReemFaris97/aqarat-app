@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Traits\ImageOperations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -55,9 +56,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  */
 class Order extends Model implements HasMedia
 {
-    use HasFactory , InteractsWithMedia,ImageOperations;
+    use HasFactory, InteractsWithMedia, ImageOperations;
 
-    protected $fillable=['name','image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description','is_reviewed','is_active','type','is_special'];
+    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special'];
 
 
     public function user()
@@ -77,17 +78,83 @@ class Order extends Model implements HasMedia
 
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class,OrderAttribute::class)->withPivot(['value']);
+        return $this->belongsToMany(Attribute::class, OrderAttribute::class)->withPivot(['value']);
     }
 
     public function utilities()
     {
-        return $this->belongsToMany(Utility::class,OrderUtility::class);
+        return $this->belongsToMany(Utility::class, OrderUtility::class);
     }
 
     public function views()
     {
-        return $this->morphMany(View::class,'model');
+        return $this->morphMany(View::class, 'model');
+    }
+
+    public function scopeFilter($query, Request $request)
+    {
+        $query->when($request->type, function ($q) {
+            $q->where('type', \request('type'));
+        });
+        $query->when($request->advertiser, function ($q) {
+            $q->where('advertiser', \request('advertiser'));
+        });
+        $query->when($request->contract, function ($q) {
+            $q->where('contract', \request('contract'));
+        });
+        $query->when($request->is_special, function ($q) {
+            $q->where('is_special', \request('is_special'));
+        });
+        $query->when($request->category_id, function ($q) {
+            $q->where('category_id', \request('category_id'));
+        });
+        $query->when($request->name, function ($q) {
+            $q->where('name', 'like', '%' . \request('name') . '%');
+        });
+        $query->when($request->sort, function ($q) {
+            $q->where('name', 'like', '%' . \request('name') . '%');
+        });
+        $query->when($request->price_from and $request->price_to, function ($q) {
+            $q->whereBetween('price', [\request('price_from'), \request('price_to')]);
+        });
+        $query->when($request->utilities, function ($q) {
+            $q->whereHas('utilities', function ($query) {
+                $query->whereIn('utilities.id', \request('utilities'));
+            });
+        });
+
+        $query->select('*')->selectRaw('( 6356 * acos( cos( radians(?) ) *
+                           cos( radians( `lat` ) )
+                           * cos( radians( `lng` ) - radians(?)
+                           ) + sin( radians(?) ) *
+                           sin( radians( `lat` ) ) )
+                         ) AS distance', [request()->lat, request()->lng, request()->lat])
+            ->havingRaw("20 >=  distance")->orderBy('distance');
+        $query->limit(50)->with('user', 'neighborhood', 'attributes', 'utilities')->withCount('views');
+        $query->when($request->sort, function ($q) {
+            $q->sort(\request('sort'));
+        });
+    }
+
+    public function scopeSort($query, $sort)
+    {
+        switch ($sort) {
+            case "price_a":
+                $query->orderBy('price', 'asc');
+                break;
+            case "price_d":
+                $query->orderBy('price', 'desc');
+                break;
+            case "latest":
+                $query->latest('updated_at');
+                break;
+            case  "today":
+                $query->whereDate('created_at', now()->toDateString());
+                break;
+            case "views":
+                $query->orderBy('views_count', 'desc');
+                break;
+        }
     }
 
 
