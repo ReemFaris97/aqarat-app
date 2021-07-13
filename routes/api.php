@@ -51,6 +51,8 @@ Route::group([], function () {
         'blogs' => BlogController::class,
         'questions' => QuestionController::class,
         'contacts' => ContactController::class,
+        'advertisements'=>\App\Http\Controllers\Api\AdvertisementsController::class,
+        'orders'=>\App\Http\Controllers\Api\OrderController::class
     ]);
 
     Route::post('view',ViewController::class);

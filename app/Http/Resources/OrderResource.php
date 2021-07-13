@@ -32,7 +32,8 @@ class OrderResource extends JsonResource
             'description'=>$this->description,
             'attributes'=>AttributeResource::collection($this->attributes),
             'utilities'=>UtilityResource::collection($this->utilities),
-            'views'=>(int)$this->views()->count()
+            'views'=>(int)$this->views_count,
+            'distance'=>(int)$this->distance
 
         ];
     }

@@ -29,11 +29,11 @@ class AdvertisementResource extends JsonResource
                 'lat'=>$this->lat,
                 'lng'=>$this->lng
             ],
-            'views_counter'=>0,
             'description'=>$this->description,
             'user'=>new UserResource($this->user),
             'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
-            'views'=>(int)$this->views()->count()
+            'views'=>(int)$this->views_count,
+            'distance'=>$this->distance ?? 0
 
         ];
     }
