@@ -44,10 +44,9 @@ class FavouriteController extends Controller
         $validator['model_type'] = "App\\Models\\$request->model_type";
         $validator['user_id'] = auth()->user()->id;
 
-        $order = Order::whereId($validator['model_id'])->exists();
-        $adv = Advertisement::whereId($validator['model_id'])->exists();
+        $model = $validator['model_type']::whereId($validator['model_id'])->exists();
 
-        if ($order || $adv){
+        if ($model){
             $fav = Favourite::whereModelId($validator['model_id'])->whereModelType($validator['model_type'])->whereUserId(auth('api')->user()->id);
             if ($fav->exists()) {
                 $fav->delete();
