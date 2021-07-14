@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\AdvertisementsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\FavouriteController;
 use App\Http\Controllers\Api\Auth\OrderController;
+use App\Models\Blog;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +40,7 @@ Route::group([], function () {
             ]);
             Route::get('advertisement-favourites', [FavouriteController::class, 'advertisements']);
             Route::get('order-favourites', [FavouriteController::class, 'orders']);
-            Route::post('blogs/{id}', [BlogController::class, 'update']);
+            Route::put('blogs/{id}', [BlogController::class, 'update']);
         });
     });
 
@@ -47,8 +48,9 @@ Route::group([], function () {
     Route::get('settings', SettingController::class);
     Route::get('categories', CategoryController::class);
     Route::get('utilities', UtilityController::class);
+    Route::get('blogs',[BlogController::class,'index']);
     Route::resources([
-        'blogs' => BlogController::class,
+//        'blogs' => BlogController::class,
         'questions' => QuestionController::class,
         'contacts' => ContactController::class,
         'advertisements'=>\App\Http\Controllers\Api\AdvertisementsController::class,
