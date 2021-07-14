@@ -42,7 +42,7 @@ class Blog extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class,'blog_id');
     }
 
     public function scopeActive($query)
