@@ -74,7 +74,7 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $inputs=$request->validate([
-            'comment'=>'required|string'
+            'text'=>'required|string'
         ]);
         $inputs['user_id']=auth()->id();
        $comment= $blog->comments()->create($inputs);
