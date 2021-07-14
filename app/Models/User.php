@@ -58,7 +58,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  */
 class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable, ImageOperations,SetPass;
+    use HasFactory, Notifiable, ImageOperations, SetPass;
 
     /**
      * The attributes that are mass assignable.
@@ -66,7 +66,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'password', 'is_active', 'fcm_token_android', 'fcm_token_ios', 'image','reset_code','reset_sent_at'
+        'name', 'phone', 'email', 'password', 'is_active', 'fcm_token_android', 'fcm_token_ios', 'image', 'reset_code', 'reset_sent_at'
     ];
 
     /**
@@ -117,12 +117,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function favouriteAdvertisements()
     {
-        return $this->morphedByMany(Advertisement::class,'model', Favourite::class);
+        return $this->morphedByMany(Advertisement::class, 'model', Favourite::class);
     }
 
     public function favouriteOrders()
     {
-        return $this->morphedByMany(Order::class, 'model',Favourite::class);
+        return $this->morphedByMany(Order::class, 'model', Favourite::class);
     }
 
     public function orders()

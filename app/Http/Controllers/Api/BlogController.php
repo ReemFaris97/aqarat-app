@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BaseCollection;
 use App\Http\Resources\BlogResource;
+use App\Http\Resources\CommentResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -68,19 +69,18 @@ class BlogController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Blog $blog)
     {
         $request->validate([
             'comment'=>'required|string'
         ]);
-        $blog = Blog::findOrFail($id);
-        $blog->comments()->create([
+       $comment= $blog->comments()->create([
             'user_id'=>auth()->user()->id,
             'text'=>$request->comment
         ]);
-        return \responder::success('Success');
+        return \responder::success(new CommentResource($comment));
     }
 
     /**
