@@ -8,6 +8,7 @@ use App\Http\Resources\BaseCollection;
 use App\Http\Resources\OrderResource;
 use App\Models\Advertisement;
 use App\Models\Favourite;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class FavouriteController extends Controller
@@ -25,7 +26,7 @@ class FavouriteController extends Controller
 
     public function orders()
     {
-        return \responder::success(new BaseCollection(auth()->user()->favouriteOrders()->paginate(10),
+        return \responder::success(new BaseCollection(auth('api')->user()->favouriteOrders()->paginate(10),
                                 OrderResource::class));
     }
 
@@ -42,14 +43,21 @@ class FavouriteController extends Controller
         ]);
         $validator['model_type'] = "App\\Models\\$request->model_type";
         $validator['user_id'] = auth()->user()->id;
-//dd($validator['model_type']);
 
-        $fav = Favourite::whereModelId($validator['model_id'])->whereModelType($validator['model_type'])->whereUserId(auth()->user()->id);
-        if ($fav->exists()) {
-            $fav->delete();
-        } else {
-            Favourite::create($validator);
+        $model = $validator['model_type']::whereId($validator['model_id'])->exists();
+
+        if ($model){
+            $fav = Favourite::whereModelId($validator['model_id'])->whereModelType($validator['model_type'])->whereUserId(auth('api')->user()->id);
+            if ($fav->exists()) {
+                $fav->delete();
+            } else {
+                Favourite::create($validator);
+            }
+        }else{
+            return \responder::error('wrong model id');
         }
+
+
         return \responder::success('Success');
     }
 

@@ -40,5 +40,5 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('advertisings-cities-status/{id}', [AdvertisingsController::class, 'changeStatus'])->name('advertisings.status');
     Route::get('change-blogs-status/{id}', [BlogsController::class, 'changeStatus'])->name('blogs.status');
     Route::get('change-commonQuestions-status/{id}', [CommonQuestionsController::class, 'changeStatus'])->name('commonQuestions.status');
-
+    Route::post('upload', [BlogsController::class, 'ckeditor']);
 });

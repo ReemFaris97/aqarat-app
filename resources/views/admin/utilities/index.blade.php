@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title')
-    جميع utilities
+    جميع المرافق
 @endsection
 @section('header')
     @include('admin.datatable.headers')
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
-                <h4 class="header-title m-t-0 m-b-30">كل utilities</h4>
+                <h4 class="header-title m-t-0 m-b-30">كل المرافق</h4>
 
                 <table id="datatable-buttons" class="table table-striped table-bordered">
                     <thead>

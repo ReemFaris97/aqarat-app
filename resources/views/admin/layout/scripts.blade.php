@@ -62,3 +62,4 @@
 <script type="text/javascript" src="{{asset('_admin/assets/plugins/multiselect/js/jquery.multi-select.js')}}"></script>
 <script type="text/javascript" src="{{asset('_admin/assets/plugins/jquery-quicksearch/jquery.quicksearch.js')}}"></script>
 <script src="{{asset('_admin/assets/plugins/select2/dist/js/select2.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('_admin/ckeditor/ckeditor.js')}}"></script>

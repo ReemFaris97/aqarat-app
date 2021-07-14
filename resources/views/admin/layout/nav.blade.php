@@ -93,13 +93,13 @@
 </li>
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> utilities </span> </a>
+            class="zmdi zmdi-collection-text"></i><span> المرافق </span> </a>
     <ul class="list-unstyled">
         @if(auth('admin')->user()->can('attributes-list'))
-            <li><a href="{{route('admin.utilities.index')}}">جميع utilities</a></li>
+            <li><a href="{{route('admin.utilities.index')}}">جميع المرافق</a></li>
         @endif
         @if(auth('admin')->user()->can('attributes-create'))
-            <li><a href="{{route('admin.utilities.create')}}">اضافة utilities جديد</a></li>
+            <li><a href="{{route('admin.utilities.create')}}">اضافة مرفق جديد</a></li>
         @endif
     </ul>
 </li>
