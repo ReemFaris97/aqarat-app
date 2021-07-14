@@ -73,13 +73,11 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $request->validate([
+        $inputs=$request->validate([
             'comment'=>'required|string'
         ]);
-       $comment= $blog->comments()->create([
-            'user_id'=>auth()->user()->id,
-            'text'=>$request->comment
-        ]);
+        $inputs['user_id']=auth()->id();
+       $comment= $blog->comments()->create($inputs);
         return \responder::success(new CommentResource($comment));
     }
 
