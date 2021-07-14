@@ -40,7 +40,7 @@ Route::group([], function () {
             ]);
             Route::get('advertisement-favourites', [FavouriteController::class, 'advertisements']);
             Route::get('order-favourites', [FavouriteController::class, 'orders']);
-            Route::put('blogs/{id}', [BlogController::class, 'update']);
+            Route::put('blogs/{blog}', [BlogController::class, 'update']);
         });
     });
 
