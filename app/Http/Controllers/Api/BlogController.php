@@ -77,6 +77,8 @@ class BlogController extends Controller
             'text'=>'required|string'
         ]);
         $inputs['user_id']=auth()->id();
+        $inputs['blog_id']=$blog->id;
+
        $comment= $blog->comments()->create($inputs);
         return \responder::success(new CommentResource($comment));
     }
