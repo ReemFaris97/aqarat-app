@@ -24,15 +24,16 @@ class AdvertisingRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
+            'name' => 'required',
+            'user_id' => 'nullable',
             'neighborhood_id' => 'required',
             'views' => 'nullable',
-            'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 //            'lat' => 'required',
 //            'lng' => 'required',
             'description' => 'required|string',
-
+            'photos' => 'sometimes',
+            'photos.*' => 'image',
         ];
     }
 }

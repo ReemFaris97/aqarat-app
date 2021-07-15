@@ -33,7 +33,11 @@
                             <td>{{$item->phone}}</td>
                             <td>{{$item->message}}</td>
                             <td>
-                                @if(auth('admin')->user()->can('contact-delete'))
+                                @if(auth('admin')->user()->can('contact-list'))
+                                @include('admin.contact.reply-modal')
+                                    @endif
+
+                                    @if(auth('admin')->user()->can('contact-delete'))
                                 <a data-url="{{ route('admin.contacts.destroy', $item) }}"
                                    onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
                                    data-original-title="حذف" class="btn btn-danger btn-circle"><i

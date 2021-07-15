@@ -65,7 +65,10 @@
             <div class="form-group">
                 <label class="col-md-3 control-label">الصورة الحالية للأدمن :</label>
                 <div class="col-xs-12 col-md-9">
-                    <img class="img-preview" src="{{$item->image}}" style="width: 50px; height: 50px">
+                    <a data-fancybox="gallery" href="{{$item->image}}">
+                        <img src="{{$item->image}}" width="70" height="70"
+                             class="img-thumbnail" alt="adv_img">
+                    </a>
                 </div>
             </div>
         </div>
@@ -75,7 +78,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">صورة للأدمن </label>
             <div class="col-xs-12 col-md-9">
-                {!! Form::file("image",null,['class'=>'form-control'])!!}
+                {!! Form::file("image",['class'=>'form-control'])!!}
                 @error('image')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}

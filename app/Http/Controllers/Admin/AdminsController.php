@@ -66,8 +66,8 @@ class AdminsController extends Controller
      */
     public function edit(Admin $admin)
     {
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $admin->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name','id')->all();
+        $userRole = $admin->roles->pluck('name','id')->all();
         return view('admin.admins.edit',['item'=>$admin,'userRole'=>$userRole,'roles'=>$roles]);
     }
 
@@ -80,7 +80,15 @@ class AdminsController extends Controller
      */
     public function update(AdminsRequest $request, Admin $admin)
     {
-        $admin->update($request->validated());
+        $validator = $request->validated();
+        if ($request->image) {
+            if ($admin->image) {
+                $image = str_replace(url('/') . '/storage/', '', $admin->image);
+                deleteImage('uploads', $image);
+            }
+        }
+
+        $admin->update($validator);
         \DB::table('model_has_roles')->where('model_id',$admin)->delete();
         $admin->assignRole($request->input('roles'));
         toastr()->success('تم تعديل المدير بنجاح');

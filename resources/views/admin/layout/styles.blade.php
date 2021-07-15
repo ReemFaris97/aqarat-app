@@ -10,6 +10,7 @@
 <link href="{{asset('_admin/assets/css/pages.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('_admin/assets/css/menu.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('_admin/assets/css/responsive.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
 
 <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,6 +37,9 @@
         display: block !important;
         background: #ffffff !important;
         width: 7px !important;
+    }
+    .toast-error, .toast-success {
+        opacity: unset !important;
     }
 </style>
 <link href="{{asset('_admin/assets/css/customDashboard.css')}}" rel="stylesheet" type="text/css">

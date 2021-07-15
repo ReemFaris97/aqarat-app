@@ -19,7 +19,7 @@ class AdvertisingsController extends Controller
      */
     public function index()
     {
-        $items = Advertisement::all();
+        $items = Advertisement::whereAdminReviewed(1)->get();
         return view('admin.advertisings.index', compact('items'));
     }
 
