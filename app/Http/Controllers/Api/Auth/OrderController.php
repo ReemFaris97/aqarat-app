@@ -9,8 +9,6 @@ use App\Http\Requests\Api\Order\UpdateRequest;
 use App\Http\Resources\BaseCollection;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderController extends Controller
 {
@@ -21,7 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return  \responder::success(new BaseCollection(auth()->user()->orders()->with('attributes')->paginate(10),OrderResource::class));
+        return \responder::success(new BaseCollection(auth()->user()->orders()->with('attributes')->paginate(10), OrderResource::class));
     }
 
     /**
@@ -36,6 +34,11 @@ class OrderController extends Controller
         $inputs['user_id'] = auth()->id();
         $order = Order::create($inputs);
 
+        if ($request->has('images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+            $fileAdder->toMediaCollection();
+        });
+        if ($request->has('attributes')) $order->attributes()->sync($request->get('attributes'));
+        if ($request->has('utilities')) $order->utilities()->sync($request->utilities);
 
         return \responder::success(new OrderResource($order));
     }
@@ -51,7 +54,9 @@ class OrderController extends Controller
     {
         $order->update($request->validated());
 
-        if ($request->has('images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {$fileAdder->toMediaCollection();});
+        if ($request->has('images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+            $fileAdder->toMediaCollection();
+        });
         if ($request->has('attributes')) $order->attributes()->sync($request->get('attributes'));
         if ($request->has('utilities')) $order->utilities()->sync($request->utilities);
 
@@ -64,9 +69,9 @@ class OrderController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(DeleteRequest $request , Order $order)
+    public function destroy(DeleteRequest $request, Order $order)
     {
         $order->delete();
-        return  \responder::success(__('deleted successfully !'));
+        return \responder::success(__('deleted successfully !'));
     }
 }
