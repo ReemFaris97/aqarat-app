@@ -34,7 +34,12 @@
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
                             <td>
-                                <img src="{{$item->image}}" style="width: 50px; height: 50px">
+                                @if($item->image)
+                                    <a data-fancybox="gallery" href="{{$item->image}}">
+                                        <img src="{{$item->image}}" width="70" height="70"
+                                             class="img-thumbnail" alt="adv_img">
+                                    </a>
+                                @else {{__('No Image')}} @endif
                             </td>
                             <td>{{AccountStatus($item->status)}}</td>
                             <td>

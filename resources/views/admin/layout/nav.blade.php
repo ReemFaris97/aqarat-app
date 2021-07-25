@@ -79,6 +79,20 @@
         @endif
     </ul>
 </li>
+
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i
+            class="zmdi zmdi-collection-text"></i><span> منشورات المستخدمين </span> </a>
+    <ul class="list-unstyled">
+        @if(auth('admin')->user()->can('advertisings-list'))
+            <li><a href="{{route('admin.users-advertisings.index')}}">الاعلانات</a></li>
+        @endif
+        @if(auth('admin')->user()->can('requests-list'))
+            <li><a href="{{route('admin.users-orders.index')}}"> الطلبات</a></li>
+        @endif
+    </ul>
+</li>
+
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i
             class="zmdi zmdi-collection-text"></i><span> الخصائص </span> </a>
@@ -137,12 +151,12 @@
     </li>
 @endif
 
-{{--@if(auth('admin')->user()->can('advertisings-list'))--}}
+@if(auth('admin')->user()->can('requests-list'))
     <li>
         <a href="{{ route('admin.orders.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
             <span> الطلبات </span> </a>
     </li>
-{{--@endif--}}
+@endif
 
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>  المدونات </span>

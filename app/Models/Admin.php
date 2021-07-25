@@ -106,4 +106,17 @@ class Admin extends Authenticatable
         if ($value != '')
             $this->attributes['password'] = bcrypt($value);
     }
+
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            if ($model->image) {
+                $image = str_replace(url('/') . '/storage/', '', $model->image);
+                deleteImage('uploads', $image);
+            }
+        });
+
+    }
 }

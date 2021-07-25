@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Order;
+use App\Notifications\DeletedAdvertisementNotification;
+use App\Notifications\DeletedOrderNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
-class OrderController extends Controller
+class UserOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = Order::whereAdminReviewed(1)->latest()->with(['attributes','utilities'])->get();
-        return view('admin.orders.index',compact('orders'));
+        $orders = Order::whereAdminReviewed(0)->latest()->with(['attributes','utilities'])->get();
+        return view('admin.users-orders.index',compact('orders'));
     }
 
     /**
@@ -77,10 +81,26 @@ class OrderController extends Controller
      *
      * @param
      */
-    public function destroy(Order $order)
+    public function destroy(Request $request,$id)
     {
+        $order = Order::findOrFail($id);
+        if ($request->reason) {
+            Notification::send($order->user, new DeletedOrderNotification([
+                'title' => 'حذف طلب',
+                'body' => 'تم حذف الطلب الخاص بك وذلك بسبب : ' . $request->reason,
+            ]));
+        }
         $order->delete();
         toastr()->success('تم حذف الطلب بنجاح');
         return redirect()->back();
     }
+
+    public function approved($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->update(['admin_reviewed' => 1]);
+        toastr()->success('تم  اعتماد الطلب بنجاح');
+        return redirect()->back();
+    }
+
 }

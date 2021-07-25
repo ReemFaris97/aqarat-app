@@ -8,15 +8,23 @@ use Illuminate\Http\Request;
 trait ImageOperations
 {
 
-    public function getImageAttribute($value)
+    public function setImageAttribute($image)
     {
-        return getimg($value);
+        if (!is_null($image) and is_file($image))
+            $this->attributes['image'] = uploadImage('uploads', $image);
+        else
+            $this->attributes['image'] = $image;
     }
 
 
-    public function setImageAttribute($value)
+    public function getImageAttribute($image)
     {
-        $this->attributes['image'] = uploader($value);
+        if (is_null($image))
+//            return asset('logo/user.png');
+//        elseif (filter_var($image, FILTER_VALIDATE_URL))
+            return $image;
+        else
+            return getimg($image);
     }
 
 

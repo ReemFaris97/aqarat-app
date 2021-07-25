@@ -58,7 +58,7 @@ class Order extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, ImageOperations;
 
-    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special'];
+    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special','admin_reviewed'];
 
 
     public function user()
@@ -164,5 +164,15 @@ class Order extends Model implements HasMedia
         }
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            if ($model->image) {
+                $image = str_replace(url('/') . '/storage/', '', $model->image);
+                deleteImage('uploads', $image);
+            }
+        });
 
+    }
 }

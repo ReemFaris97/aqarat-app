@@ -25,7 +25,8 @@
                         <th>اسم الحى</th>
                         <th>حالة الإعلان</th>
                         <th>تغيير حالة الإعلان</th>
-                        <th>العمليات</th>
+                        <th>صور اضافية</th>
+{{--                        <th>العمليات</th>--}}
                     </tr>
                     </thead>
 
@@ -33,9 +34,14 @@
                     @foreach($items as $key=>$item)
                         <tr>
                             <td>{{++$key}}</td>
-                            <td>{{$item->title}}</td>
+                            <td>{{$item->name}}</td>
                             <td>
-                                <img src="{{$item->image}}" style="width: 50px; height: 50px">
+                                @if($item->image)
+                                    <a data-fancybox="gallery" href="{{$item->image}}">
+                                        <img src="{{$item->image}}" width="70" height="70"
+                                             class="img-thumbnail" alt="adv_img">
+                                    </a>
+                                @else {{__('No Image')}} @endif
                             </td>
                             <td>{{$item->views}}</td>
                             <td>{{$item->created_at ?? $item->updated_at}}</td>
@@ -57,20 +63,27 @@
                                 @endif
                             </td>
                             <td>
-                                @if(auth('admin')->user()->can('advertisings-edit'))
-                                    <a href="{{route('admin.advertisings.edit',$item->id)}}"
-                                       class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
-                                                                          class="fa fa-pencil"></i></a>
-                                @endif
-
-                                @if(auth('admin')->user()->can('advertisings-delete'))
-                                    <a data-url="{{ route('admin.advertisings.destroy', $item) }}"
-                                       onclick="delete_form(this)" data-name="{{ $item->title }}" data-toggle="tooltip"
-                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
-                                            style="padding-top: 5px;padding-left: 4px;"
-                                            class="fa fa-trash-o"></i></a>
+                                @if(count($item->getMedia('photos')) > 0)
+                                    @include('admin.advertisings.photos_modal')
+                                @else
+                                    لا يوجد
                                 @endif
                             </td>
+{{--                            <td>--}}
+{{--                                @if(auth('admin')->user()->can('advertisings-edit'))--}}
+{{--                                    <a href="{{route('admin.advertisings.edit',$item->id)}}"--}}
+{{--                                       class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"--}}
+{{--                                                                          class="fa fa-pencil"></i></a>--}}
+{{--                                @endif--}}
+
+{{--                                @if(auth('admin')->user()->can('advertisings-delete'))--}}
+{{--                                    <a data-url="{{ route('admin.advertisings.destroy', $item) }}"--}}
+{{--                                       onclick="delete_form(this)" data-name="{{ $item->title }}" data-toggle="tooltip"--}}
+{{--                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i--}}
+{{--                                            style="padding-top: 5px;padding-left: 4px;"--}}
+{{--                                            class="fa fa-trash-o"></i></a>--}}
+{{--                                @endif--}}
+{{--                            </td>--}}
                         </tr>
                     @endforeach
 

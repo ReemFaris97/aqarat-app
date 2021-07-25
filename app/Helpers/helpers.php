@@ -5,15 +5,22 @@
  * @param $filename
  * @return string
  */
+
+function uploadImage($file, $img)
+{
+    return '/storage/' . \Storage::disk('public')->putFile($file, $img);
+}
+
 function getimg($filename)
 {
-    if (!empty($filename)) {
-        $base_url = url('/');
-        return $base_url . $filename;
+    return asset($filename);
+}
 
-    } else {
-        return '';
-    }
+function deleteImage($file, $img)
+{
+    \Storage::disk('public')->delete($file, $img);
+
+    return true;
 }
 
 /**

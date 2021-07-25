@@ -52,7 +52,7 @@ class Advertisement extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia,ImageOperations;
 
-    protected $fillable=['name', 'image', 'views_counter', 'user_id', 'neighborhood_id', 'lat', 'lng', 'description','address','is_active','is_reviewed'];
+    protected $fillable=['name', 'image', 'views_counter', 'user_id', 'neighborhood_id', 'lat', 'lng', 'description','address','is_active','is_reviewed','admin_reviewed'];
 
     public function user()
     {
@@ -67,6 +67,22 @@ class Advertisement extends Model implements HasMedia
     public function views()
     {
         return $this->morphMany(View::class,'model');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            if ($model->image) {
+                $image = str_replace(url('/') . '/storage/', '', $model->image);
+                deleteImage('uploads', $image);
+            }
+
+            if ($model->getMedia('photos')) {
+                $model->clearMediaCollection('photos');
+            }
+        });
+
     }
 
 }
