@@ -34,7 +34,8 @@ class AdvertisementResource extends JsonResource
             'user'=>new UserResource($this->user),
             'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
             'views'=>(int)$this->views_count,
-            'distance'=>$this->distance ?? 0
+            'distance'=>$this->distance ?? 0,
+            'created_at'=>$this->created_at->toDateString()
 
         ];
     }
