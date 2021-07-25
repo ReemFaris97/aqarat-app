@@ -29,6 +29,7 @@ class AdvertisementResource extends JsonResource
                 'lat'=>$this->lat,
                 'lng'=>$this->lng
             ],
+            'address'=>$this->address,
             'description'=>$this->description,
             'user'=>new UserResource($this->user),
             'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
