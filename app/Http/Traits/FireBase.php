@@ -10,7 +10,17 @@ class FireBase
 {
     const fcm_server_key = 'AAAAFUb9X0w:APA91bFf9tsuniprJiMw1MpkNVwgCD4q5zP2LM2aR9XqzK7Hg0xPEsiXakT_IdtjbU4LcaFwNVfyppEjXq9hffz00K2vXbYWth0ZoX9EL8o_zWPeDG9yWQAGTLt5xiLbvDXrZCMCvZQY';
 
+    public static function BulkNotification($notifiables, $title, $body, $data)
+    {
 
+        self::notifyByFirebase($title, $body, $notifiables->pluck('fcm_token_android'),
+            $data + ['title' => $title, 'body' => $body], false);
+
+
+        self::notifyByFirebase($title, $body,   $notifiables->pluck('fcm_token_ios'),
+            $data + ['title' => $title, 'body' => $body], true);
+
+    }
     public static function notification($notifiable, $title, $body, $data)
     {
         if (!blank($notifiable->fcm_token_android)) {

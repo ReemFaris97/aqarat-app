@@ -85,7 +85,7 @@
             class="zmdi zmdi-collection-text"></i><span> منشورات المستخدمين </span> </a>
     <ul class="list-unstyled">
         @if(auth('admin')->user()->can('advertisings-list'))
-            <li><a href="{{route('admin.users-advertisings.index')}}">الاعلانات</a></li>
+            <li><a href="{{route('admin.users-advertising.index')}}">الاعلانات</a></li>
         @endif
         @if(auth('admin')->user()->can('requests-list'))
             <li><a href="{{route('admin.users-orders.index')}}"> الطلبات</a></li>
@@ -146,7 +146,7 @@
 {{--@endif--}}
 @if(auth('admin')->user()->can('advertisings-list'))
     <li>
-        <a href="{{ route('admin.advertisings.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
+        <a href="{{ route('admin.advertising.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
             <span> الإعلانات </span> </a>
     </li>
 @endif

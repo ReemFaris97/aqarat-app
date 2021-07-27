@@ -21,7 +21,8 @@ Route::group(['middleware' => ['admin']], function () {
         'users' => UsersController::class,
         'offers' => OffersController::class,
         'requests' => RequestsController::class,
-        'advertisings' => AdvertisingsController::class,
+        'advertising' => AdvertisingsController::class,
+        'notifications'=>NotificationController::class,
         'blogs' => BlogsController::class,
         'commonQuestions' => CommonQuestionsController::class,
         'settings' => SettingController::class,
@@ -31,7 +32,7 @@ Route::group(['middleware' => ['admin']], function () {
         'categories' => CategoriesController::class,
         'orders' => OrderController::class,
 
-        'users-advertisings' => UserAdvertisingsController::class,
+        'users-advertising' => UserAdvertisingsController::class,
         'users-orders' => UserOrderController::class,
     ]);
 

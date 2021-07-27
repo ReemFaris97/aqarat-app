@@ -75,7 +75,7 @@ class Order extends Model implements HasMedia
         static::created(function (Order $order){
           $users=  User::whereHas('orders',function ($q) use($order){
                 $q->where(['contract'=>$order->contract,'neighborhood_id' => $order->neighborhood_id,'category_id' => $order->category_id,'type'=>$order->type=='request'?'offer':'request']);
-            })->get();
+            })->where('users.id','!=',$order->user_id)->get();
           \Notification::send($users,new SimilarOrderNotification($order));
         });
 
