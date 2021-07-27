@@ -34,8 +34,8 @@ class OrderResource extends JsonResource
             'utilities'=>UtilityResource::collection($this->utilities),
             'views'=>(int)$this->views_count,
             'distance'=>(int)$this->distance,
-            'is_favoured'=>$this->is_favoured_exists ?? false
-
+            'is_favoured'=>$this->is_favoured_exists ?? false,
+            'created_at'=>$this->created_at->toDateTimeString()
         ];
     }
 }
