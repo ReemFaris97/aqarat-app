@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Traits\ImageOperations;
+use App\Notifications\SimilarOrderNotification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -70,6 +71,12 @@ class Order extends Model implements HasMedia
                 $image = str_replace(url('/') . '/storage/', '', $model->image);
                 deleteImage('uploads', $image);
             }
+        });
+        static::created(function (Order $order){
+          $users=  User::whereHas('orders',function ($q) use($order){
+                $q->where(['contract'=>$order->contract,'neighborhood_id' => $order->neighborhood_id,'category_id' => $order->category_id,'type'=>$order->type=='request'?'offer':'request']);
+            })->get();
+          \Notification::send($users,new SimilarOrderNotification($order));
         });
 
     }
@@ -156,7 +163,7 @@ class Order extends Model implements HasMedia
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
         });
-        $query->withExists('isFavoured');
+        $query->with('attributes','category','utilities','user')->withExists('isFavoured');
     }
 
     public function favouriests()
