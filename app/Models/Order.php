@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Http\Traits\ImageOperations;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -56,10 +58,21 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  */
 class Order extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, ImageOperations;
+    use HasFactory, InteractsWithMedia, ImageOperations, Prunable;
 
-    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special','admin_reviewed'];
+    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special', 'admin_reviewed'];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            if ($model->image) {
+                $image = str_replace(url('/') . '/storage/', '', $model->image);
+                deleteImage('uploads', $image);
+            }
+        });
+
+    }
 
     public function user()
     {
@@ -91,7 +104,7 @@ class Order extends Model implements HasMedia
         return $this->morphMany(View::class, 'model');
     }
 
-    public function scopeFilter($query, Request $request)
+    public function scopeFilter(Builder $query, Request $request)
     {
         $query->when($request->type, function ($q) {
             $q->where('type', \request('type'));
@@ -124,23 +137,36 @@ class Order extends Model implements HasMedia
         });
         $query->when($request->get('attributes'), function ($q) {
             foreach (\request('attributes') as $attribute) {
-                $q->whereHas('attributes', function ($query) use($attribute) {
+                $q->whereHas('attributes', function ($query) use ($attribute) {
                     $query->where('attributes.id', $attribute['id'])->where('order_attributes.value', $attribute['value']);
                 });
             }
         });
 
-   /*     $query->select('*')->selectRaw('( 6356 * acos( cos( radians(?) ) *
+        $query->when($request->lat and $request->lng, function ($q) {
+            $q->select('*')->selectRaw('( 6356 * acos( cos( radians(?) ) *
                            cos( radians( `lat` ) )
                            * cos( radians( `lng` ) - radians(?)
                            ) + sin( radians(?) ) *
                            sin( radians( `lat` ) ) )
                          ) AS distance', [request()->lat, request()->lng, request()->lat])
-            ->havingRaw("20 >=  distance")->orderBy('distance');*/
+                ->havingRaw("20 >=  distance")->orderBy('distance');
+        });
         $query->limit(50)->with('user', 'neighborhood', 'attributes', 'utilities')->withCount('views');
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
         });
+        $query->withExists('isFavoured');
+    }
+
+    public function favouriests()
+    {
+        return $this->morphMany(Favourite::class, 'model');
+    }
+
+    public function isFavoured()
+    {
+        return $this->morphMany(Favourite::class, 'model')->where('favourites.user_id', object_get(auth()->user(), 'id', 0));
     }
 
     public function scopeSort($query, $sort)
@@ -164,15 +190,8 @@ class Order extends Model implements HasMedia
         }
     }
 
-    protected static function boot()
+    public function prunable()
     {
-        parent::boot();
-        static::deleting(function ($model) {
-            if ($model->image) {
-                $image = str_replace(url('/') . '/storage/', '', $model->image);
-                deleteImage('uploads', $image);
-            }
-        });
-
+        return static::where('updated_at', '<=', now()->sub('month', 3));
     }
 }
