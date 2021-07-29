@@ -67,9 +67,7 @@ class NeighborhoodsController extends Controller
      */
     public function edit(Neighborhood $neighborhood)
     {
-        $cities = City::get()->mapWithKeys(function ($item) {
-            return [$item['id'] => $item['name']];
-        });
+        $cities = City::whereStatus(1)->pluck('name','id');
         return view('admin.neighborhoods.edit',['item'=>$neighborhood,'cities'=>$cities]);
     }
 

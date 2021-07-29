@@ -74,12 +74,12 @@
 
                                 @if(auth('admin')->user()->can('advertisings-edit'))
                                     <a class="btn btn-success"
-                                       href="{{ route('admin.advertisings.approved', $item->id) }}">
+                                       href="{{ route('admin.advertising.approved', $item->id) }}">
                                         اعتماد</a>
                                 @endif
 
                                 @if(auth('admin')->user()->can('advertisings-edit'))
-                                    <a href="{{route('admin.users-advertisings.edit',$item->id)}}" title="تعديل"
+                                    <a href="{{route('admin.users-advertising.edit',$item->id)}}" title="تعديل"
                                        class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a>
                                 @endif
 

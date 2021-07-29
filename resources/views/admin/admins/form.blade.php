@@ -92,21 +92,13 @@
         <div class="form-group">
             <label class="col-md-3 control-label">الصلاحيات:</label>
             <div class="col-xs-12 col-md-9">
-                @if (isset($userRole))
-                    {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-                @else
-                    {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
-                @endif
+                    {!! Form::select('roles', $roles,@$userRole?$userRole:null, array('class' => 'form-control')) !!}
                     @error('roles')
                     <div class="invalid-feedback" style="color: #ef1010">
                         {{ $message }}
                     </div>
                     @enderror
             </div>
-
-            @if(isset($item->id))
-                {!! Form::input('hidden','id',$item->id,['class'=>'form-control']) !!}
-            @endif
         </div>
     </div>
     <div class="col-xs-12">
