@@ -72,11 +72,11 @@ class Order extends Model implements HasMedia
                 deleteImage('uploads', $image);
             }
         });
-        static::created(function (Order $order){
-          $users=  User::whereHas('orders',function ($q) use($order){
-                $q->where(['contract'=>$order->contract,'neighborhood_id' => $order->neighborhood_id,'category_id' => $order->category_id,'type'=>$order->type=='request'?'offer':'request']);
-            })->where('users.id','!=',$order->user_id)->get();
-          \Notification::send($users,new SimilarOrderNotification($order));
+        static::created(function (Order $order) {
+            $users = User::whereHas('orders', function ($q) use ($order) {
+                $q->where(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request']);
+            })->where('users.id', '!=', $order->user_id)->get();
+            \Notification::send($users, new SimilarOrderNotification($order));
         });
 
     }
@@ -157,13 +157,13 @@ class Order extends Model implements HasMedia
                            ) + sin( radians(?) ) *
                            sin( radians( `lat` ) ) )
                          ) AS distance', [request()->lat, request()->lng, request()->lat])
-             /*   ->havingRaw("20 >=  distance")*/->orderBy('distance');
+                /*   ->havingRaw("20 >=  distance")*/ ->orderBy('distance');
         });
         $query->limit(50)->with('user', 'neighborhood', 'attributes', 'utilities')->withCount('views');
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
         });
-        $query->with('attributes','category','utilities','user')->withExists('isFavoured');
+        $query->with('attributes', 'category', 'utilities', 'user')->withExists('isFavoured');
     }
 
     public function favouriests()
@@ -200,5 +200,10 @@ class Order extends Model implements HasMedia
     public function prunable()
     {
         return static::where('updated_at', '<=', now()->sub('month', 3));
+    }
+
+    public function requests()
+    {
+        return $this->hasMany(OrderRequest::class);
     }
 }

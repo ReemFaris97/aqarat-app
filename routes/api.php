@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\FavouriteController;
 use App\Http\Controllers\Api\Auth\NotificationController;
 use App\Http\Controllers\Api\Auth\OrderController;
+use App\Http\Controllers\Api\Auth\Requests\OrderController as requestOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +36,8 @@ Route::group([], function () {
                 'favourites' => FavouriteController::class,
                 'medias' => MediaController::class,
                 'orders' => OrderController::class,
-                'notifications'=>NotificationController::class
+                'notifications'=>NotificationController::class,
+                'request/orders'=>requestOrderController::class
 
             ]);
             Route::get('advertisement-favourites', [FavouriteController::class, 'advertisements']);
