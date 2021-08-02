@@ -23,6 +23,15 @@ function deleteImage($file, $img)
     return true;
 }
 
+function order_status()
+{
+    return [
+       // 'pending' => 'قيد الانتظار',
+        'accepted' => 'تم الموافقة',
+        'rejected' => 'تم الرفض',
+    ];
+}
+
 /**
  * Upload an image
  *

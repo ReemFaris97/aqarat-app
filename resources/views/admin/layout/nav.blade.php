@@ -152,9 +152,13 @@
 @endif
 
 @if(auth('admin')->user()->can('requests-list'))
-    <li>
-        <a href="{{ route('admin.orders.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
-            <span> الطلبات </span> </a>
+    <li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i
+            class="zmdi zmdi-collection-text"></i><span> الطلبات </span> </a>
+    <ul class="list-unstyled">
+            <li><a href="{{ route('admin.orders.index') }}">الطلبات  </a></li>
+            <li><a href="{{ route('admin.orders-requests.index') }}">طلبات الاعلانات المميزة    </a></li>
+    </ul>
     </li>
 @endif
 

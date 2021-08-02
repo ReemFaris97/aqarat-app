@@ -51,6 +51,7 @@
             <!-- User -->
             <div class="user-box">
                 <div class="user-img">
+
                     <img src="{{auth('admin')->user()->image}}" alt="user-img" title="Mat Helme"
                          class="img-circle img-thumbnail img-responsive">
                     <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>

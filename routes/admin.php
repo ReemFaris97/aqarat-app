@@ -34,6 +34,7 @@ Route::group(['middleware' => ['admin']], function () {
 
         'users-advertising' => UserAdvertisingsController::class,
         'users-orders' => UserOrderController::class,
+        'orders-requests' => OrderRequestController::class,
     ]);
 
     //change status
