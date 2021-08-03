@@ -33,7 +33,7 @@ class IndexRequest extends FormRequest
             'contract'=>'sometimes|in:buy,sell',
             'utilities'=>'sometimes|array',
             'is_special'=>'sometimes|boolean',
-            'category_id'=>'sometimes|categories,id',
+            'category_id'=>'sometimes|exists:categories,id',
             'attributes'=>'sometimes|array',
             'attributes.*.id'=>'required|integer',
             'attributes.*.value'=>'required',
