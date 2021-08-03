@@ -38,7 +38,7 @@ class StoreRequest extends FormRequest
             'price' => 'required|numeric',
             'description' => 'required|string',
             'attributes'=>'sometimes|array',
-            'attributes.*.value'=>'required|string',
+            'attributes.*.value'=>'sometimes|nullable|string',
             'utilities'=>'sometimes|array',
             'utilities.*'=>'required'
 

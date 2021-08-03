@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Validation\ValidationException;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -209,5 +211,20 @@ class Order extends Model implements HasMedia
     public function requests()
     {
         return $this->hasMany(OrderRequest::class);
+    }
+
+    public static function createWithAttributes($inputs)
+    {
+        foreach (Arr::get($inputs,'attributes',[])as $key => $value){
+           $attribute=Attribute::findOrFail($key);
+           throw_unless($attribute,ValidationException::withMessages([__("{$attribute->name} must be presented")]));
+        }
+        $order=self::create($inputs);
+        if (Arr::has($inputs,'images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+            $fileAdder->toMediaCollection();
+        });
+        if (Arr::has($inputs,'attributes')) $order->attributes()->sync(Arr::get($inputs,'attributes'));
+        if (Arr::has($inputs,'utilities')) $order->utilities()->sync(Arr::get($inputs,'utilities'));
+
     }
 }

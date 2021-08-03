@@ -34,13 +34,9 @@ class OrderController extends Controller
     {
         $inputs = $request->validated();
         $inputs['user_id'] = auth()->id();
-        $order = Order::create($inputs);
 
-        if ($request->has('images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-            $fileAdder->toMediaCollection();
-        });
-        if ($request->has('attributes')) $order->attributes()->sync($request->get('attributes'));
-        if ($request->has('utilities')) $order->utilities()->sync($request->utilities);
+        $order=Order::createWithAttributes($inputs);
+//        $order = Order::create($inputs);
 
         return \responder::success(new OrderResource($order));
     }
