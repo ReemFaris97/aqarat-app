@@ -146,10 +146,10 @@ class Order extends Model implements HasMedia
             });
         });
         $query->when($request->get('attributes'), function ($q) {
-            foreach (\request('attributes') as $attribute) {
-                if ($attribute['value']!=null)
-                $q->whereHas('attributes', function ($query) use ($attribute) {
-                    $query->where('attributes.id', $attribute['id'])->where('order_attributes.value', $attribute['value']);
+            foreach (\request('attributes') as $key=>$attribute) {
+                if ($attribute['value'])
+                $q->whereHas('attributes', function ($query) use ($attribute,$key) {
+                    $query->where('attributes.id', $key)->where('order_attributes.value', $attribute['value']);
                 });
             }
         });
