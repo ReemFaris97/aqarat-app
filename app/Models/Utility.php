@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Traits\ImageOperations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -24,8 +25,8 @@ use Spatie\Translatable\HasTranslations;
  */
 class Utility extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations , ImageOperations;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','image'];
     public $translatable = ['name'];
 }

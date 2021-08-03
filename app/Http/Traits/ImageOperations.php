@@ -22,9 +22,9 @@ trait ImageOperations
         if (is_null($image))
 //            return asset('logo/user.png');
 //        elseif (filter_var($image, FILTER_VALIDATE_URL))
-            return $image;
+            return asset('logo.png');
         else
-            return getimg($image);
+            return asset($image);
     }
 
 

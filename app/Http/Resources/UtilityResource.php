@@ -2,8 +2,14 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Utility;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class UtilityResource
+ * @package App\Http\Resources
+ * @mixin Utility
+ */
 class UtilityResource extends JsonResource
 {
     /**
@@ -16,7 +22,8 @@ class UtilityResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->name
+            'name'=>$this->name,
+            'image'=>$this->image
         ];
     }
 }
