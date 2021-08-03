@@ -36,10 +36,9 @@ Route::group([], function () {
                 'favourites' => FavouriteController::class,
                 'medias' => MediaController::class,
                 'orders' => OrderController::class,
-                'notifications'=>NotificationController::class,
-                'request/orders'=>requestOrderController::class
-
+                'notifications'=>NotificationController::class
             ]);
+            Route::put('request/orders',requestOrderController::class);
             Route::get('advertisement-favourites', [FavouriteController::class, 'advertisements']);
             Route::get('order-favourites', [FavouriteController::class, 'orders']);
             Route::put('blogs/{blog}', [BlogController::class, 'update']);
