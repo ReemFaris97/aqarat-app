@@ -19,7 +19,7 @@ trait ImageOperations
 
     public function getImageAttribute($image)
     {
-        if (is_null($image))
+        if (is_null($image)or $image=='')
 //            return asset('logo/user.png');
 //        elseif (filter_var($image, FILTER_VALIDATE_URL))
             return asset('logo.png');
