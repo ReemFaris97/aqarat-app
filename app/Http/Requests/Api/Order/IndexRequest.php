@@ -35,8 +35,8 @@ class IndexRequest extends FormRequest
             'is_special'=>'sometimes|boolean',
             'category_id'=>'sometimes|exists:categories,id',
             'attributes'=>'sometimes|array',
-            'attributes.*.id'=>'required|integer',
-            'attributes.*.value'=>'required',
+            'attributes.*.id'=>'sometimes|integer',
+            'attributes.*.value'=>'sometimes',
             'sort'=>'sometimes|string|in:price_a,price_d,latest,today,views',
             'name'=>'sometimes'
         ];

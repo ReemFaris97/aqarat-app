@@ -115,6 +115,7 @@ class Order extends Model implements HasMedia
 
     public function scopeFilter(Builder $query, Request $request)
     {
+
         $query->when($request->type, function ($q) {
             $q->where('type', \request('type'));
         });
@@ -146,6 +147,7 @@ class Order extends Model implements HasMedia
         });
         $query->when($request->get('attributes'), function ($q) {
             foreach (\request('attributes') as $attribute) {
+                if ($attribute['value']!=null)
                 $q->whereHas('attributes', function ($query) use ($attribute) {
                     $query->where('attributes.id', $attribute['id'])->where('order_attributes.value', $attribute['value']);
                 });
