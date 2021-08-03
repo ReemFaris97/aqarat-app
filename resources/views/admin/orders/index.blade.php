@@ -16,6 +16,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>رقم الطلب</th>
                         <th>الاسم</th>
                         <th>الصورة</th>
                         <th>المستخدم</th>
@@ -30,6 +31,7 @@
                     @foreach($orders as $key=>$order)
                         <tr>
                             <td>{{++$key}}</td>
+                            <td>{{$order->id}}</td>
                             <td>{{$order->name}}</td>
                             <td>
                                 @if($order->image)

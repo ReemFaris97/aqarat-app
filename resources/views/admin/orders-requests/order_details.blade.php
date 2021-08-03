@@ -99,17 +99,6 @@
                                     @endif
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="font-weight-bold">طلب مميز</th>
-                                <td>
-                                    @if($order->is_special == 1)
-                                    <p>{{$order->is_special ==1 ? 'نعم':'لا'}}</p>
-                                    <p>مميز حتى تاريخ : {{$order->special_until->format('Y-m-d')}}</p>
-                                    @else
-                                    غير مميز
-                                        @endif
-                                </td>
-                            </tr>
 
                         </table>
                     </div>
