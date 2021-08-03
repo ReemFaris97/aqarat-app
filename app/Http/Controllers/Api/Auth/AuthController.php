@@ -41,8 +41,8 @@ class AuthController extends Auth
     {
         return[
             'name' => 'sometimes|string',
-            'phone' => 'sometimes|phone:eg,sa|unique:users,phone',
-            'email' => 'sometimes|email|unique:users,email',
+            'phone' => 'sometimes|phone:eg,sa|unique:users,phone,'.$user->id,
+            'email' => 'sometimes|email|unique:users,email,'.$user->id,
             'password' => 'sometimes|min:6|string',
             'image' => 'sometimes|image',
         ];
