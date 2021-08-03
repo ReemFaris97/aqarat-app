@@ -225,6 +225,6 @@ class Order extends Model implements HasMedia
         });
         if (Arr::has($inputs,'attributes')) $order->attributes()->sync(Arr::get($inputs,'attributes'));
         if (Arr::has($inputs,'utilities')) $order->utilities()->sync(Arr::get($inputs,'utilities'));
-
+        return  $order;
     }
 }
