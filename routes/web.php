@@ -17,4 +17,3 @@ Route::get('/', function () {
     return view('admin._auth.login');
 });
 
-Route::get('blogs/{blog}',\App\Http\Controllers\BlogController::class)->name('blog');
