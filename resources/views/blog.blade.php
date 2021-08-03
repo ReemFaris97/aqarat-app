@@ -8,6 +8,6 @@
     <title>{{$blog->title}}</title>
 </head>
 <body>
-{{$blog->description}}
+{!! $blog->description !!}
 </body>
 </html>
