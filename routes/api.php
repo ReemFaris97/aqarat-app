@@ -60,7 +60,8 @@ Route::group([], function () {
             'questions' => QuestionController::class,
             'contacts' => ContactController::class,
             'advertisements' => \App\Http\Controllers\Api\AdvertisementsController::class,
-            'orders' => \App\Http\Controllers\Api\OrderController::class
+            'orders' => \App\Http\Controllers\Api\OrderController::class,
+            'comments' => \App\Http\Controllers\Api\CommentController::class
         ]);
 
         Route::post('view', ViewController::class);
