@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\NewMessageEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +19,12 @@ class ChatMessage extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function booted()
+    {
+        static::created(function (ChatMessage $message){
+            broadcast(new NewMessageEvent($message))->toOthers();
+        });
     }
 }
