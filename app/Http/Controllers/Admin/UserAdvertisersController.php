@@ -9,13 +9,12 @@ use App\Models\City;
 use App\Models\Neighborhood;
 use App\Models\User;
 use App\Notifications\DeletedAdvertisementNotification;
-use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class UserAdvertisingsController extends Controller
+class UserAdvertisersController extends Controller
 {
 
     public function index()

@@ -14,7 +14,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12">
-                        {!! Form::model($item,[ 'route' => ['admin.users-advertisings.destroy',$item->id],'method'=>'delete' ]) !!}
+                        {!! Form::model($item,[ 'route' => ['admin.users-advertisers.destroy',$item->id],'method'=>'delete' ]) !!}
                         <div class="form-group row">
                             <label class="col-md-2 control-label">سبب حذف الاعلان</label>
                             <div class="col-md-10">

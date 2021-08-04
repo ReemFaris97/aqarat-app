@@ -65,7 +65,7 @@
                             {{--                            </td>--}}
                             <td>
                                 @if(count($item->getMedia('photos')) > 0)
-                                    @include('admin.users-advertisings.photos_modal')
+                                    @include('admin.user-advertisers.photos_modal')
                                 @else
                                     لا يوجد
                                 @endif
@@ -74,22 +74,17 @@
 
                                 @if(auth('admin')->user()->can('advertisings-edit'))
                                     <a class="btn btn-success"
-                                       href="{{ route('admin.advertisings.approved', $item->id) }}">
+                                       href="{{ route('admin.advertisers.approved', $item->id) }}">
                                         اعتماد</a>
                                 @endif
 
                                 @if(auth('admin')->user()->can('advertisings-edit'))
-                                    <a href="{{route('admin.users-advertising.edit',$item->id)}}" title="تعديل"
+                                    <a href="{{route('admin.users-advertisers.edit',$item->id)}}" title="تعديل"
                                        class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a>
                                 @endif
 
                                 @if(auth('admin')->user()->can('advertisings-delete'))
-{{--                                    <a data-url="{{ route('admin.users-advertisings.destroy', $item) }}"--}}
-{{--                                       onclick="delete_form(this)" data-name="{{ $item->title }}" data-toggle="tooltip"--}}
-{{--                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i--}}
-{{--                                            class="fa fa-trash-o"></i></a>--}}
-
-                                        @include('admin.users-advertisings.delete-modal')
+                                        @include('admin.user-advertisers.delete-modal')
                                 @endif
 
 

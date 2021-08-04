@@ -32,7 +32,7 @@ Route::group(['middleware' => ['admin']], function () {
         'categories' => CategoriesController::class,
         'orders' => OrderController::class,
 
-        'users-advertising' => UserAdvertisingsController::class,
+        'users-advertisers' => UserAdvertisersController::class,
         'users-orders' => UserOrderController::class,
         'orders-requests' => OrderRequestController::class,
     ]);
@@ -42,12 +42,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('change-users-status/{id}', [UsersController::class, 'changeStatus'])->name('users.status');
     Route::get('change-cities-status/{id}', [CitiesController::class, 'changeStatus'])->name('cities.status');
     Route::get('change-neighborhoods-status/{id}', [NeighborhoodsController::class, 'changeStatus'])->name('neighborhoods.status');
-    Route::get('advertisings-cities-status/{id}', [AdvertisingsController::class, 'changeStatus'])->name('advertisings.status');
-    Route::get('advertisings-approved/{id}', [UserAdvertisingsController::class, 'approved'])->name('advertisings.approved');
+    Route::get('advertisers-cities-status/{id}', [AdvertisingsController::class, 'changeStatus'])->name('advertisers.status');
+    Route::get('advertisers-approved/{id}', [UserAdvertisersController::class, 'approved'])->name('advertisers.approved');
     Route::get('orders-approved/{id}', [UserOrderController::class, 'approved'])->name('orders.approved');
     Route::get('change-blogs-status/{id}', [BlogsController::class, 'changeStatus'])->name('blogs.status');
     Route::get('change-commonQuestions-status/{id}', [CommonQuestionsController::class, 'changeStatus'])->name('commonQuestions.status');
     Route::post('upload', [BlogsController::class, 'ckeditor']);
-    Route::delete('delete/photo/{id}', [UserAdvertisingsController::class, 'deletePhoto'])->name('deletePhoto');
+    Route::delete('delete/photo/{id}', [UserAdvertisersController::class, 'deletePhoto'])->name('deletePhoto');
 
 });
