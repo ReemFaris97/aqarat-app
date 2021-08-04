@@ -74,7 +74,7 @@
 
                                 @if(auth('admin')->user()->can('advertisings-edit'))
                                     <a class="btn btn-success"
-                                       href="{{ route('admin.advertising.approved', $item->id) }}">
+                                       href="{{ route('admin.advertisings.approved', $item->id) }}">
                                         اعتماد</a>
                                 @endif
 

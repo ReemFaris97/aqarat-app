@@ -33,10 +33,10 @@ class AdminsRequest extends FormRequest
 
         if ($this->getMethod() == 'PATCH') {
             $rules = [
-                'name' => 'required|string|max:191|unique:admins,name,' . request()->id,
-                'email' => 'required|email|max:255|unique:admins,email,' . request()->id,
+                'name' => 'required|string|max:191|unique:admins,name,' . $this->user()->id,
+                'email' => 'required|email|max:255|unique:admins,email,' . $this->user()->id,
                 'password' => 'nullable|min:6|confirmed',
-                'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:admins,phone,' . request()->id,
+                'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:admins,phone,' . $this->user()->id,
                 'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ];
         }
