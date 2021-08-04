@@ -34,7 +34,10 @@ class ChatController extends Controller
             $q->where('user_id', auth()->id());
         })->firstOrCreate(['model_type' => 'App\\Models\\' . $request['model_type'], 'model_id' => $request['model_id']]);
         if ($chat->wasRecentlyCreated) {
-            $chat->users()->createMany([['user_id' => $request['receiver_id'], ['user_id' => auth()->id()]]]);
+            $chat->users()->createMany([
+                ['user_id' => $request['receiver_id']]
+                , ['user_id' => auth()->id()]
+            ]);
         }
 
         $inputs['user_id'] = auth()->id();
