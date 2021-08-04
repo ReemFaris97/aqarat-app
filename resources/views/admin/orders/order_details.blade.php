@@ -77,39 +77,36 @@
                             <tr>
                                 <th class="font-weight-bold">الخصائص</th>
                                 <td>
-                                    @if(count($order->attributes) > 0)
-                                        @foreach($order->attributes as $attr)
-                                            <li>
-                                                {{$attr->name}}
-                                            </li>
-                                        @endforeach
-                                    @endif
+                                    @foreach($order->attributes as $attr)
+                                        <li>
+                                            {{$attr->name}}
+                                        </li>
+                                    @endforeach
                                 </td>
                             </tr>
 
                             <tr>
                                 <th class="font-weight-bold">الخدمات</th>
                                 <td>
-                                    @if(count($order->utilities) > 0)
-                                        @foreach($order->utilities as $utility)
-                                            <li>
-                                                {{$utility->name}}
-                                            </li>
-                                        @endforeach
-                                    @endif
+                                    @foreach($order->utilities as $utility)
+                                        <li>
+                                            {{$utility->name}}
+                                        </li>
+                                    @endforeach
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="font-weight-bold">طلب مميز</th>
-                                <td>
-                                    @if($order->is_special == 1)
-                                    <p>{{$order->is_special ==1 ? 'نعم':'لا'}}</p>
-                                    <p>مميز حتى تاريخ : {{$order->special_until->format('Y-m-d')}}</p>
-                                    @else
-                                    غير مميز
+                            @if($order->special_until)
+                                <tr>
+                                    <th class="font-weight-bold">طلب مميز</th>
+                                    <td>
+                                        @if($order->special_until->greaterThanOrEqualTo(now()))
+                                            <p>مميز حتى تاريخ : {{$order->special_until->format('Y-m-d')}}</p>
+                                        @else
+                                            غير مميز
                                         @endif
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endif
 
                         </table>
                     </div>
