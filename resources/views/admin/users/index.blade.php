@@ -51,6 +51,10 @@
 
                             <td>
 
+                                <a href="{{route('admin.users.show',$item->id)}}"
+                                   class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
+                                                                      class="fa fa-eye"></i></a>
+
                                 <a href="{{route('admin.users.edit',$item->id)}}"
                                    class="btn btn-info btn-circle"><i style="padding-top:5px;padding-left: 6px;"
                                                                       class="fa fa-pencil"></i></a>

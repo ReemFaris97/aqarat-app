@@ -20,6 +20,7 @@
                         <th>صورة المستخدم</th>
                         <th>التعليق</th>
                         <th>التاريخ</th>
+                        <th>اخفاء</th>
                     </tr>
                     </thead>
 
@@ -34,6 +35,29 @@
                             <td>{{$item->text}}</td>
 
                             <td>{{$item->created_at}}</td>
+                            <td>
+                                @if(auth('admin')->user()->can('blogs-edit'))
+                                    @if ($item->is_visible == 1)
+                                        <a href="{{ route('admin.comments.status', $item->id) }}"
+                                           class="btn btn-success">
+                                            اظهار </a>
+                                    @else
+                                        <a class="btn btn-danger"
+                                           href="{{ route('admin.comments.status', $item->id) }}">
+                                            اخفاء</a>
+
+                                    @endif
+                                @endif
+                            </td>
+                            <td>
+                                @if(auth('admin')->user()->can('blogs-delete'))
+                                    <a data-url="{{ route('admin.comments.destroy', $item) }}"
+                                       onclick="delete_form(this)" data-name="{{ $item->title }}" data-toggle="tooltip"
+                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                            style="padding-top: 5px;padding-left: 4px;"
+                                            class="fa fa-trash-o"></i></a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
 
