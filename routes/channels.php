@@ -18,5 +18,5 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 Broadcast::channel('chat-{id}',function ($user,$id){
    $chat=\App\Models\Chat::find($id);
-   return $chat->users()->where('user_id',$user)->exists();
+   return $chat->users()->where('user_id',$user->id)->exists();
 });
