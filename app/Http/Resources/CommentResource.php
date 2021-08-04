@@ -18,6 +18,7 @@ class CommentResource extends JsonResource
             'id' => $this->id,
             'user' => new UserResource($this->user),
             'comment' => $this->text,
+            'is_visible'=>$this->is_visible,
             'created_at' => $this->created_at->format('Y/m/d h:i a'),
         ];
     }

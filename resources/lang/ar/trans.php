@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'success_disappear'=>'تم الاخفاء بنجاح',
+    'not_disappear'=>'تم اظهار الكومنت بنجاح',
     'categories' => 'الاقسام',
     'main' => 'الرئيسية',
     'offers' => 'عروض مميزة',
