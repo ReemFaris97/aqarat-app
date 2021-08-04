@@ -20,7 +20,7 @@ class UserAdvertisersController extends Controller
     public function index()
     {
         $items = Advertisement::whereAdminReviewed(0)->get();
-        return view('admin.users-advertisings.index', compact('items'));
+        return view('admin.user-advertisers.index', compact('items'));
     }
 
     /**
@@ -52,7 +52,7 @@ class UserAdvertisersController extends Controller
         $neighborhoods = Neighborhood::get()->mapWithKeys(function ($q) {
             return [$q['id'] => $q['name']];
         });
-        return view('admin.users-advertisings.edit', compact('advertising', 'users', 'cities', 'neighborhoods'));
+        return view('admin.user-advertisers.edit', compact('advertising', 'users', 'cities', 'neighborhoods'));
     }
 
 
@@ -76,7 +76,7 @@ class UserAdvertisersController extends Controller
 
         DB::commit();
         toastr()->success('تم تعديل الإعلان بنجاح');
-        return redirect()->route('admin.users-advertisings.index');
+        return redirect()->route('admin.user-advertisers.index');
     }
 
 
