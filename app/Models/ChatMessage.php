@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\NewMessageEvent;
+use App\Notifications\MessageNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,8 @@ class ChatMessage extends Model
     {
         static::created(function (ChatMessage $message){
             broadcast(new NewMessageEvent($message))->toOthers();
+            $user=$message->chat->users->where('id','!=',$message->user_id);
+            \Notification::send($user,new MessageNotification($message));
         });
     }
 }

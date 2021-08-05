@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderRequest;
 use App\Notifications\DeletedAdvertisementNotification;
 use App\Notifications\DeletedOrderNotification;
+use App\Notifications\OrderRequestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 
@@ -70,12 +71,14 @@ class OrderRequestController extends Controller
     {
         $orderRequest = OrderRequest::findOrFail($id);
         $orderRequest->update(['status' => $request->status]);
+        $order=$orderRequest->order;
         if ($request->status == 'accepted') {
-            $orderRequest->order->update([
+            $order->update([
                 'is_special' => 1,
                 'special_until' => now()->addMonths($orderRequest->quantity)
             ]);
         }
+        $order->user->notify(new OrderRequestNotification($order));
         toastr()->success('تم  التحديث   بنجاح');
         return redirect()->back();
     }
