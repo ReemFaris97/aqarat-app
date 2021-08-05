@@ -9,11 +9,11 @@
         <div class="col-sm-12">
             <div class="card-box">
                 <h4 class="header-title m-t-0 m-b-30">تعديل الإعلان {{ $advertising->title }} </h4>
-                <a class="input-group-btn" href="{{route('admin.user-advertisers.index')}}">
+                <a class="input-group-btn" href="{{route('admin.users-advertisers.index')}}">
                     <button type="button" class="btn waves-effect waves-light btn-primary">رجوع</button>
                 </a>
                 {{--                @dd($errors->all())--}}
-                {!!Form::model($advertising , ['route' => ['admin.user-advertisers.update' , $advertising->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
+                {!!Form::model($advertising , ['route' => ['admin.users-advertisers.update' , $advertising->id] , 'method' => 'PATCH','enctype'=>"multipart/form-data",'class'=>'form-horizontal','files' => true]) !!}
                 @include('admin.user-advertisers.form')
                 {!!Form::close() !!}
             </div>
