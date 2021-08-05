@@ -36,6 +36,7 @@
 
                             <td>{{$item->created_at}}</td>
                             <td>
+{{--                                @dd($item->is_visible)--}}
                                 @if(auth('admin')->user()->can('blogs-edit'))
                                     @if ($item->is_visible == 1)
                                         <a href="{{ route('admin.comments.status', $item->id) }}"

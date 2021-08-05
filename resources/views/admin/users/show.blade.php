@@ -28,17 +28,17 @@
                             <td>
                                 @foreach($user->orders as $order)
 
-                               <li></li>
+                               <li><a href="{{route('admin.orders.show',$order->id)}}">{{$order->name}}</a></li>
                                 @endforeach
                             </td>
                             <td>
                                 @foreach($user->advertisements as $adv)
-                               <li></li>
+                                    <li><a href="{{route('admin.advertising.show',$adv->id)}}">{{$adv->name}}</a></li>
                                 @endforeach
                             </td>
                             <td>
                                 @foreach($user->comments as $comment)
-                               <li></li>
+                               <li>{{$comment->text}}</li>
                                 @endforeach
                             </td>
                         </tr>
