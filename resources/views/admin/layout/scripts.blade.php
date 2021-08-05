@@ -25,11 +25,11 @@
 <script src="{{asset('_admin/assets/plugins/jquery-knob/jquery.knob.js')}}"></script>
 
 <!--Morris Chart-->
-{{--<script src="{{asset('_admin/assets/plugins/morris/morris.min.js')}}"></script>--}}
-{{--<script src="{{asset('_admin/assets/plugins/raphael/raphael-min.js')}}"></script>--}}
+<script src="{{asset('_admin/assets/plugins/morris/morris.min.js')}}"></script>
+<script src="{{asset('_admin/assets/plugins/raphael/raphael-min.js')}}"></script>
 
 <!-- Dashboard init -->
-<script src="{{asset('_admin/assets/pages/jquery.dashboard.js')}}"></script>
+{{--<script src="{{asset('_admin/assets/pages/jquery.dashboard.js')}}"></script>--}}
 
 <!-- App js -->
 <script src="{{asset('_admin/assets/js/jquery.core.js')}}"></script>
