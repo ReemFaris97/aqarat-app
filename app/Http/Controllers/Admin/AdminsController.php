@@ -64,8 +64,9 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit( $id)
     {
+        $admin=Admin::find($id);
         $roles = Role::pluck('name','id')->all();
         $userRole = $admin->roles()->first()->id;
         return view('admin.admins.edit',['item'=>$admin,'userRole'=>$userRole,'roles'=>$roles]);
@@ -78,8 +79,9 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminsRequest $request, Admin $admin)
+    public function update(AdminsRequest $request,$id)
     {
+        $admin=Admin::find($id);
         $validator = $request->validated();
         if ($request->image) {
             if ($admin->image) {

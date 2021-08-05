@@ -101,6 +101,10 @@
             </div>
         </div>
     </div>
+
+    @isset($item)
+        <input  name="id" value="{{$item->id}}" hidden>
+    @endisset
     <div class="col-xs-12">
         <div class="input-group-btn">
             <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>
