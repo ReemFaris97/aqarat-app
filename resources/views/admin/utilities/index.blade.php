@@ -17,6 +17,7 @@
                     <tr>
                         <th>#</th>
                         <th>الاسم</th>
+                        <th>الصورة</th>
                         <th>العمليات</th>
                     </tr>
                     </thead>
@@ -26,6 +27,9 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$item->name}}</td>
+                            <td>
+                                <img src="{{$item->image}}" style="width: 50px; height: 50px">
+                            </td>
                             <td>
                                 @if(auth('admin')->user()->can('attributes-edit'))
                                     <a href="{{route('admin.utilities.edit',$item->id)}}"

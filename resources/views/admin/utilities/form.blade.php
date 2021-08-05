@@ -29,6 +29,30 @@
             </div>
         </div>
     </div>
+    @if (isset($user->image))
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="col-md-2 control-label">الصورة الحالية للمرفق :</label>
+                <div class="col-md-10">
+                    <img class="img-preview" src="{{$user->image}}" style="width: 50px; height: 50px">
+                </div>
+            </div>
+        </div>
+    @endif
+
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label class="col-md-2 control-label">صورة للمرفق </label>
+            <div class="col-md-10">
+                {!! Form::file("image",null,['class'=>'form-control'])!!}
+                @error('image')
+                <div class="invalid-feedback" style="color: #ef1010">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+        </div>
+    </div>
 
     <div class="col-xs-12">
         <div class="input-group-btn">

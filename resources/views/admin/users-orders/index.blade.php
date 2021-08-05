@@ -40,7 +40,7 @@
                                     </a>
                                 @else {{__('No Image')}} @endif
                             </td>
-                            <td>{{$order->user->name}}</td>
+                            <td><a href="{{route('admin.users.show',$order->user->id)}}">{{$order->user->name}}</a></td>
                             <td>{{$order->category->name}}</td>
                             <td>{{$order->price}}</td>
                             <td>@include('admin.orders.order_details')</td>
