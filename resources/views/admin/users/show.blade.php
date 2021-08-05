@@ -48,6 +48,33 @@
                 </table>
             </div>
         </div><!-- end col -->
+        <div class="col-lg-4 col-md-12">
+            <div class="card-box">
+
+                <h4 class="header-title m-t-0 m-b-30">تصنيفات العروض</h4>
+
+                <div id="orders-chart"></div>
+
+            </div>
+        </div><!-- end col -->
+        <div class="col-lg-4 col-md-12">
+            <div class="card-box">
+
+                <h4 class="header-title m-t-0 m-b-30">احصائية العروض والطلبات</h4>
+
+                <div id="orders-in-days"></div>
+
+            </div>
+        </div><!-- end col -->
+        <div class="col-lg-4 col-md-12">
+            <div class="card-box">
+
+                <h4 class="header-title m-t-0 m-b-30">احصائية الاعلانات</h4>
+
+                <div id="advertisements-in-days"></div>
+
+            </div>
+        </div><!-- end col -->
     </div>
     <!-- end row -->
 
@@ -55,3 +82,33 @@
 @section('footer')
     @include('admin.datatable.scripts')
 @endsection
+@push('scripts')
+    <script>
+        console.log( @json($orders_in_day))
+        Morris.Donut({
+            element: 'orders-chart',
+            data: @json($orders_category),
+            resize: true
+        });
+        Morris.Line({
+            element: 'orders-in-days',
+            data:@json($orders_in_day),
+            xkey: 'date_created_at',
+            ykeys: ['orders'],
+            labels: ['العدد'],
+            parseTime: false,
+            resize: true
+
+        });
+        Morris.Line({
+            element: 'advertisements-in-days',
+            data:@json($advertisements_in_day),
+            xkey: 'date_created_at',
+            ykeys: ['advertisements'],
+            labels: ['العدد'],
+            parseTime: false,
+            resize: true
+
+        });
+    </script>
+@endpush

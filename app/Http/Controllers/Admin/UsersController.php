@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersRequest;
+use App\Models\Advertisement;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -52,7 +54,15 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return  view('admin.users.show',compact('user'));
+        $data=[
+            'orders_category'=>$user->orders()->join('categories','categories.id','=','orders.category_id')->selectRaw('count(orders.id) as orders , categories.name as category_name')->groupBy('categories.name')->get()->map(function ($q){
+                return ['label'=>$q->category_name,'value'=>$q->orders];
+            })->toArray(),
+
+            'orders_in_day'=>Order::where('user_id',$user->id)->selectRaw('count(id) as orders , DATE(created_at) as date_created_at')->groupBy('date_created_at')->get()->toArray(),
+            'advertisements_in_day'=>Advertisement::where('user_id',$user->id)->selectRaw('count(id) as advertisements , DATE(created_at) as date_created_at')->groupBy('date_created_at')->get()->toArray(),
+        ];
+        return  view('admin.users.show',$data,compact('user'));
     }
 
     /**
