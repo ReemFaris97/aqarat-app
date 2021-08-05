@@ -34,7 +34,8 @@ class UtilityController extends Controller
     {
         $data = $request->validate([
             'name.ar' => 'required',
-            'name.en' => 'required'
+            'name.en' => 'required',
+            'image'=>'required'
         ]);
         Utility::create($data);
         toastr()->success('تم اضافة الخاصية بنجاح');
@@ -53,7 +54,8 @@ class UtilityController extends Controller
     {
         $data = $request->validate([
             'name.ar' => 'required',
-            'name.en' => 'required'
+            'name.en' => 'required',
+            'image'=>'sometimes'
         ]);
         $utility->update($data);
         toastr()->success('تم تعديل الخاصية بنجاح');

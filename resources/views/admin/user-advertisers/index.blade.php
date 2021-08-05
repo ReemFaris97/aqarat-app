@@ -46,7 +46,7 @@
                             </td>
                             {{--                            <td>{{$item->views}}</td>--}}
                             <td>{{$item->created_at->toDateString() ?? $item->updated_at->toDateString()}}</td>
-                            <td>{{$item->user->name}}</td>
+                            <td><a href="{{route('admin.users.show',$item->user->id)}}">{{$item->user->name}}</a></td>
                             <td>{{$item->neighborhood->city->name}}</td>
                             <td>{{$item->neighborhood->name}}</td>
                             {{--                            <td>{{AccountStatus($item->is_active)}}</td>--}}
