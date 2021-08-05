@@ -76,7 +76,7 @@ class UserAdvertisersController extends Controller
 
         DB::commit();
         toastr()->success('تم تعديل الإعلان بنجاح');
-        return redirect()->route('admin.user-advertisers.index');
+        return redirect()->route('admin.users-advertisers.index');
     }
 
 

@@ -17,6 +17,7 @@
                     <tr>
                         <th>#</th>
                         <th>الإسم</th>
+                        <th>اسم المستخدم</th>
                         <th>الايميل</th>
                         <th>الهاتف</th>
                         <th>الرسالة</th>
@@ -29,6 +30,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$item->name}}</td>
+                            <td>{{$item->user->name ?? ""}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
                             <td>{{$item->message}}</td>
