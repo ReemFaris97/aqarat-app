@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
             'images' => 'sometimes|array',
             'neighborhood_id'=>'required|exists:neighborhoods,id',
             'category_id' => 'required|exists:categories,id',
-            'contract' => 'required|in:buy,sell',
+            'contract' => 'required|in:buy,sell,rent',
             'advertiser' => 'required|in:owner,agent,marketer',
             'lat' => 'required|numeric|min:-90|max:90',
             'lng' => 'required|numeric|min:180-|max:190',
