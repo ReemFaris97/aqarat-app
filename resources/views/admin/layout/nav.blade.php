@@ -10,125 +10,140 @@
             <span> البريد </span></a>
     </li>
 @endif
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> صلاحيات أعضاء الإدارة </span>
-        <span class="menu-arrow"></span></a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('role-list'))
-            <li><a href="{{route('admin.roles.index')}}">جميع الصلاحيات</a></li>
-        @endif
-        @if(auth('admin')->user()->can('role-list'))
-            <li><a href="{{route('admin.roles.create')}}">اضافة صلاحية جديد</a></li>
-        @endif
-    </ul>
-</li>
+@if(auth('admin')->user()->can('role-list') ||auth('admin')->user()->can('role-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> صلاحيات أعضاء الإدارة </span>
+            <span class="menu-arrow"></span></a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('role-list'))
+                <li><a href="{{route('admin.roles.index')}}">جميع الصلاحيات</a></li>
+            @endif
+            @if(auth('admin')->user()->can('role-create'))
+                <li><a href="{{route('admin.roles.create')}}">اضافة صلاحية جديد</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
 
+@if(auth('admin')->user()->can('admin-list') || auth('admin')->user()->can('admin-create') )
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i>
+            <span> أعضاء الإدارة </span> <span class="menu-arrow"></span></a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('admin-list'))
+                <li><a href="{{route('admin.admins.index')}}">جميع أعضاء الإدارة</a></li>
+            @endif
+            @if(auth('admin')->user()->can('admin-create'))
+                <li><a href="{{route('admin.admins.create')}}">اضافة عضو جديد</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
 
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i>
-        <span> أعضاء الإدارة </span> <span class="menu-arrow"></span></a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('admin-list'))
-            <li><a href="{{route('admin.admins.index')}}">جميع أعضاء الإدارة</a></li>
-        @endif
-        @if(auth('admin')->user()->can('admin-create'))
-            <li><a href="{{route('admin.admins.create')}}">اضافة عضو جديد</a></li>
-        @endif
-    </ul>
-</li>
+@if(auth('admin')->user()->can('cities-list') || auth('admin')->user()->can('cities-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-view-list"></i> <span> المدن </span>
+            <span
+                class="menu-arrow"></span></a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('cities-list') )
+                <li><a href="{{route('admin.cities.index')}}">جميع المدن</a></li>
+            @endif
+            @if(auth('admin')->user()->can('cities-create'))
+                <li><a href="{{route('admin.cities.create')}}">اضافة مدينة</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
 
+@if(auth('admin')->user()->can('neighborhoods-list') || auth('admin')->user()->can('neighborhoods-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-chart"></i><span> الأحياء </span> <span
+                class="menu-arrow"></span></a>
+        <ul class="list-unstyled">
+            @if (auth('admin')->user()->can('neighborhoods-list') )
 
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-view-list"></i> <span> المدن </span>
-        <span
-            class="menu-arrow"></span></a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('cities-list'))
-            <li><a href="{{route('admin.cities.index')}}">جميع المدن</a></li>
-        @endif
-        @if(auth('admin')->user()->can('cities-create'))
-            <li><a href="{{route('admin.cities.create')}}">اضافة مدينة</a></li>
-        @endif
-    </ul>
-</li>
+                <li><a href="{{route('admin.neighborhoods.index')}}">جميع الأحياء</a></li>
+            @endif
+            @if (auth('admin')->user()->can('neighborhoods-create') )
+                <li><a href="{{route('admin.neighborhoods.create')}}">اضافة حى</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
+@if(auth('admin')->user()->can('users-list')|| auth('admin')->user()->can('users-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> المستخدمين </span> </a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('users-list'))
+                <li><a href="{{route('admin.users.index')}}">جميع المستخدمين</a></li>
+            @endif
+            @if(auth('admin')->user()->can('users-create'))
+                <li><a href="{{route('admin.users.create')}}">اضافة مستخدم جديد</a></li>
+            @endif
 
+        </ul>
+    </li>
+@endif
 
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-chart"></i><span> الأحياء </span> <span
-            class="menu-arrow"></span></a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('neighborhoods-list'))
-            <li><a href="{{route('admin.neighborhoods.index')}}">جميع الأحياء</a></li>
-        @endif
-        @if(auth('admin')->user()->can('neighborhoods-create'))
-            <li><a href="{{route('admin.neighborhoods.create')}}">اضافة حى</a></li>
-        @endif
-    </ul>
-</li>
+@if(auth('admin')->user()->can('advertisings-list')||auth('admin')->user()->can('requests-list'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> منشورات المستخدمين </span> </a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('advertisings-list'))
+                <li><a href="{{route('admin.users-advertisers.index')}}">الاعلانات</a></li>
+            @endif
+            @if(auth('admin')->user()->can('requests-list'))
+                <li><a href="{{route('admin.users-orders.index')}}"> الطلبات</a></li>
+            @endif
 
-
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> المستخدمين </span> </a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('users-list'))
-            <li><a href="{{route('admin.users.index')}}">جميع المستخدمين</a></li>
-        @endif
-        @if(auth('admin')->user()->can('users-create'))
-            <li><a href="{{route('admin.users.create')}}">اضافة مستخدم جديد</a></li>
-        @endif
-    </ul>
-</li>
-
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> منشورات المستخدمين </span> </a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('advertisings-list'))
-            <li><a href="{{route('admin.users-advertisers.index')}}">الاعلانات</a></li>
-        @endif
-        @if(auth('admin')->user()->can('requests-list'))
-            <li><a href="{{route('admin.users-orders.index')}}"> الطلبات</a></li>
-        @endif
-    </ul>
-</li>
-
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> الخصائص </span> </a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('attributes-list'))
-            <li><a href="{{route('admin.attributes.index')}}">جميع الخصائص</a></li>
-        @endif
-        @if(auth('admin')->user()->can('attributes-create'))
-            <li><a href="{{route('admin.attributes.create')}}">اضافة خاصية جديد</a></li>
-        @endif
-    </ul>
-</li>
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> المرافق </span> </a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('attributes-list'))
-            <li><a href="{{route('admin.utilities.index')}}">جميع المرافق</a></li>
-        @endif
-        @if(auth('admin')->user()->can('attributes-create'))
-            <li><a href="{{route('admin.utilities.create')}}">اضافة مرفق جديد</a></li>
-        @endif
-    </ul>
-</li>
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> التصنيفات </span> </a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('categories-list'))
-            <li><a href="{{route('admin.categories.index')}}">جميع التصنيفات</a></li>
-        @endif
-        @if(auth('admin')->user()->can('categories-create'))
-            <li><a href="{{route('admin.categories.create')}}">اضافة تصنيف جديد</a></li>
-        @endif
-    </ul>
-</li>
+        </ul>
+    </li>
+@endif
+@if(auth('admin')->user()->can('attributes-list')||auth('admin')->user()->can('attributes-create') )
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> الخصائص </span> </a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('attributes-list') )
+                <li><a href="{{route('admin.attributes.index')}}">جميع الخصائص</a></li>
+            @endif
+            @if(auth('admin')->user()->can('attributes-create'))
+                <li><a href="{{route('admin.attributes.create')}}">اضافة خاصية جديد</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
+@if(auth('admin')->user()->can('attributes-list') || auth('admin')->user()->can('attributes-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> المرافق </span> </a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('attributes-list'))
+                <li><a href="{{route('admin.utilities.index')}}">جميع المرافق</a></li>
+            @endif
+            @if(auth('admin')->user()->can('attributes-create'))
+                <li><a href="{{route('admin.utilities.create')}}">اضافة مرفق جديد</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
+@if(auth('admin')->user()->can('categories-list') || auth('admin')->user()->can('categories-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> التصنيفات </span> </a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('categories-list'))
+                <li><a href="{{route('admin.categories.index')}}">جميع التصنيفات</a></li>
+            @endif
+            @if(auth('admin')->user()->can('categories-create'))
+                <li><a href="{{route('admin.categories.create')}}">اضافة تصنيف جديد</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
 
 {{--@if(auth('admin')->user()->can('offers-list'))--}}
 {{--    <li>--}}
@@ -144,6 +159,8 @@
 {{--        </a>--}}
 {{--    </li>--}}
 {{--@endif--}}
+
+
 @if(auth('admin')->user()->can('advertisings-list'))
     <li>
         <a href="{{ route('admin.advertising.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
@@ -153,43 +170,46 @@
 
 @if(auth('admin')->user()->can('requests-list'))
     <li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i
-            class="zmdi zmdi-collection-text"></i><span> الطلبات </span> </a>
-    <ul class="list-unstyled">
-            <li><a href="{{ route('admin.orders.index') }}">الطلبات  </a></li>
-            <li><a href="{{ route('admin.orders-requests.index') }}">طلبات الاعلانات المميزة    </a></li>
-    </ul>
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> الطلبات </span> </a>
+        <ul class="list-unstyled">
+            <li><a href="{{ route('admin.orders.index') }}">الطلبات </a></li>
+            <li><a href="{{ route('admin.orders-requests.index') }}">طلبات الاعلانات المميزة </a></li>
+        </ul>
     </li>
 @endif
-
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>  المدونات </span>
-        <span class="menu-arrow"></span></a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('blogs-list'))
-            <li><a href="{{route('admin.blogs.index')}}">جميع المدونات</a></li>
-        @endif
-        @if(auth('admin')->user()->can('blogs-create'))
-            <li><a href="{{route('admin.blogs.create')}}">اضافة مدونة</a></li>
-        @endif
-    </ul>
-</li>
-
-<li class="has_sub">
-    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-layers"></i><span>الأسئلة الشائعة </span>
-        <span class="menu-arrow"></span></a>
-    <ul class="list-unstyled">
-        @if(auth('admin')->user()->can('commonQuestions-list'))
-            <li><a href="{{route('admin.commonQuestions.index')}}">الأسئلة الشائعة</a></li>
-        @endif
-        @if(auth('admin')->user()->can('commonQuestions-create'))
-            <li><a href="{{route('admin.commonQuestions.create')}}">اضافة سؤال شائع</a></li>
-        @endif
-    </ul>
-</li>
+@if(auth('admin')->user()->can('blogs-list')||auth('admin')->user()->can('blogs-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-item"></i><span>  المدونات </span>
+            <span class="menu-arrow"></span></a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('blogs-list'))
+                <li><a href="{{route('admin.blogs.index')}}">جميع المدونات</a></li>
+            @endif
+            @if(auth('admin')->user()->can('blogs-create'))
+                <li><a href="{{route('admin.blogs.create')}}">اضافة مدونة</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
+@if(auth('admin')->user()->can('commonQuestions-list')||auth('admin')->user()->can('commonQuestions-create'))
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-layers"></i><span>الأسئلة الشائعة </span>
+            <span class="menu-arrow"></span></a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('commonQuestions-list'))
+                <li><a href="{{route('admin.commonQuestions.index')}}">الأسئلة الشائعة</a></li>
+            @endif
+            @if(auth('admin')->user()->can('commonQuestions-create'))
+                <li><a href="{{route('admin.commonQuestions.create')}}">اضافة سؤال شائع</a></li>
+            @endif
+        </ul>
+    </li>
+@endif
 @if(auth('admin')->user()->can('settings-list'))
-<li>
-    <a href="{{ route('admin.settings.index') }}" class="waves-effect"><i class="zmdi zmdi-settings"></i> <span> الإعدادات العامة </span>
-    </a>
-</li>
-    @endif
+    <li>
+        <a href="{{ route('admin.settings.index') }}" class="waves-effect"><i class="zmdi zmdi-settings"></i> <span> الإعدادات العامة </span>
+        </a>
+    </li>
+@endif
