@@ -24,7 +24,7 @@ class Chat extends Model
 
     public function usersModel()
     {
-        return $this->hasManyThrough(User::class,ChatUser::class);
+        return $this->belongsToMany(User::class,ChatUser::class);
     }
 
     public function messages()
