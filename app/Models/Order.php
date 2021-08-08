@@ -217,7 +217,7 @@ class Order extends Model implements HasMedia
     {
         foreach (Arr::get($inputs,'attributes',[])as $key => $value){
            $attribute=Attribute::findOrFail($key);
-           throw_unless($attribute,ValidationException::withMessages([__("{$attribute->name} must be presented")]));
+           throw_unless($attribute or !$value,ValidationException::withMessages([__("{$attribute->name} must be presented")]));
         }
         $order=self::create($inputs);
         if (Arr::has($inputs,'images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
