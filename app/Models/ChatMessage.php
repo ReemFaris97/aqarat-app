@@ -26,7 +26,8 @@ class ChatMessage extends Model
     {
         static::created(function (ChatMessage $message){
             broadcast(new NewMessageEvent($message))->toOthers();
-            $users=$message->chat->users->where('id','!=',$message->user_id)->get();
+            $users=$message->chat->users->where('id','!=',$message->user_id);
+            info($users);
             \Notification::send($users,new MessageNotification($message));
         });
     }
