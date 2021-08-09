@@ -55,10 +55,17 @@ File: Menu
 }
 .user-box .user-img {
   position: relative;
-  height: 88px;
-  width: 88px;
+ /* height: 88px;
+  width: 88px;*/
   margin: 0px auto;
+  width: 100%;
 }
+.user-box .user-img img{
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
 .user-box h5 a {
   color: #98a6ad;
 }
@@ -68,6 +75,7 @@ File: Menu
   position: absolute;
   bottom: 7px;
   right: 15px;
+  display: none;
 }
 .user-box .user-status i {
   font-size: 15px;
