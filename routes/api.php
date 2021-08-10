@@ -29,6 +29,7 @@ Route::group([], function () {
         Route::post('forget-password/check', [AuthController::class, 'checkCode']);
         Route::post('forget-password/reset', [AuthController::class, 'resetPassword']);
         Route::group(['middleware' => 'auth:api'], function () {
+            Route::post('logout',[AuthController::class,'logout']);
             Route::get('profile', [AuthController::class, 'profile']);
             Route::put('profile', [AuthController::class, 'update']);
             Route::apiResources([

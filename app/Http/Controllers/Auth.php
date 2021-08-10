@@ -78,10 +78,7 @@ abstract class Auth extends Controller implements iAuth
 
     public function logout(Request $request)
     {
-        $validated = $request->validate([
-            'token' => 'required',
-        ]);
-        auth()->user()->devices()->where('devices.id',$request['token'])->delete();
+        auth()->user()->update(['fcm_token_android' => null,'fcm_token_ios' => null]);
         auth()->logout();
         return \responder::success(__('logged out successfully !'));
     }
