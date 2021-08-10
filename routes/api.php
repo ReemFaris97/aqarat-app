@@ -39,7 +39,7 @@ Route::group([], function () {
                 'notifications' => NotificationController::class,
                 'chats'=>ChatController::class
             ]);
-            Route::put('request/orders', requestOrderController::class);
+            Route::put('request/orders/{order}', requestOrderController::class);
             Route::get('advertisement-favourites', [FavouriteController::class, 'advertisements']);
             Route::get('order-favourites', [FavouriteController::class, 'orders']);
             Route::put('blogs/{blog}', [BlogController::class, 'update']);
