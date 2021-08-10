@@ -8,7 +8,7 @@ use Kreait\Firebase\Factory;
 const DEFAULT_URL = 'https://osraty-a153d.firebaseio.com/';
 class FireBase
 {
-    const fcm_server_key = 'AAAAFUb9X0w:APA91bFf9tsuniprJiMw1MpkNVwgCD4q5zP2LM2aR9XqzK7Hg0xPEsiXakT_IdtjbU4LcaFwNVfyppEjXq9hffz00K2vXbYWth0ZoX9EL8o_zWPeDG9yWQAGTLt5xiLbvDXrZCMCvZQY';
+    const fcm_server_key = 'AAAAKBsXuv0:APA91bF2P-rDzR7XZJksWia4M_7lyQpuM_Az_w0jMyp4HFWEmN3iAztb6qcXeeZMo5i-yQRYP9DFJ4255gsZqEyFu-P9l8tCYMpgZDNkwmemq_nkIhhyNZTXEWUK37JtqnXMVwtd05a1';
 
     public static function BulkNotification($notifiables, $title, $body, $data)
     {
