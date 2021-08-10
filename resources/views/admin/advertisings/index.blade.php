@@ -53,10 +53,10 @@
                                 @if(auth('admin')->user()->can('advertisings-edit'))
                                     @if ($item->is_active == 1)
                                         <a class="btn btn-danger"
-                                           href="{{ route('admin.advertisings.status', $item->id) }}">
+                                           href="{{ route('admin.advertising.status', $item->id) }}">
                                             تعطيل</a>
                                     @else
-                                        <a href="{{ route('admin.advertisings.status', $item->id) }}"
+                                        <a href="{{ route('admin.advertising.status', $item->id) }}"
                                            class="btn btn-success">
                                             تفعيل </a>
                                     @endif
