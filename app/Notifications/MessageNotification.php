@@ -28,7 +28,8 @@ class MessageNotification extends Notification
             'title_ar'=>'تطبيق عقار',
             'body_ar'=>'لديك رسالة جديدة',
             'model_type'=>'chat',
-            'model_id'=>$message->chat_id
+            'model_id'=>$message->chat_id,
+            'type'=>object_get($message->chat->model,'type','advertisement')
         ];
 
     }
