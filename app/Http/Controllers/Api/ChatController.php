@@ -28,22 +28,24 @@ class ChatController extends Controller
             'message' => 'required|string',
             'model_type' => 'required|in:Order,Advertisement',
             'model_id' => 'required|string'
+
+
         ]);
 
-        $chat = Chat::when($request->has('receiver_id'), function ($query) use ($request) {
-            $query->whereHas('users', function ($q) use ($request) {
+        if ($request->has('receiver_id')) {
+            $chat = Chat::whereHas('users', function ($q) use ($request) {
                 $q->where('user_id', $request['receiver_id']);
             })->whereHas('users', function ($q) use ($request) {
                 $q->where('user_id', auth()->id());
-            });
-        })->when($request->has('chat_id'), function ($q) use ($request) {
-            $q->where('chats.id', $request->id);
-        })->firstOrCreate(['model_type' => 'App\\Models\\' . $request['model_type'], 'model_id' => $request['model_id']]);
-        if ($chat->wasRecentlyCreated and $request->has('receiver_id')) {
-            $chat->users()->createMany([
-                ['user_id' => $request['receiver_id']]
-                , ['user_id' => auth()->id()]
-            ]);
+            })->firstOrCreate(['model_type' => 'App\\Models\\' . $request['model_type'], 'model_id' => $request['model_id']]);
+            if ($chat->wasRecentlyCreated) {
+                $chat->users()->createMany([
+                    ['user_id' => $request['receiver_id']]
+                    , ['user_id' => auth()->id()]
+                ]);
+            }
+        } else {
+            $chat = Chat::find($request['chat_id']);
         }
 
         $inputs['user_id'] = auth()->id();
