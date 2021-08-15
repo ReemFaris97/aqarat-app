@@ -23,7 +23,7 @@ class ChatController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->validate([
-            'receiver_id' => 'required|exists:users,id|required_without:chat_id|not_in:' . auth()->id(),
+            'receiver_id' => 'exists:users,id|required_without:chat_id|not_in:' . auth()->id(),
             'chat_id' => 'required_without:receiver_id|exists:chats,id',
             'message' => 'required|string',
             'model_type' => 'required|in:Order,Advertisement',
