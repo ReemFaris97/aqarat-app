@@ -39,7 +39,7 @@ class ChatController extends Controller
         })->when($request->has('chat_id'), function ($q) use ($request) {
             $q->where('chats.id', $request->id);
         })->firstOrCreate(['model_type' => 'App\\Models\\' . $request['model_type'], 'model_id' => $request['model_id']]);
-        if ($chat->wasRecentlyCreated) {
+        if ($chat->wasRecentlyCreated and $request->has('receiver_id')) {
             $chat->users()->createMany([
                 ['user_id' => $request['receiver_id']]
                 , ['user_id' => auth()->id()]
