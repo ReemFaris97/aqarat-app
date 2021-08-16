@@ -42,15 +42,15 @@
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">العقد</th>
-                                <td>  {{__($order->contract,'','ar')}} </td>
+                                <td>  {{__($order->contract,[],'ar')}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">النوع</th>
-                                <td>  {{__($order->type,'','ar')}} </td>
+                                <td>  {{__($order->type,[],'ar')}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">المعلن</th>
-                                <td>  {{__($order->advertiser,'','ar')}} </td>
+                                <td>  {{__($order->advertiser,[],'ar')}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">العنوان</th>

@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$order->id}}</td>
-                            <td>{{__($order->status,'','ar')}}</td>
+                            <td>{{__($order->status,[],'ar')}}</td>
                             <td>{{$order->name}}</td>
                             <td>
                                 @if($order->image)
