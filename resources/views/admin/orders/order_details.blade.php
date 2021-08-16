@@ -42,24 +42,24 @@
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">العقد</th>
-                                <td>  {{__($order->contract)}} </td>
+                                <td>  {{__($order->contract,'','ar')}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">النوع</th>
-                                <td>  {{__($order->type)}} </td>
+                                <td>  {{__($order->type,'','ar')}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">المعلن</th>
-                                <td>  {{__($order->advertiser)}} </td>
+                                <td>  {{__($order->advertiser,'','ar')}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">العنوان</th>
-                                <td>  {{__($order->address)}} </td>
+                                <td>  {{$order->address}} </td>
                             </tr>
 
                             <tr>
                                 <th class="font-weight-bold">السعر</th>
-                                <td>  {{__($order->price)}} </td>
+                                <td>  {{$order->price}} </td>
                             </tr>
 
                             <tr>

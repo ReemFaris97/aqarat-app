@@ -96,7 +96,7 @@
                 <li><a href="{{route('admin.users-advertisers.index')}}">الاعلانات</a></li>
             @endif
             @if(auth('admin')->user()->can('requests-list'))
-                <li><a href="{{route('admin.users-orders.index')}}"> الطلبات</a></li>
+                <li><a href="{{route('admin.users-orders.index')}}"> العروض / الطلبات</a></li>
             @endif
 
         </ul>
@@ -171,9 +171,9 @@
 @if(auth('admin')->user()->can('requests-list'))
     <li class="has_sub">
         <a href="javascript:void(0);" class="waves-effect"><i
-                class="zmdi zmdi-collection-text"></i><span> الطلبات </span> </a>
+                class="zmdi zmdi-collection-text"></i><span> العروض و الطلبات </span> </a>
         <ul class="list-unstyled">
-            <li><a href="{{ route('admin.orders.index') }}">الطلبات </a></li>
+            <li><a href="{{ route('admin.orders.index') }}">العروض و الطلبات </a></li>
             <li><a href="{{ route('admin.orders-requests.index') }}">طلبات الاعلانات المميزة </a></li>
         </ul>
     </li>

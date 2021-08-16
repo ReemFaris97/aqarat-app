@@ -1,5 +1,13 @@
 {
     "pending": "قيد الانتظار",
     "accepted": "تم الموافقة  ",
-    "rejected": "تم الرفض  "
+    "rejected": "تم الرفض  ",
+    "request": "طلب",
+    "offer": "عرض",
+    "buy": "بيع",
+    "sell": "شراء",
+    "rent": "ايجار",
+    "agent": "وكيل",
+    "owner": "مالك",
+    "marketer": "مسوق"
 }
