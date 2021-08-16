@@ -18,6 +18,7 @@
                     <tr>
                         <th>#</th>
                         <th>الاسم</th>
+                        <th>النوع</th>
                         <th>الصورة</th>
                         <th>المستخدم</th>
                         <th>التصنيف</th>
@@ -32,6 +33,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$order->name}}</td>
+                            <td>{{__($order->type,[],'ar')}}</td>
                             <td>
                                 @if($order->image)
                                     <a data-fancybox="gallery" href="{{$order->image}}">
