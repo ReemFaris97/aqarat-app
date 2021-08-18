@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminCheck;
+use App\Http\Middleware\ApiLocatization;
 use App\Http\Middleware\AutoCheckPermission;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -69,6 +70,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin'=>AdminCheck::class,
-        'check-permissions'=>AutoCheckPermission::class
+        'check-permissions'=>AutoCheckPermission::class,
+        'localization'=>ApiLocatization::class
     ];
 }
