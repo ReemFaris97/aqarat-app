@@ -32,8 +32,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $order->is_favoured=$order->isFavoured()->exists();
-        $order->views=$order->views()->count();
+        $order->is_favoured_exists=$order->isFavoured()->exists();
+        $order->views_count=$order->views()->count();
         return \responder::success(new OrderResource($order));
     }
 
