@@ -6,7 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$blog->title}}</title>
     <link href="{{asset('webview/blog.css')}}">
+    <style>
+        @import url('//fonts.googleapis.com/css?family=Almarai');
+        *{
+            font-family: Almarai;
+        }
 
+    </style>
 </head>
 <body>
 {!! $blog->description !!}
