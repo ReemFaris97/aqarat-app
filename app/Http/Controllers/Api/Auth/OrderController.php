@@ -19,7 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return \responder::success(new BaseCollection(auth()->user()->orders()->when(request('type'),function ($q){
+        return \responder::success(new BaseCollection(auth()->user()->orders()->withExists('isFavoured')->withCount('views')->when(request('type'),function ($q){
             $q->where('type',request('type'));
         })->with('attributes')->paginate(10), OrderResource::class));
     }
