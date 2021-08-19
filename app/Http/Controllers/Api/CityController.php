@@ -17,6 +17,6 @@ class CityController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return  \responder::success(CityResource::collection(City::with('neighborhoods')->get()));
+        return  \responder::success(CityResource::collection(City::with('neighborhoods')->active()->get()));
     }
 }

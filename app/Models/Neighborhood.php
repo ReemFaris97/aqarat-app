@@ -41,4 +41,8 @@ class Neighborhood extends Model
     {
         return $this->belongsTo(City::class);
     }
+    public function scopeActive($q)
+    {
+        return $q->where('status', 1);
+    }
 }
