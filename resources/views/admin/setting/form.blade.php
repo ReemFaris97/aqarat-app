@@ -9,7 +9,6 @@
         <div class="col-sm-12">
             <h1> التحكم ب{{$settings_page}}</h1>
             <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-30">اضافة الأسئلة الشائعة </h4>
                 <form method="post" action="{{ route('admin.settings.store') }}"
                       enctype="multipart/form-data">
                     @csrf
@@ -139,3 +138,19 @@
         </div><!-- end col -->
     </div>
 @endsection
+@push('scripts')
+
+    <script>
+
+        $(document).ready(function () {
+
+            CKEDITOR.replaceClass = 'editor';
+
+            $('.words').select2({
+                // alert("hi");
+                tags: true,
+                // tokenSeparators: [',', ' ']
+            });
+        });
+    </script>
+    @endpush

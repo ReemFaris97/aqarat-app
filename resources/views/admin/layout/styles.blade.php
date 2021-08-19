@@ -46,3 +46,6 @@
 <link href="{{asset('_admin/assets/plugins/multiselect/css/multi-select.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset('_admin/assets/plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('_admin/assets/plugins/select2/dist/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
+
+<!--Text Editor-->
+{{--<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">--}}

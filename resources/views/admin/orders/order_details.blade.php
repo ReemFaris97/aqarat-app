@@ -33,7 +33,10 @@
                             <tr>
                                 <th class="font-weight-bold"> الصورة</th>
                                 <td>
-                                    <img src="{{$order->image}}" style="width: 50px; height: 50px">
+                                    <a data-fancybox="gallery1{{$order->id}}" href="{{$order->image}}">
+                                        <img src="{{$order->image}}" width="70" height="70"
+                                             class="img-thumbnail" alt="adv_img">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -90,6 +93,7 @@
                             <tr>
                                 <th class="font-weight-bold">الخصائص</th>
                                 <td>
+
                                     @foreach($order->attributes as $attr)
                                         <li>
                                             {{$attr->name}} , قيمتها {{$attr->pivot->value}}

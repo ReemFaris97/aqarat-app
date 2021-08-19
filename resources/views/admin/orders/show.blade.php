@@ -25,7 +25,11 @@
                 <tr>
                     <th class="font-weight-bold"> الصورة</th>
                     <td>
-                        <img src="{{$order->image}}" style="width: 50px; height: 50px">
+                        <a data-fancybox="gallery1{{$order->id}}" href="{{$order->image}}">
+                            <img src="{{$order->image}}" width="70" height="70"
+                                 class="img-thumbnail" alt="adv_img">
+                        </a>
+{{--                        <img src="{{$order->image}}" style="width: 50px; height: 50px">--}}
                     </td>
                 </tr>
                 <tr>
@@ -103,7 +107,7 @@
                 <tr>
                     <th class="font-weight-bold">مجموعة الصور</th>
                     <td>
-                        @if($order->getMedia())
+                        @if(count($order->getMedia()) >0)
                             @foreach($order->getMedia() as $image)
                                 <a data-fancybox="gallery{{$order->id}}" href="{{$image->getFullUrl()}}">
                                     <img src="{{$image->getFullUrl()}}" width="70" height="70"

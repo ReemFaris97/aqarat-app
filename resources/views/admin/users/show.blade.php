@@ -37,7 +37,7 @@
                             <td>
                                 @foreach($user->advertisements as $adv)
                                     <li><a href="{{route('admin.advertising.show',$adv->id)}}">{{$adv->name}}  </a>
-                                        <span> {{orderType($order->is_special)}}</span>
+                                        <span> </span>
                                     </li>
                                 @endforeach
                             </td>

@@ -68,7 +68,12 @@
 {{--                                    @endif--}}
 
                                     @if(auth('admin')->user()->can('requests-delete'))
-                                        @include('admin.users-orders.delete-modal')
+{{--                                        @include('admin.users-orders.delete-modal')--}}
+                                    <a data-url="{{ route('admin.users-orders.destroy', $order) }}"
+                                       onclick="delete_form(this)" data-name="{{ $order->name }}" data-toggle="tooltip"
+                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                            style="padding-top: 5px;padding-left: 4px;"
+                                            class="fa fa-trash-o"></i></a>
                                     @endif
                             </td>
                         </tr>

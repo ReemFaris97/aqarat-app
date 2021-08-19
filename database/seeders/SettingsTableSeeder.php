@@ -14,12 +14,12 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('settings')->delete();
-        
+
         \DB::table('settings')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'about',
@@ -32,7 +32,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'frequency_questions',
@@ -45,7 +45,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'privacy',
@@ -58,7 +58,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'email',
@@ -71,7 +71,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-08-05 15:03:29',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'name' => 'phone',
@@ -84,7 +84,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-08-05 15:03:29',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'name' => 'facebook',
@@ -97,7 +97,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-08-05 15:03:29',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'name' => 'twitter',
@@ -110,7 +110,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-08-05 15:03:29',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name' => 'snapchat',
@@ -123,7 +123,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-08-05 15:03:29',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'name' => 'add-advertisement',
@@ -136,7 +136,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'name' => 'add-request',
@@ -149,7 +149,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'name' => 'add-offer',
@@ -162,7 +162,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'name' => 'special_ad',
@@ -175,7 +175,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'name' => 'special_price',
@@ -188,7 +188,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'name' => 'title-splash-1',
@@ -201,7 +201,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'name' => 'title-splash-2',
@@ -214,7 +214,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'name' => 'title-splash-3',
@@ -227,7 +227,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'name' => 'text-splash-1',
@@ -240,7 +240,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'name' => 'text-splash-2',
@@ -253,7 +253,7 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'name' => 'text-splash-3',
@@ -266,8 +266,34 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            19 =>
+                array (
+                    'id' => 20,
+                    'name' => 'instagram',
+                    'type' => 'text',
+                    'ar_value' => '01010100101',
+                    'en_value' => '01010100101',
+                    'page' => 'حسابات التواصل',
+                    'slug' => 'socials',
+                    'title' => 'حساب انستجرام',
+                    'created_at' => NULL,
+                    'updated_at' => '2021-08-05 15:03:29',
+                ),
+            20 =>
+                array (
+                    'id' => 21,
+                    'name' => 'youtube',
+                    'type' => 'text',
+                    'ar_value' => '01010100101',
+                    'en_value' => '01010100101',
+                    'page' => 'حسابات التواصل',
+                    'slug' => 'socials',
+                    'title' => 'حساب يوتيوب',
+                    'created_at' => NULL,
+                    'updated_at' => '2021-08-05 15:03:29',
+                ),
         ));
-        
-        
+
+
     }
 }

@@ -31,7 +31,7 @@
                             <td>{{++$key}}</td>
                             <td>{{$request->order->id}}</td>
                             <td>{{$request->order->name}}</td>
-                            <td>{{$request->quantity}}</td>
+                            <td>{{(int)$request->quantity}} شهرًا</td>
                             <td>{{$request->price}}</td>
                             <td>{{__($request->status)}}</td>
                             <td>
