@@ -43,7 +43,7 @@
                                     </a>
                                 @else {{__('No Image')}} @endif
                             </td>
-                            <td>{{$item->views}}</td>
+                            <td>{{$item->views_counter}}</td>
                             <td>{{$item->created_at ?? $item->updated_at}}</td>
                             <td><a href="{{route('admin.users.show',$item->user->id)}}">{{$item->user->name}}</a></td>
                             <td>{{$item->neighborhood->city->name}}</td>
