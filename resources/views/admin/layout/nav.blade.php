@@ -5,6 +5,11 @@
     </a>
 </li>
 
+    <li>
+        <a href="{{ route('admin.notifications.index') }}" class="waves-effect"><i class="zmdi zmdi-collection-item"></i>
+            <span> ارسال اشعارات </span> </a>
+    </li>
+
 @if(auth('admin')->user()->can('admin-list') || auth('admin')->user()->can('admin-create') )
     <li class="has_sub">
         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i>

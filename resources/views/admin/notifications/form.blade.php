@@ -43,7 +43,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="example-email"> النص بالانجليزي</label>
             <div class="col-md-10">
-                {!! Form::text("body",null,['class'=>'form-control','placeholder'=>'النص بالانجليزي'])!!}
+                {!! Form::textarea("body",null,['class'=>'form-control editor','placeholder'=>'النص بالانجليزي'])!!}
                 @error('body')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="example-email">النص بالعربي</label>
             <div class="col-md-10">
-                {!! Form::text("body_ar",null,['class'=>'form-control','placeholder'=>'النص بالعربي'])!!}
+                {!! Form::text("body_ar",null,['class'=>'form-control editor','placeholder'=>'النص بالعربي'])!!}
                 @error('body_ar')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}
@@ -93,4 +93,20 @@
            $('.select2').select2();
         });
     </script>
+
+
+        <script>
+
+            $(document).ready(function () {
+
+                CKEDITOR.replaceClass = 'editor';
+
+                $('.words').select2({
+                    // alert("hi");
+                    tags: true,
+                    // tokenSeparators: [',', ' ']
+                });
+            });
+        </script>
+
 @endpush
