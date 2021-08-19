@@ -27,7 +27,9 @@ class HomeController extends Controller
     public function index()
     {
         $data=[
-            'orders_category'=>\DB::table('orders')->join('categories','categories.id','=','orders.category_id')->selectRaw('count(orders.id) as orders , categories.name as category_name')->groupBy('categories.name')->get()->map(function ($q){
+            'orders_category'=>\DB::table('orders')->join('categories','categories.id','=','orders.category_id')
+                ->selectRaw('count(orders.id) as orders , categories.name as category_name')
+                ->groupBy('categories.name')->get()->map(function ($q){
                 return ['label'=>object_get(json_decode($q->category_name),'ar','تصنيف'),'value'=>$q->orders];
             })->toArray(),
 

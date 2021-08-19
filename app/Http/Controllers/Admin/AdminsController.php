@@ -68,7 +68,7 @@ class AdminsController extends Controller
     {
         $admin=Admin::find($id);
         $roles = Role::pluck('name','id')->all();
-        $userRole = $admin->roles()->first()->id;
+        $userRole = $admin->roles()->first()->id ?? "";
         return view('admin.admins.edit',['item'=>$admin,'userRole'=>$userRole,'roles'=>$roles]);
     }
 

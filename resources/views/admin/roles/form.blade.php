@@ -26,15 +26,20 @@
         @enderror
         <br>
 
-
+        <p class="text-muted font-14 mb-3">
+            <label>
+                SelectAll
+                <input type="checkbox" id="selectAll" name="SelectAll">
+            </label>
+        </p>
             <div class="row">
                 @foreach($permission as $value)
                     <div class="col-md-4">
                         @isset($rolePermissions)
-                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name checkbox_roles')) }}
                                 {{ $value->title }}</label>
                         @else
-                            <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                            <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name checkbox_roles')) }}
                                 {{ $value->title }}</label>
                         @endisset
                     </div>
@@ -52,3 +57,19 @@
     <button class="btn btn-primary waves-effect" type="submit">حفظ</button>
 </div>
 </div>
+
+@push('scripts')
+ <script>
+     $(function() {
+
+         $('#selectAll').click(function() {
+             if ($(this).prop('checked')) {
+                 $('.checkbox_roles').prop('checked', true);
+             } else {
+                 $('.checkbox_roles').prop('checked', false);
+             }
+         });
+
+     });
+ </script>
+    @endpush

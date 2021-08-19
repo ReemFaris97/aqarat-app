@@ -37,7 +37,7 @@
                             <td>{{$order->name}}</td>
                             <td>
                                 @if($order->image)
-                                    <a data-fancybox="gallery" href="{{$order->image}}">
+                                    <a data-fancybox="gallery{{$order->id}}" href="{{$order->image}}">
                                         <img src="{{$order->image}}" width="70" height="70"
                                              class="img-thumbnail" alt="order_img">
                                     </a>
