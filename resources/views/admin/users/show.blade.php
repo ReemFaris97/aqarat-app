@@ -16,9 +16,9 @@
                     <thead>
                     <tr>
                         <th>اسم المستخدم</th>
-                        <th>طلبات المستخدم</th>
+                        <th>العروض والطلبات</th>
                         <th>اعلانات المستخدم</th>
-                        <th>كومنتات المستخدم</th>
+                        <th>التعليقات المستخدم</th>
                     </tr>
                     </thead>
 
@@ -28,12 +28,17 @@
                             <td>
                                 @foreach($user->orders as $order)
 
-                               <li><a href="{{route('admin.orders.show',$order->id)}}">{{$order->name}}</a></li>
+                               <li>
+                                   <a href="{{route('admin.orders.show',$order->id)}}">{{$order->name}} </a>
+                                   <span> {{orderType($order->is_special)}}</span>
+                               </li>
                                 @endforeach
                             </td>
                             <td>
                                 @foreach($user->advertisements as $adv)
-                                    <li><a href="{{route('admin.advertising.show',$adv->id)}}">{{$adv->name}}</a></li>
+                                    <li><a href="{{route('admin.advertising.show',$adv->id)}}">{{$adv->name}}  </a>
+                                        <span> {{orderType($order->is_special)}}</span>
+                                    </li>
                                 @endforeach
                             </td>
                             <td>

@@ -15,7 +15,7 @@
                 <div class="row">
                         @foreach($item->getMedia('photos') as $photo)
                         <div class="col-md-4">
-                            <a data-fancybox="gallery" href="{{$photo->getUrl()}}">
+                            <a data-fancybox="gallery{{$item->id}}" href="{{$photo->getUrl()}}">
                                 <img src="{{$photo->getUrl()}}" width="100" height="100"
                                      class="img-thumbnail">
                             </a>

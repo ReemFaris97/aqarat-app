@@ -23,18 +23,34 @@
                                 <td>  {{$order->name}} </td>
                             </tr>
                             <tr>
+                                <th class="font-weight-bold"> نوع الطلب</th>
+                                <td>  {{orderType($order->is_special)}} </td>
+                            </tr>
+                            <tr>
+                                <th class="font-weight-bold"> عدد المشاهدات</th>
+                                <td>  {{(int)$order->views_count}} </td>
+                            </tr>
+                            <tr>
                                 <th class="font-weight-bold"> الصورة</th>
                                 <td>
                                     <img src="{{$order->image}}" style="width: 50px; height: 50px">
                                 </td>
                             </tr>
                             <tr>
-                                <th class="font-weight-bold"> العميل</th>
-                                <td>  {{$order->user->name}} </td>
+                                <th class="font-weight-bold"> المعلن</th>
+                                <td>  <a href="{{route('admin.users.show',$order->user->id)}}">{{$order->user->name}}</a> </td>
+                            </tr>
+                            <tr>
+                                <th class="font-weight-bold">صفة المعلن</th>
+                                <td>  {{__($order->advertiser)}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold"> التصنيف</th>
                                 <td>  {{$order->category->name}} </td>
+                            </tr>
+                            <tr>
+                                <th class="font-weight-bold"> المدينة</th>
+                                <td>  {{$order->neighborhood->city->name}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold"> الحى</th>
@@ -42,28 +58,25 @@
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">العقد</th>
-                                <td>  {{__($order->contract,[],'ar')}} </td>
+                                <td>  {{__($order->contract)}} </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">النوع</th>
-                                <td>  {{__($order->type,[],'ar')}} </td>
+                                <td>  {{__($order->type)}} </td>
                             </tr>
-                            <tr>
-                                <th class="font-weight-bold">المعلن</th>
-                                <td>  {{__($order->advertiser,[],'ar')}} </td>
-                            </tr>
+
                             <tr>
                                 <th class="font-weight-bold">العنوان</th>
-                                <td>  {{$order->address}} </td>
+                                <td>  {{__($order->address)}} </td>
                             </tr>
 
                             <tr>
                                 <th class="font-weight-bold">السعر</th>
-                                <td>  {{$order->price}} </td>
+                                <td>  {{__($order->price)}} </td>
                             </tr>
 
                             <tr>
-                                <th class="font-weight-bold">الوصف</th>
+                                <th class="font-weight-bold">التفاصيل</th>
                                 <td>
                                     <p style="white-space: pre-line;overflow-wrap: anywhere;text-overflow: ellipsis;">{{$order->description}}</p>
                                 </td>
@@ -79,7 +92,7 @@
                                 <td>
                                     @foreach($order->attributes as $attr)
                                         <li>
-                                            {{$attr->name}}
+                                            {{$attr->name}} , قيمتها {{$attr->pivot->value}}
                                         </li>
                                     @endforeach
                                 </td>
@@ -95,6 +108,20 @@
                                     @endforeach
                                 </td>
                             </tr>
+                            <tr>
+                                <th class="font-weight-bold">مجموعة الصور</th>
+                                <td>
+                                    @if($order->getMedia())
+                                        @foreach($order->getMedia() as $image)
+                                            <a data-fancybox="gallery{{$order->id}}" href="{{$image->getFullUrl()}}">
+                                                <img src="{{$image->getFullUrl()}}" width="70" height="70"
+                                                     class="img-thumbnail" alt="adv_img">
+                                            </a>
+                                        @endforeach
+
+                                    @else {{__('No Image')}} @endif
+                                </td>
+                            </tr>
                             @if($order->special_until)
                                 <tr>
                                     <th class="font-weight-bold">طلب مميز</th>
@@ -108,8 +135,7 @@
                                 </tr>
                             @endif
 
-                        </table>
-                    </div>
+                        </table>                    </div>
                 </div>
             </div>
         </div><!-- /.modal-content -->
