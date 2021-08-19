@@ -90,7 +90,10 @@ class OrderRequestController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        //
+        $orderRequest = OrderRequest::findOrFail($id);
+        $orderRequest->delete();
+        toastr()->success('تم حذف الخاصية بنجاح');
+        return redirect()->back();
     }
 
 

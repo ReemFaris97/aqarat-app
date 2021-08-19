@@ -21,6 +21,7 @@
                         <th>المدة</th>
                         <th>السعر</th>
                         <th>الحالة</th>
+                        <th>تعديل الحالة</th>
                         <th>العمليات</th>
                     </tr>
                     </thead>
@@ -45,6 +46,16 @@
                                     <button type="submit"
                                             class="btn-icon waves-effect btn btn-sm btn-success">حفظ</button>
                                 </form>
+                            </td>
+
+                            <td>
+
+                                    <a data-url="{{ route('admin.orders-requests.destroy', $request) }}"
+                                       onclick="delete_form(this)" data-name="{{ $request->name }}" data-toggle="tooltip"
+                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                            style="padding-top: 5px;padding-left: 4px;"
+                                            class="fa fa-trash-o"></i></a>
+
                             </td>
 
 
