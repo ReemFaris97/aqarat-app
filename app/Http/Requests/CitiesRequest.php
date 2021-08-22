@@ -23,9 +23,17 @@ class CitiesRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name.ar' => 'required',
-            'name.en' => 'required',
+//        dd(request()->all());
+        $rules =  [
+            'name.ar' => 'required|unique_translation:cities',
+            'name.en' => 'required|unique_translation:cities',
         ];
+        if ($this->getMethod() == 'PATCH') {
+            $rules = [
+                'name.ar' => 'required|unique_translation:cities,name,' . request()->id,
+                'name.en' => 'required|unique_translation:cities,name,' . request()->id,
+            ];
+                }
+        return $rules;
     }
 }

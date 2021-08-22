@@ -48,4 +48,9 @@ class City extends Model
     {
         return $q->where('status', 1);
     }
+
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
 }

@@ -29,6 +29,10 @@
         </div>
     </div>
 
+    @isset($item)
+        <input name="id" hidden value="{{$item->id}}">
+    @endisset
+
     <div class="col-xs-12">
 <span class="input-group-btn">
     <button type="submit" class="btn waves-effect waves-light btn-primary">حفظ</button>
