@@ -74,9 +74,10 @@ class AdvertisingsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advertisement $advertisement)
+    public function destroy($id)
     {
-        $advertisement->delete();
+        $item=Advertisement::findOrFail($id);
+        $item->delete();
         toastr()->success('تم حذف الإعلان بنجاح');
         return redirect()->back();
     }
