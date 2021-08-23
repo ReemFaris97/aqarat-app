@@ -88,6 +88,9 @@
         </div>
     </div>
 
+ @if (@isset($item) && auth('admin')->id()== $item->id)
+
+    @else
     <div class="col-xs-12">
         <div class="form-group">
             <label class="col-md-3 control-label">الصلاحيات:</label>
@@ -101,6 +104,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     @isset($item)
         <input  name="id" value="{{$item->id}}" hidden>

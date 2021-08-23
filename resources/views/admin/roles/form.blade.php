@@ -26,13 +26,14 @@
         @enderror
         <br>
 
-        <p class="text-muted font-14 mb-3">
+        <p class="text-muted font-14 mb-3" style="  position: absolute; right: 100px;">
             <label>
-                SelectAll
+                تحديد الكل
                 <input type="checkbox" id="selectAll" name="SelectAll">
             </label>
         </p>
             <div class="row">
+                <br><br><br>
                 @foreach($permission as $value)
                     <div class="col-md-4">
                         @isset($rolePermissions)
