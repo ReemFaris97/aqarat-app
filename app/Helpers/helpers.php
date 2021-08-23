@@ -62,6 +62,15 @@ function orderType($status = null)
 
     return $array[$status];
 }
+function valueType($status = null)
+{
+    $array = [
+        'true' => 'توجد',
+        'false' => 'لا توجد',
+    ];
+
+    return $array[$status];
+}
 
 function AttributeType($status = null)
 {

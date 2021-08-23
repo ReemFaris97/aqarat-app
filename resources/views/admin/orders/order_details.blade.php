@@ -95,9 +95,12 @@
                                 <td>
 
                                     @foreach($order->attributes as $attr)
-                                        <li>
-                                            {{$attr->name}} , قيمتها {{$attr->pivot->value}}
-                                        </li>
+                                        {{$attr->name}} :
+                                        @if($attr->type == "boolean")
+                                            {{valueType($attr->pivot->value)}}
+                                        @else
+                                            {{$attr->pivot->value}}
+                                        @endif
                                     @endforeach
                                 </td>
                             </tr>

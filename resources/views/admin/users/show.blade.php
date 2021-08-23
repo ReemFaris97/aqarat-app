@@ -18,7 +18,7 @@
                         <th>اسم المستخدم</th>
                         <th>العروض والطلبات</th>
                         <th>اعلانات المستخدم</th>
-                        <th>التعليقات المستخدم</th>
+                        <th>تعليقات المستخدم</th>
                     </tr>
                     </thead>
 
@@ -29,8 +29,9 @@
                                 @foreach($user->orders as $order)
 
                                <li>
-                                   <a href="{{route('admin.orders.show',$order->id)}}">{{$order->name}} </a>
-                                   <span> {{orderType($order->is_special)}}</span>
+                                   <a href="{{route('admin.orders.show',$order->id)}}">{{$order->name}} </a>/
+{{--                                   <span> {{orderType($order->is_special)}}</span>/--}}
+                                   <span>{{__($order->type,[],'ar')}}</span>
                                </li>
                                 @endforeach
                             </td>

@@ -29,12 +29,12 @@
                             <img src="{{$order->image}}" width="70" height="70"
                                  class="img-thumbnail" alt="adv_img">
                         </a>
-{{--                        <img src="{{$order->image}}" style="width: 50px; height: 50px">--}}
+                        {{--                        <img src="{{$order->image}}" style="width: 50px; height: 50px">--}}
                     </td>
                 </tr>
                 <tr>
                     <th class="font-weight-bold"> المعلن</th>
-                    <td>  <a href="{{route('admin.users.show',$order->user->id)}}">{{$order->user->name}}</a> </td>
+                    <td><a href="{{route('admin.users.show',$order->user->id)}}">{{$order->user->name}}</a></td>
                 </tr>
                 <tr>
                     <th class="font-weight-bold">صفة المعلن</th>
@@ -88,7 +88,12 @@
                     <td>
                         @foreach($order->attributes as $attr)
                             <li>
-                                {{$attr->name}} , قيمتها {{$attr->pivot->value}}
+                                {{$attr->name}} :
+                                @if($attr->type == "boolean")
+                                    {{valueType($attr->pivot->value)}}
+                                @else
+                                    {{$attr->pivot->value}}
+                                @endif
                             </li>
                         @endforeach
                     </td>
