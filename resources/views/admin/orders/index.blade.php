@@ -24,7 +24,7 @@
                         <th>التصنيف</th>
                         <th>السعر</th>
                         <th>التفاصيل</th>
-{{--                        <th>العمليات</th>--}}
+                        <th>العمليات</th>
                     </tr>
                     </thead>
 
@@ -37,7 +37,7 @@
                             <td>{{$order->name}}</td>
                             <td>
                                 @if($order->image)
-                                    <a data-fancybox="gallery" href="{{$order->image}}">
+                                    <a data-fancybox="gallery{{$order->id}}" href="{{$order->image}}">
                                         <img src="{{$order->image}}" width="70" height="70"
                                              class="img-thumbnail" alt="order_img">
                                     </a>
@@ -47,16 +47,15 @@
                             <td>{{$order->category->name}}</td>
                             <td>{{$order->price}}</td>
                             <td>@include('admin.orders.order_details')</td>
-{{--                            <td>--}}
-{{--                                @if(auth('admin')->user()->can('requests-delete'))--}}
-
-{{--                                    <a data-url="{{ route('admin.orders.destroy', $order) }}"--}}
-{{--                                       onclick="delete_form(this)" data-name="{{ $order->name }}" data-toggle="tooltip"--}}
-{{--                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i--}}
-{{--                                            style="padding-top: 5px;padding-left: 4px;"--}}
-{{--                                            class="fa fa-trash-o"></i></a>--}}
-{{--                                @endif--}}
-{{--                            </td>--}}
+                            <td>
+                                @if(auth('admin')->user()->can('requests-delete'))
+                                    <a data-url="{{ route('admin.orders.destroy', $order) }}"
+                                       onclick="delete_form(this)" data-name="{{ $order->name }}" data-toggle="tooltip"
+                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                            style="padding-top: 5px;padding-left: 4px;"
+                                            class="fa fa-trash-o"></i></a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
 

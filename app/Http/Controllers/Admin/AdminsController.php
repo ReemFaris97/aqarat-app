@@ -28,7 +28,7 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name','id')->all();
         return view('admin.admins.add',compact('roles'));
     }
 
@@ -68,7 +68,7 @@ class AdminsController extends Controller
     {
         $admin=Admin::find($id);
         $roles = Role::pluck('name','id')->all();
-        $userRole = $admin->roles()->first()->id;
+        $userRole = $admin->roles()->first()->id ?? "";
         return view('admin.admins.edit',['item'=>$admin,'userRole'=>$userRole,'roles'=>$roles]);
     }
 

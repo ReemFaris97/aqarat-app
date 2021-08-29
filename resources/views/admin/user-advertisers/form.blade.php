@@ -124,8 +124,8 @@
             </p>
             @isset($advertising)
 
-                @if(count($advertising->getMedia('photos')) > 0)
-                    @foreach($advertising->getMedia('photos') as $photo)
+                @if(count($advertising->getMedia()) > 0)
+                    @foreach($advertising->getMedia() as $photo)
                         <div class="row photo{{$photo->id}}">
                             <div class="col-md-6 text-right">
                                 <a data-fancybox="gallery" href="{{$photo->getUrl()}}">

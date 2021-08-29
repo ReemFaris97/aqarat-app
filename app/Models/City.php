@@ -41,6 +41,16 @@ class City extends Model
 
     public function neighborhoods()
     {
-        return $this->hasMany(Neighborhood::class);
+        return $this->hasMany(Neighborhood::class)->active();
+    }
+
+    public function scopeActive($q)
+    {
+        return $q->where('status', 1);
+    }
+
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 }

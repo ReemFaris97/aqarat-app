@@ -41,6 +41,9 @@ abstract class Auth extends Controller implements iAuth
         if (!$attemp) {
             return \responder::error("wrong credentials");
         }
+        if ( auth()->user()->is_active != 1){
+            return \responder::error("account not active");
+        }
         $user =  auth()->user();
 
         $user->token = \JWTAuth::fromUser($user);

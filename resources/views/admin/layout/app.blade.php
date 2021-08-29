@@ -36,7 +36,39 @@
                     <li>
                         <h4 class="page-title">@yield('title') </h4>
                     </li>
+                    <!-- User -->
+                    <div class="user-box"  style="position: absolute; right: 95%">
+                        <div class="user-img">
+
+                            <img src="{{auth('admin')->user()->image}}" alt="user-img" title="system admin" class="img-circle" style="height: 50px; width: 50px;">
+                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </div>
+                        <h5><a href="#">{{auth('admin')->user()->name}}</a></h5>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="{{route('admin.admins.edit',auth('admin')->id())}}">
+                                    <i class="zmdi zmdi-settings"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <!-- item-->
+                                <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger"
+                                   onclick="event.preventDefault(); document.getElementById('logout_form').submit()">
+                                    <i class="zmdi zmdi-power"></i>
+                                </a>
+                                <form id="logout_form" action="{{ route('admin.logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End User -->
                 </ul>
+{{--                <ul class="nav navbar-nav navbar-right">--}}
+
+{{--                </ul>--}}
 
 
             </div><!-- end container -->
@@ -48,36 +80,7 @@
     <!-- ========== Left Sidebar Start ========== -->
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">
-            <!-- User -->
-            <div class="user-box">
-                <div class="user-img">
 
-                    <img src="{{auth('admin')->user()->image}}" alt="user-img" title="Mat Helme"
-                         class="img-circle img-thumbnail img-responsive">
-                    <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
-                </div>
-                <h5><a href="#">{{auth('admin')->user()->name}}</a></h5>
-                <ul class="list-inline">
-                    <li>
-                        <a href="{{route('admin.settings.index')}}">
-                            <i class="zmdi zmdi-settings"></i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <!-- item-->
-                        <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger"
-                           onclick="event.preventDefault(); document.getElementById('logout_form').submit()">
-                            <i class="zmdi zmdi-power"></i>
-                        </a>
-                        <form id="logout_form" action="{{ route('admin.logout') }}" method="POST"
-                              style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            </div>
-            <!-- End User -->
 
             <!--- Sidemenu -->
             <div id="sidebar-menu">

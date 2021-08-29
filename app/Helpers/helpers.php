@@ -53,6 +53,24 @@ function AccountStatus($status = null)
 
     return $array[$status];
 }
+function orderType($status = null)
+{
+    $array = [
+        '1' => 'مميز',
+        '0' => 'غير مميز',
+    ];
+
+    return $array[$status];
+}
+function valueType($status = null)
+{
+    $array = [
+        'true' => 'توجد',
+        'false' => 'لا توجد',
+    ];
+
+    return $array[$status];
+}
 
 function AttributeType($status = null)
 {

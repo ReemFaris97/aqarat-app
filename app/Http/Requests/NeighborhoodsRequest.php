@@ -24,15 +24,15 @@ class NeighborhoodsRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name.ar' => 'required',
-            'name.en' => 'required',
+            'name.ar' => 'required|unique_translation:neighborhoods',
+            'name.en' => 'required|unique_translation:neighborhoods',
             'city_id'=>'required|exists:cities,id'
         ];
 
         if ($this->getMethod() == 'PATCH') {
             $rules = [
-                'name.ar' => 'required',
-                'name.en' => 'required',
+                'name.ar' => 'required|unique_translation:neighborhoods,name,' . request()->id,
+                'name.en' => 'required|unique_translation:neighborhoods,name,' . request()->id,
                 'city_id'=>'required|exists:cities,id'
             ];
         }

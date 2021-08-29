@@ -43,11 +43,13 @@
                                     @endif
 
                                     @if(auth('admin')->user()->can('role-delete'))
+                                        @if($item->name != "Super Admin")
                                         <a class="btn btn-danger" data-name="{{ $item->name }}"
                                            data-url="{{ route('admin.roles.destroy', $item) }}"
                                            onclick="delete_form(this)">
                                             حذف
                                         </a>
+                                            @endif
                                     @endif
                                 </td>
                             </tr>

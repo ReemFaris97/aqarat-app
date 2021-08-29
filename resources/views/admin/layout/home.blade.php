@@ -7,6 +7,7 @@
 @section('content')
     <div class="row">
 
+        <a href="{{route('admin.admins.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
                 <h4 class="header-title m-t-0 m-b-30">عدد أعضاء الإدارة</h4>
@@ -26,7 +27,8 @@
                 </div>
             </div>
         </div><!-- end col -->
-
+        </a>
+        <a href="{{route('admin.users.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
 
@@ -47,7 +49,8 @@
                 </div>
             </div>
         </div><!-- end col -->
-
+        </a>
+        <a href="{{route('admin.cities.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
 
@@ -68,8 +71,9 @@
                 </div>
             </div>
         </div><!-- end col -->
+        </a>
 
-
+        <a href="{{route('admin.neighborhoods.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
 
@@ -90,8 +94,8 @@
                 </div>
             </div>
         </div><!-- end col -->
-
-
+        </a>
+        <a href="{{route('admin.advertising.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
 
@@ -112,7 +116,8 @@
                 </div>
             </div>
         </div><!-- end col -->
-
+        </a>
+        <a href="{{route('admin.blogs.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
                 <h4 class="header-title m-t-0 m-b-30">عدد المدونات</h4>
@@ -132,7 +137,8 @@
                 </div>
             </div>
         </div><!-- end col -->
-
+        </a>
+        <a href="{{route('admin.orders.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
                 <h4 class="header-title m-t-0 m-b-30">عدد الطلبات</h4>
@@ -152,7 +158,8 @@
                 </div>
             </div>
         </div><!-- end col -->
-
+        </a>
+        <a href="{{route('admin.commonQuestions.index')}}">
         <div class="col-lg-3 col-md-6">
             <div class="card-box">
 
@@ -173,6 +180,8 @@
                 </div>
             </div>
         </div><!-- end col -->
+        </a>
+
         <div class="col-lg-4 col-md-12">
             <div class="card-box">
 
@@ -182,6 +191,8 @@
 
             </div>
         </div><!-- end col -->
+
+
         <div class="col-lg-4 col-md-12">
             <div class="card-box">
 
@@ -191,6 +202,8 @@
 
             </div>
         </div><!-- end col -->
+
+
         <div class="col-lg-4 col-md-12">
             <div class="card-box">
 
@@ -200,6 +213,7 @@
 
             </div>
         </div><!-- end col -->
+
 
     </div>
 

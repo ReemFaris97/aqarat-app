@@ -63,11 +63,14 @@
                                                                       class="fa fa-pencil"></i></a>
                                 @endif
                                 @if(auth('admin')->user()->can('admin-delete'))
-                                    <a data-url="{{ route('admin.admins.destroy', $item) }}"
-                                       onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
-                                       data-original-title="حذف" class="btn btn-danger btn-circle"><i
-                                            style="padding-top: 5px;padding-left: 4px;"
-                                            class="fa fa-trash-o"></i></a>
+                                @if( $item->email == "admin@admin.com" || auth('admin')->id() == $item->id)
+                                    @else
+                                        <a data-url="{{ route('admin.admins.destroy', $item) }}"
+                                           onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
+                                           data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                                style="padding-top: 5px;padding-left: 4px;"
+                                                class="fa fa-trash-o"></i></a>
+                                        @endif
                                 @endif
                             </td>
                         </tr>

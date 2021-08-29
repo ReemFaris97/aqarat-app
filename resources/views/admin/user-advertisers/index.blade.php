@@ -84,7 +84,12 @@
                                 @endif
 
                                 @if(auth('admin')->user()->can('advertisings-delete'))
-                                        @include('admin.user-advertisers.delete-modal')
+{{--                                        @include('admin.user-advertisers.delete-modal')--}}
+                                        <a data-url="{{ route('admin.users-advertisers.destroy', $item) }}"
+                                           onclick="delete_form(this)" data-name="{{ $item->name }}" data-toggle="tooltip"
+                                           data-original-title="حذف" class="btn btn-danger btn-circle"><i
+                                                style="padding-top: 5px;padding-left: 4px;"
+                                                class="fa fa-trash-o"></i></a>
                                 @endif
 
 

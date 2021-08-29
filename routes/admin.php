@@ -11,9 +11,10 @@ Route::get('login', [Auth\LoginController::class, 'showLoginForm'])->name('login
 Route::post('login', [Auth\LoginController::class, 'login']);
 Route::post('logout', [Auth\LoginController::class, 'logout'])->name('logout');
 // Dashboard
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::group(['middleware' => ['admin']], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resources([
         'contacts' => ContactController::class,
         'admins' => AdminsController::class,
