@@ -6,7 +6,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="example-email">العنوان </label>
             <div class="col-md-10">
-                {!! Form::text("title_ar",null,['class'=>'form-control','placeholder'=>'  العنوان بالعربي '])!!}
+                {!! Form::text("title",null,['class'=>'form-control','placeholder'=>'  العنوان  '])!!}
                 @error('title')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="example-email">النص </label>
             <div class="col-md-10">
-                {!! Form::text("body",null,['class'=>'form-control','placeholder'=>'النص بالعربي'])!!}
+                {!! Form::text("body",null,['class'=>'form-control','placeholder'=>'النص '])!!}
                 @error('body')
                 <div class="invalid-feedback" style="color: #ef1010">
                     {{ $message }}
