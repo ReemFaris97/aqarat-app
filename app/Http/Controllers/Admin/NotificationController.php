@@ -39,22 +39,14 @@ class NotificationController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->validate([
-            'users' => 'nullable|array',
             'title' => 'required|string',
-            'title_ar' => 'required|string',
             'body' => 'required|string',
-            'body_ar' => 'required|string',
-            'url' => 'nullable|url'
         ]);
-        $users = User::when(\request('users'), function ($q) {
-            $q->whereIn('id', \request('users'));
-        })->get();
+        $users = User::all();
         \Notification::send($users, new GeneralNotification($inputs));
-        if (\request('users')) {
-            FireBase::BulkNotification($users, $inputs['title'], $inputs['body'], \Arr::except($inputs, 'users'));
-        } else {
-            FireBase::sendFCMTopic('/topics/general-users', $request['title'], $request['body'], $inputs);
-        }
+
+        FireBase::sendFCMTopic('/topics/general-users', $request['title'], $request['body'], $inputs);
+
         toastr()->success('تم ارسال الاشعارات بنجاح');
         return back();
     }
