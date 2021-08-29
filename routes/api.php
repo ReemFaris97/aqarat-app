@@ -56,6 +56,7 @@ Route::group(['middleware' => 'localization'], function () {
         Route::get('categories', CategoryController::class);
         Route::get('utilities', UtilityController::class);
         Route::get('blogs', [BlogController::class, 'index']);
+        Route::put('blogs/{blog}', [BlogController::class, 'update']);
         Route::resources([
 //        'blogs' => BlogController::class,
             'questions' => QuestionController::class,
