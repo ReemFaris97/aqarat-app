@@ -97,7 +97,7 @@
                                     @foreach($order->attributes as $attr)
                                         {{$attr->name}} :
                                         @if($attr->type == "boolean")
-                                            {{valueType($attr->pivot->value)}}
+                                            {{($attr->pivot->value)}}
                                         @else
                                             {{$attr->pivot->value}}
                                         @endif
