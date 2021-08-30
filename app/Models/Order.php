@@ -227,4 +227,9 @@ class Order extends Model implements HasMedia
         if (Arr::has($inputs,'utilities')) $order->utilities()->sync(Arr::get($inputs,'utilities'));
         return  $order;
     }
+
+    public function chats()
+    {
+        return $this->morphMany(Chat::class,'model');
+    }
 }

@@ -28,8 +28,6 @@ class ChatController extends Controller
             'message' => 'required|string',
             'model_type' => 'required|in:Order,Advertisement',
             'model_id' => 'required|string'
-
-
         ]);
 
         if ($request->has('receiver_id')) {
@@ -57,6 +55,20 @@ class ChatController extends Controller
 
     public function show(Chat $chat)
     {
+        return \responder::success(new ChatResource($chat));
+    }
+
+    public function getMessagesByModel(Request $request)
+    {
+        $inputs = $request->validate([
+            'model_id' => 'required|int',
+            'model_type' => 'required|in:Order,Advertisement'
+        ]);
+        $model = ("App\\Models\\" . $request['model_type'])::findOrFail($request['model_id']);
+        $chat = $model->chats()->whereHas('users', function ($q) {
+            return $q->where('user_id', auth()->id());
+        })->firstOrFail();
+
         return \responder::success(new ChatResource($chat));
     }
 }
