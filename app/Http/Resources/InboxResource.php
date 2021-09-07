@@ -19,6 +19,7 @@ class InboxResource extends JsonResource
             'model'=>[
                 'id'=>$this->model->id,
                 'model_type'=>class_basename($this->model->getMorphClass()),
+                'name'=>$this->mode->name,
                 'type'=>object_get($this->model,'type','')
             ],
             'lat_message'=>new MessagesResource($this->messages()->latest()->first())
