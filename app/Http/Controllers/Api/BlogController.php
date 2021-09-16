@@ -21,36 +21,16 @@ class BlogController extends Controller
         return \responder::success(new BaseCollection(Blog::with('comments')->active()->latest()->paginate(10), BlogResource::class));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        //
+        return  \responder::success(new BlogResource($blog));
     }
 
     /**
