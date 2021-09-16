@@ -79,7 +79,7 @@ class Order extends Model implements HasMedia
         static::created(function (Order $order) {
             $users = User::whereHas('orders', function ($q) use ($order) {
                 $q->where(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request'])->orWhereHas('neighborhoods',function ($query) use($order){
-                    $query->whereIn('neighborhoods.id',$order->neighborhoods());
+                    $query->whereIn('neighborhoods.id',$order->neighborhoods()->pluck('neighborhoods.id'));
                 });
             })->where('users.id', '!=', $order->user_id)->get();
             \Notification::send($users, new SimilarOrderNotification($order));
@@ -167,8 +167,10 @@ class Order extends Model implements HasMedia
                            ) + sin( radians(?) ) *
                            sin( radians( `lat` ) ) )
                          ) AS distance', [request()->lat, request()->lng, request()->lat])
-                /*   ->havingRaw("20 >=  distance")*/ ->orderBy('distance');
+                /*   ->havingRaw("20 >=  dista
+               nce")*/ ->orderBy('distance');
         });
+
         $query->limit(50)->with('user', 'neighborhood', 'attributes', 'utilities')->withCount('views');
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
