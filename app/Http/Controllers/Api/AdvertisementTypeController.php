@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Api\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\AdvertisementType;
 use Illuminate\Http\Request;
 
