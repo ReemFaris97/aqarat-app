@@ -92,7 +92,7 @@ class Advertisement extends Model implements HasMedia
 
     public function type()
     {
-        return $this->belongsTo(AdvertisementType::class);
+        return $this->belongsTo(AdvertisementType::class,'advertisement_type_id');
     }
 
 }
