@@ -57,6 +57,7 @@ class OrderController extends Controller
         });
         if ($request->has('attributes')) $order->attributes()->sync($request->get('attributes'));
         if ($request->has('utilities')) $order->utilities()->sync($request->utilities);
+        if ($request->has('neighborhoods')) $order->neighborhoods()->sync($request->neighborhoods);
 
         return \responder::success(new OrderResource($order));
     }

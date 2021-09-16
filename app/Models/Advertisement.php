@@ -90,4 +90,9 @@ class Advertisement extends Model implements HasMedia
         return $this->morphMany(Chat::class,'model');
     }
 
+    public function type()
+    {
+        return $this->belongsTo(AdvertisementType::class);
+    }
+
 }

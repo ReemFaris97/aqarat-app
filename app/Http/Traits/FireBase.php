@@ -2,10 +2,6 @@
 
 namespace App\Http\Traits;
 
-use Kreait\Firebase\Database\Reference;
-use Kreait\Firebase\Factory;
-
-const DEFAULT_URL = 'https://osraty-a153d.firebaseio.com/';
 class FireBase
 {
     const fcm_server_key = 'AAAAKBsXuv0:APA91bF2P-rDzR7XZJksWia4M_7lyQpuM_Az_w0jMyp4HFWEmN3iAztb6qcXeeZMo5i-yQRYP9DFJ4255gsZqEyFu-P9l8tCYMpgZDNkwmemq_nkIhhyNZTXEWUK37JtqnXMVwtd05a1';

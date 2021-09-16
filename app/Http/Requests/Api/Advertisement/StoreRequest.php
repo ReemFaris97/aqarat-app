@@ -32,7 +32,8 @@ class StoreRequest extends FormRequest
             'lng'=>'required|numeric|min:180-|max:190',
             'images'=>'sometimes|array',
             'images.*'=>'required|image',
-            'address'=>'required|string'
+            'address'=>'required|string',
+            'advertisement_type_id'=>'required|exists:advertisement_types,id'
         ];
     }
 }

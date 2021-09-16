@@ -28,7 +28,7 @@ class StoreRequest extends FormRequest
             'type' => 'required|in:request,offer',
             'image' => 'required|image',
             'images' => 'sometimes|array',
-            'neighborhood_id'=>'required|exists:neighborhoods,id',
+            'neighborhood_id'=>'required_if:type,offer|exists:neighborhoods,id',
             'category_id' => 'required|exists:categories,id',
             'contract' => 'required|in:buy,sell,rent',
             'advertiser' => 'required|in:owner,agent,marketer',
@@ -40,7 +40,9 @@ class StoreRequest extends FormRequest
             'attributes'=>'sometimes|array',
             'attributes.*.value'=>'sometimes|nullable|string',
             'utilities'=>'sometimes|array',
-            'utilities.*'=>'required'
+            'utilities.*'=>'required',
+            'neighborhoods'=>'required_if:type,request|array',
+            'neighborhoods.*'=>'exists:neighborhoods,id'
 
         ];
     }

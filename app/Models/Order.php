@@ -78,7 +78,9 @@ class Order extends Model implements HasMedia
         });
         static::created(function (Order $order) {
             $users = User::whereHas('orders', function ($q) use ($order) {
-                $q->where(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request']);
+                $q->where(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request'])->orWhereHas('neighborhoods',function ($query) use($order){
+                    $query->whereIn('neighborhoods.id',$order->neighborhoods());
+                });
             })->where('users.id', '!=', $order->user_id)->get();
             \Notification::send($users, new SimilarOrderNotification($order));
         });
@@ -219,17 +221,23 @@ class Order extends Model implements HasMedia
            $attribute=Attribute::findOrFail($key);
            throw_unless($attribute or !$value,ValidationException::withMessages([__("{$attribute->name} must be presented")]));
         }
-        $order=self::create($inputs);
-        if (Arr::has($inputs,'images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+        $order = self::create($inputs);
+        if (Arr::has($inputs, 'images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
             $fileAdder->toMediaCollection();
         });
-        if (Arr::has($inputs,'attributes')) $order->attributes()->sync(Arr::get($inputs,'attributes'));
-        if (Arr::has($inputs,'utilities')) $order->utilities()->sync(Arr::get($inputs,'utilities'));
-        return  $order;
+        if (Arr::has($inputs, 'attributes')) $order->attributes()->sync(Arr::get($inputs, 'attributes'));
+        if (Arr::has($inputs, 'utilities')) $order->utilities()->sync(Arr::get($inputs, 'utilities'));
+        if (Arr::has($inputs, 'neighborhoods')) $order->neighborhoods()->attach(Arr::get($inputs, 'neighborhoods'));
+        return $order;
+    }
+
+    public function neighborhoods()
+    {
+        return $this->belongsToMany(Neighborhood::class, OrderNeighborhood::class);
     }
 
     public function chats()
     {
-        return $this->morphMany(Chat::class,'model');
+        return $this->morphMany(Chat::class, 'model');
     }
 }

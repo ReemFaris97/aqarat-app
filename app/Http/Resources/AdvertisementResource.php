@@ -35,7 +35,11 @@ class AdvertisementResource extends JsonResource
             'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
             'views'=>(int)$this->views_count,
             'distance'=>$this->distance ?? 0,
-            'created_at'=>$this->created_at->toDateString()
+            'created_at'=>$this->created_at->toDateString(),
+            'advertisement_type'=>[
+                'id'=>$this->advertisement_type_id,
+                'name'=>$this->type->name
+            ]
 
         ];
     }

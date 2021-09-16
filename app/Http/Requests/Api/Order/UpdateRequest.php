@@ -40,7 +40,9 @@ class UpdateRequest extends FormRequest
             'attributes'=>'sometimes|array',
             'attributes.*.value'=>'required|string',
             'utilities'=>'sometimes|array',
-            'utilities.*'=>'required'
+            'utilities.*'=>'required',
+            'neighborhoods'=>'sometimes|array',
+            'neighborhoods.*'=>'required|exists:neighborhoods,id'
         ];
     }
 }

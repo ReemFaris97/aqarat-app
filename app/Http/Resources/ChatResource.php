@@ -16,7 +16,7 @@ class ChatResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->mode->name,
+            'name'=>$this->model->name,
             'messages'=>new BaseCollection($this->messages()->with('user')->latest('created_at')->paginate(15),MessagesResource::class)
         ];
     }

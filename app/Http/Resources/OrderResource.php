@@ -37,6 +37,8 @@ class OrderResource extends JsonResource
             'is_favoured' => $this->is_favoured_exists ?? false,
             'created_at' => $this->created_at->toDateTimeString(),
             'is_special' => $this->special_until >= now() ? true : false,
+
+            'neighborhoods'=>NeighborhoodResource::collection($this->neighborhoods)
         ];
     }
 }

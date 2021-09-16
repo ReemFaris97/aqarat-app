@@ -33,7 +33,9 @@ class UpdateRequest extends FormRequest
             'images'=>'sometimes|array',
             'images.*'=>'sometimes|image',
             'address'=>'sometimes|string',
-            'is_active'=>'sometimes|boolean'
+            'is_active'=>'sometimes|boolean',
+            'advertisement_type_id'=>'sometimes|exists:advertisement_types,id'
+
         ];
     }
 }
