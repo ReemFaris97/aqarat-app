@@ -38,7 +38,8 @@ class IndexRequest extends FormRequest
             'attributes.*.id'=>'sometimes|integer',
             'attributes.*.value'=>'sometimes',
             'sort'=>'sometimes|string|in:price_a,price_d,latest,today,views',
-            'name'=>'sometimes'
+            'name'=>'sometimes',
+            'device_id'=>'sometimes'
         ];
     }
 }

@@ -157,7 +157,9 @@ class Order extends Model implements HasMedia
                 });
             }
         });
-
+        $query->when($request->device_id,function (Builder $q){
+            $q->withExists('is_viewed');
+        });
         $query->when($request->lat and $request->lng, function ($q) {
             $q->select('*')->selectRaw('( 6356 * acos( cos( radians(?) ) *
                            cos( radians( `lat` ) )
@@ -174,6 +176,10 @@ class Order extends Model implements HasMedia
         $query->with('attributes', 'category', 'utilities', 'user')->withExists('isFavoured');
     }
 
+    public function is_viewed(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(View::class)->where('device_id',\request('device_id',''));
+}
     public function favouriests()
     {
         return $this->morphMany(Favourite::class, 'model');
