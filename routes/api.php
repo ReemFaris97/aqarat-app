@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\AdvertisementTypeController;
 use App\Http\Controllers\Api\Auth\AdvertisementsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\FavouriteController;
@@ -51,7 +52,7 @@ Route::group(['middleware' => 'localization'], function () {
     Route::group(['middleware' => 'jwt.check'], function () {
 
         Route::get('blogs/{blog}', \App\Http\Controllers\BlogController::class)->name('web.blog');
-
+        Route::get('advertisement-types',AdvertisementTypeController::class);
         Route::get('cities', CityController::class);
         Route::get('settings', SettingController::class);
         Route::get('categories', CategoryController::class);
