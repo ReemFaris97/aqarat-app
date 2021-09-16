@@ -52,7 +52,7 @@ class Advertisement extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia,ImageOperations;
 
-    protected $fillable=['name', 'image', 'views_counter', 'user_id', 'neighborhood_id', 'lat', 'lng', 'description','address','is_active','is_reviewed','admin_reviewed'];
+    protected $fillable=['name', 'image', 'views_counter', 'user_id', 'neighborhood_id', 'lat', 'lng', 'description','address','is_active','is_reviewed','admin_reviewed',,'advertisement_type_id'];
 
     public function user()
     {
