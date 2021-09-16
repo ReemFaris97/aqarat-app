@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Api\Controllers\AdvertisementTypeController;
+use App\Http\Controllers\Api\AdvertisementTypeController;
 use App\Http\Controllers\Api\Auth\AdvertisementsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\FavouriteController;
