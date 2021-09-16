@@ -18,8 +18,8 @@ class AdvertisementTypeController extends Controller
     {
         return \responder::success(AdvertisementType::all()->transform(function ($q) {
             return [
-                'id' => $this->id,
-                'name' => $this->name,
+                'id' => $q->id,
+                'name' => $q->name,
             ];
         }));
     }
