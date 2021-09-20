@@ -27,7 +27,7 @@ class ChatMessage extends Model
         static::created(function (ChatMessage $message){
             broadcast(new NewMessageEvent($message))->toOthers();
             $users=$message->chat->usersModel->where('id','!=',$message->user_id);
-            info($users);
+            $message->created_at=$message->created_at->toDateTimeString();
             \Notification::send($users,new MessageNotification($message));
         });
     }
