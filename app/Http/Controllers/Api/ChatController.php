@@ -14,7 +14,7 @@ class ChatController extends Controller
 {
     public function index()
     {
-        $chats = Chat::whereHas('users', function ($q) {
+        $chats = Chat::whereHas('model')->whereHas('users', function ($q) {
             $q->where('user_id', auth()->id());
         })->latest('updated_at')->paginate(10);
         return \responder::success(new BaseCollection($chats, InboxResource::class));
