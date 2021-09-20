@@ -22,6 +22,7 @@ class NewMessageEvent implements ShouldBroadcast
     public function __construct($message)
     {
         //
+        $message->created_at=$message->created_at->toDateTimeString();
         $this->message = $message;
     }
 
