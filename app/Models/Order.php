@@ -175,6 +175,13 @@ class Order extends Model implements HasMedia
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
         });
+        $query->when($request->has('neighborhood_id'), function ($q) use ($request) {
+            $q->where(function (Builder $q) use ($request) {
+                $q->where('neighborhood_id', $request->neighborhood_id)->orWhereHas('neighborhoods', function ($q) {
+                    $q->where('neighborhoods.id', \request('neighborhood_id'));
+                });
+            });
+        });
         $query->with('attributes', 'category', 'utilities', 'user')->withExists('isFavoured');
     }
 
