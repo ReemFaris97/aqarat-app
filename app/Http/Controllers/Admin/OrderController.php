@@ -13,7 +13,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::whereAdminReviewed(1)->latest()->with(['attributes','utilities'])->get();
+        $orders = Order::whereAdminReviewed(1)->latest()->with(['attributes','utilities','neighborhood','neighborhoods','category','user','media'])->get();
         return view('admin.orders.index',compact('orders'));
     }
 

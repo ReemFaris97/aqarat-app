@@ -1,3 +1,17 @@
+<div class="user-box" >
+    <a href="{{route('admin.admins.edit',auth('admin')->id())}}">
+        <i class="zmdi zmdi-settings"></i>
+    </a>
+    <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger"
+       onclick="event.preventDefault(); document.getElementById('logout_form').submit()">
+        <i class="zmdi zmdi-power"></i>
+    </a>
+    <form id="logout_form" action="{{ route('admin.logout') }}" method="POST"
+          style="display: none;">
+        @csrf
+    </form>
+
+</div>
 <li class="text-muted menu-title">القائمة الرئيسية</li>
 
 <li>
@@ -143,6 +157,18 @@
             @endif
             @if(auth('admin')->user()->can('categories-create'))
                 <li><a href="{{route('admin.categories.create')}}">اضافة تصنيف جديد</a></li>
+            @endif
+        </ul>
+    </li>
+    <li class="has_sub">
+        <a href="javascript:void(0);" class="waves-effect"><i
+                class="zmdi zmdi-collection-text"></i><span> تصنيفات الاعلانات </span> </a>
+        <ul class="list-unstyled">
+            @if(auth('admin')->user()->can('categories-list'))
+                <li><a href="{{route('admin.advertisement-types.index')}}">جميع تصنيفات الاعلانات</a></li>
+            @endif
+            @if(auth('admin')->user()->can('categories-create'))
+                <li><a href="{{route('admin.advertisement-types.create')}}">اضافة تصنيف جديد</a></li>
             @endif
         </ul>
     </li>

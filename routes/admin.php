@@ -38,6 +38,7 @@ Route::group(['middleware' => ['admin']], function () {
         'users-advertisers' => UserAdvertisersController::class,
         'users-orders' => UserOrderController::class,
         'orders-requests' => OrderRequestController::class,
+        'advertisement-types'=>AdvertisementTypeController::class
     ]);
 
     //change status
