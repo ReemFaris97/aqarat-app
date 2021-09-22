@@ -58,7 +58,7 @@
                             <tr>
                                 <th class="font-weight-bold"> الحى</th>
                                 <td>  {{$order->neighborhood->name}}
-                                {{$order->neighborhood->implode('|')}}
+                                {{$order->neighborhoods->implode('|')}}
                                 </td>
                             </tr>
                             <tr>
