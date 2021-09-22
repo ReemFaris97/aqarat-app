@@ -57,7 +57,9 @@
                             </tr>
                             <tr>
                                 <th class="font-weight-bold"> الحى</th>
-                                <td>  {{$order->neighborhood->name}} </td>
+                                <td>  {{$order->neighborhood->name}}
+                                {{$order->neighborhood->implode('|')}}
+                                </td>
                             </tr>
                             <tr>
                                 <th class="font-weight-bold">العقد</th>
@@ -97,7 +99,7 @@
                                     @foreach($order->attributes as $attr)
                                         {{$attr->name}} :
                                         @if($attr->type == "boolean")
-                                            {{($attr->pivot->value)}}
+                                            {{__($attr->pivot->value,[],'ar')}}
                                         @else
                                             {{$attr->pivot->value}}
                                         @endif

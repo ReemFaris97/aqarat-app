@@ -10,7 +10,7 @@ var handleDataTableButtons = function() {
     0 !== $("#datatable-buttons").length && $("#datatable-buttons").DataTable({
         dom: "Bfrtip",
         language:{
-            url:'//cdn.datatables.net/plug-ins/1.10.25/i18n/Arabic.json'
+            url:'Arabic.json'
         },
         buttons: [{
             extend: "copy",
@@ -22,11 +22,11 @@ var handleDataTableButtons = function() {
             extend: "excel",
             className: "btn-sm"
         }, {
-            extend: "pdf",
-            className: "btn-sm"
-        }, {
             extend: "print",
-            className: "btn-sm"
+            className: "btn-sm",
+            customize: function (win) {
+                $(win.document.body).css('direction', 'rtl');
+            }
         }],
         responsive: !0
     })
