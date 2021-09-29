@@ -19,7 +19,6 @@ class OrderController extends Controller
     {
 
         $orders=Order::query();
-        $orders->withExists('isFavoured')->withExists('views');
         $orders->filter($request);
         return \responder::success(OrderResource::collection($orders->get()));
     }

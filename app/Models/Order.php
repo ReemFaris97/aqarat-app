@@ -171,7 +171,6 @@ class Order extends Model implements HasMedia
                nce")*/ ->orderBy('distance');
         });
 
-        $query->limit(50)->with('user', 'neighborhood','neighborhood.city','media','category', 'attributes', 'utilities')->withCount('views');
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
         });
@@ -182,7 +181,10 @@ class Order extends Model implements HasMedia
                 });
             });
         });
-        $query->with('attributes', 'category', 'utilities', 'user')->withExists('isFavoured');
+        $query
+            ->withExists('isFavoured')->withExists('is_viewed')
+            ->with('user', 'neighborhood','neighborhood.city','media','category.attributes', 'attributes', 'utilities')
+            ->withExists('isFavoured')->limit(50)->withCount('views');
     }
 
     public function is_viewed(): \Illuminate\Database\Eloquent\Relations\HasMany
