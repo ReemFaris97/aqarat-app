@@ -187,9 +187,9 @@ class Order extends Model implements HasMedia
             ->withExists('isFavoured')->limit(50)->withCount('views');
     }
 
-    public function is_viewed(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function is_viewed(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->hasMany(View::class)->where('device_id',\request('device_id',''));
+        return $this->morphMany(View::class,'model')->where('device_id',\request('device_id',''));
 }
     public function favouriests()
     {
