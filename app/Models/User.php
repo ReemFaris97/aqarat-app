@@ -55,6 +55,14 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereResetCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereResetSentAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Advertisement[] $favouriteAdvertisements
+ * @property-read int|null $favourite_advertisements_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $favouriteOrders
+ * @property-read int|null $favourite_orders_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  */
 class User extends Authenticatable implements JWTSubject
 {

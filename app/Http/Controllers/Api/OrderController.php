@@ -20,6 +20,10 @@ class OrderController extends Controller
 
         $orders=Order::query();
         $orders->filter($request);
+        $orders     ->with('user', 'neighborhood','neighborhood.city','media','category.attributes', 'attributes', 'utilities')
+            ->withExists('isFavoured')
+            ->withExists('is_viewed')
+            ->limit(50)->withCount('views');
         return \responder::success(OrderResource::collection($orders->get()));
     }
 

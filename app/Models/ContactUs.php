@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ContactUs wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $user_id
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereUserId($value)
  */
 class ContactUs extends Model
 {

@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
  * @mixin \Eloquent
+ * @property int $is_visible
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereIsVisible($value)
  */
 class Comment extends Model
 {

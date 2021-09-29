@@ -29,6 +29,7 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Neighborhood whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Neighborhood whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|Neighborhood active()
  */
 class Neighborhood extends Model
 {

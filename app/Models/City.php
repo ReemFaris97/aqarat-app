@@ -30,6 +30,7 @@ use Spatie\Translatable\HasTranslations;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Neighborhood[] $neighborhoods
  * @property-read int|null $neighborhoods_count
+ * @method static \Illuminate\Database\Eloquent\Builder|City active()
  */
 class City extends Model
 {

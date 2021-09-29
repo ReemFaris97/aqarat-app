@@ -58,6 +58,36 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  * @mixin \Eloquent
+ * @property string $type
+ * @property int $is_reviewed
+ * @property int $is_active
+ * @property int $is_special
+ * @property int $admin_reviewed
+ * @property \Illuminate\Support\Carbon|null $special_until
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
+ * @property-read int|null $chats_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Favourite[] $favouriests
+ * @property-read int|null $favouriests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Favourite[] $isFavoured
+ * @property-read int|null $is_favoured_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\View[] $is_viewed
+ * @property-read int|null $is_viewed_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Neighborhood[] $neighborhoods
+ * @property-read int|null $neighborhoods_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OrderRequest[] $requests
+ * @property-read int|null $requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\View[] $views
+ * @property-read int|null $views_count
+ * @method static Builder|Order filter(\Illuminate\Http\Request $request)
+ * @method static Builder|Order sort($sort)
+ * @method static Builder|Order whereAdminReviewed($value)
+ * @method static Builder|Order whereIsActive($value)
+ * @method static Builder|Order whereIsReviewed($value)
+ * @method static Builder|Order whereIsSpecial($value)
+ * @method static Builder|Order whereSpecialUntil($value)
+ * @method static Builder|Order whereType($value)
  */
 class Order extends Model implements HasMedia
 {
@@ -181,10 +211,7 @@ class Order extends Model implements HasMedia
                 });
             });
         });
-        $query
-            ->withExists('isFavoured')->withExists('is_viewed')
-            ->with('user', 'neighborhood','neighborhood.city','media','category.attributes', 'attributes', 'utilities')
-            ->withExists('isFavoured')->limit(50)->withCount('views');
+
     }
 
     public function is_viewed(): \Illuminate\Database\Eloquent\Relations\MorphMany

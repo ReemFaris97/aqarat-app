@@ -24,6 +24,9 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Attribute[] $attributes
+ * @property-read int|null $attributes_count
+ * @property-read array $translations
  */
 class Category extends Model
 {

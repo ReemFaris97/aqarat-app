@@ -22,6 +22,9 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Utility whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Utility whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $image
+ * @property-read array $translations
+ * @method static \Illuminate\Database\Eloquent\Builder|Utility whereImage($value)
  */
 class Utility extends Model
 {
