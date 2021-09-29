@@ -50,7 +50,7 @@ class OrderController extends Controller
      */
     public function update(UpdateRequest $request, Order $order)
     {
-        $order->update($request->validated());
+        $order->update($request->validated()+['updated_at'=>now()]);
 
         if ($request->has('images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
             $fileAdder->toMediaCollection();

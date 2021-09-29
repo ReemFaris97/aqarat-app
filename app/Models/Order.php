@@ -171,7 +171,7 @@ class Order extends Model implements HasMedia
                nce")*/ ->orderBy('distance');
         });
 
-        $query->limit(50)->with('user', 'neighborhood', 'attributes', 'utilities')->withCount('views');
+        $query->limit(50)->with('user', 'neighborhood','neighborhood.city','media','category', 'attributes', 'utilities')->withCount('views');
         $query->when($request->sort, function ($q) {
             $q->sort(\request('sort'));
         });
