@@ -198,7 +198,7 @@ class Order extends Model implements HasMedia
                            sin( radians( `lat` ) ) )
                          ) AS distance', [request()->lat, request()->lng, request()->lat])
                 /*   ->havingRaw("20 >=  dista
-               nce")*/ ->orderBy('distance');
+               nce") ->orderBy('distance')*/;
         });
 
         $query->when($request->sort, function ($q) {
