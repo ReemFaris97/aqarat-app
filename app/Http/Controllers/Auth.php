@@ -45,7 +45,10 @@ abstract class Auth extends Controller implements iAuth
             return \responder::error("account not active");
         }
         $user =  auth()->user();
-
+        $user->update([
+            'fcm_token_android' => $request->fcm_token_android,
+            'fcm_token_ios' => $request->fcm_token_ios,
+        ]);
         $user->token = \JWTAuth::fromUser($user);
         $resource= $this->resource();
         return \responder::success(new $resource($user));
