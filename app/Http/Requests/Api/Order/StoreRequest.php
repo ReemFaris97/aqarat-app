@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string',
             'type' => 'required|in:request,offer',
-            'image' => 'required|image',
+            'image' => 'required_if:type,offer|image',
             'images' => 'sometimes|array',
             'neighborhood_id'=>'required_if:type,offer|exists:neighborhoods,id',
             'category_id' => 'required|exists:categories,id',
