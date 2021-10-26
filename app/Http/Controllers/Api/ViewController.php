@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\View;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,9 @@ class ViewController extends Controller
     {
         $validated = $request->validate([
             'model_id' => 'required|integer',
-            'model_type' => 'required|in:Advertisement,Order',
             'device_id' => 'required|string'
         ]);
-        $validated['model_type'] = "App\\Models\\{$request['model_type']}";
+        $validated['model_type'] = Order::class;
         View::firstOrCreate($validated);
         return \responder::success(__('success'));
     }

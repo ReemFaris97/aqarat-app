@@ -120,12 +120,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function advertisements()
     {
-        return $this->hasMany(Advertisement::class);
+        return $this->hasMany(Order::class)->where('type','advertisement');
     }
 
     public function favouriteAdvertisements()
     {
-        return $this->morphedByMany(Advertisement::class, 'model', Favourite::class);
+        return $this->morphedByMany(Order::class, 'model', Favourite::class)->where('type','advertisement');
     }
 
     public function favouriteOrders()

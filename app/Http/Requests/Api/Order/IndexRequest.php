@@ -26,7 +26,7 @@ class IndexRequest extends FormRequest
         return [
             'lat'=>'required|min:-90|max:90|numeric',
             'lng'=>'required|min:-180|max:180|numeric',
-            'type'=>'sometimes|in:offer,request',
+            'type'=>'sometimes',
             'advertiser'=>'sometimes|in:owner,agent,marketer',
             'price_from'=>'sometimes|numeric',
             'price_to'=>'sometimes|numeric',

@@ -17,7 +17,7 @@ class UserOrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::whereAdminReviewed(0)->latest()->with(['attributes','utilities','neighborhood','neighborhoods','category','user','media'])->get();
+        $orders = Order::whereAdminReviewed(0)->whereIn('type',['offer','request'])->latest()->with(['attributes','utilities','neighborhood','neighborhoods','category','user','media'])->get();
         return view('admin.users-orders.index',compact('orders'));
     }
 

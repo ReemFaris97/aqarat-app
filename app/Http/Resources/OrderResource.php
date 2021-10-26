@@ -38,7 +38,18 @@ class OrderResource extends JsonResource
             'created_at' => $this->created_at->toDateTimeString(),
             'is_special' => $this->special_until >= now() ? true : false,
             'is_viewed' => $this->is_viewed_exists ?? false,
-            'neighborhoods' => NeighborhoodResource::collection($this->neighborhoods)
+            'neighborhoods' => NeighborhoodResource::collection($this->neighborhoods),
+
+
+
+            'location'=>[
+                'lat'=>$this->lat,
+                'lng'=>$this->lng,
+                'address'=>$this->address,
+            ],
+//            'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
+        //
+            'advertisement_type'=>new AdvertisementType($this->advertisementType)
         ];
     }
 }

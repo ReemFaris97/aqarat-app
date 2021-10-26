@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -36,4 +37,5 @@ class StoreRequest extends FormRequest
             'advertisement_type_id'=>'required|exists:advertisement_types,id'
         ];
     }
+
 }

@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Advertisement\DestroyRequest;
 use App\Http\Requests\Api\Advertisement\StoreRequest;
 use App\Http\Requests\Api\Advertisement\UpdateRequest;
-use App\Http\Resources\AdvertisementResource;
 use App\Http\Resources\BaseCollection;
-use App\Models\Advertisement;
+use App\Http\Resources\OrderResource;
+use App\Models\Order;
 
 class AdvertisementsController extends Controller
 {
@@ -20,7 +20,7 @@ class AdvertisementsController extends Controller
     public function index()
     {
         $advertisements=auth()->user()->advertisements()->latest()->paginate(10);
-        return \responder::success(new BaseCollection($advertisements,AdvertisementResource::class));
+        return \responder::success(new BaseCollection($advertisements,OrderResource::class));
     }
 
     /**
@@ -32,7 +32,7 @@ class AdvertisementsController extends Controller
     public function store(StoreRequest $request)
     {
         $user=auth()->user();
-        $advertisement=$user->advertisements()->create($request->validated());
+        $advertisement=$user->advertisements()->create($request->validated()+['type'=>'advertisement']);
         if ($request->has('images')){
             foreach ($request['images'] as $image){
                 $advertisement->addMedia($image)
@@ -51,7 +51,7 @@ class AdvertisementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, Advertisement $advertisement)
+    public function update(UpdateRequest $request, Order $advertisement)
     {
         $advertisement->update($request->validated());
         if ($request->has('images')){
@@ -70,7 +70,7 @@ class AdvertisementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DestroyRequest $request,Advertisement $advertisement)
+    public function destroy(DestroyRequest $request,Order $advertisement)
     {
         $advertisement->delete();
         return  \responder::success(__('deleted successfully'));

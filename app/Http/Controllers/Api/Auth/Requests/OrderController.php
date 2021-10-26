@@ -26,7 +26,7 @@ class OrderController extends Controller
 
         $order->requests()->create($inputs);
 
-        return \responder::success(__('request placed successfully and waiting for admin approve'));
+        return \responder::success('تم إرسال طلب التمييز للإدارة بنجاح');
     }
 
 }

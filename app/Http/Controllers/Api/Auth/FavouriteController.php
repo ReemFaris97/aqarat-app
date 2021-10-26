@@ -21,7 +21,7 @@ class FavouriteController extends Controller
     public function advertisements()
     {
         return \responder::success(new BaseCollection(auth('api')->user()->favouriteAdvertisements()->paginate(10),
-                                AdvertisementResource::class));
+                                OrderResource::class));
     }
 
     public function orders()
@@ -39,15 +39,14 @@ class FavouriteController extends Controller
     {
         $validator = $request->validate([
             'model_id' => 'required',
-            'model_type' => 'required|in:Advertisement,Order',
         ]);
         $validator['model_type'] = "App\\Models\\$request->model_type";
         $validator['user_id'] = auth()->user()->id;
 
-        $model = $validator['model_type']::whereId($validator['model_id'])->exists();
+        $model = Order::whereId($validator['model_id'])->exists();
 
         if ($model){
-            $fav = Favourite::whereModelId($validator['model_id'])->whereModelType($validator['model_type'])->whereUserId(auth('api')->user()->id);
+            $fav = Favourite::whereModelId($validator['model_id'])->whereModelType(Order::class)->whereUserId(auth('api')->user()->id);
             if ($fav->exists()) {
                 $fav->delete();
             } else {

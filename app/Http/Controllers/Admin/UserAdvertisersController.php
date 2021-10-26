@@ -7,6 +7,7 @@ use App\Http\Requests\AdvertisingRequest;
 use App\Models\Advertisement;
 use App\Models\City;
 use App\Models\Neighborhood;
+use App\Models\Order;
 use App\Models\User;
 use App\Notifications\DeletedAdvertisementNotification;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class UserAdvertisersController extends Controller
 
     public function index()
     {
-        $items = Advertisement::whereAdminReviewed(0)->get();
+        $items = Order::whereType('advertisement')->whereAdminReviewed(0)->get();
         return view('admin.user-advertisers.index', compact('items'));
     }
 
@@ -42,7 +43,7 @@ class UserAdvertisersController extends Controller
      */
     public function edit($id)
     {
-        $advertising = Advertisement::findOrFail($id);
+        $advertising = Order::findOrFail($id);
         $users = User::get()->mapWithKeys(function ($q) {
             return [$q['id'] => $q['name']];
         });
@@ -58,7 +59,7 @@ class UserAdvertisersController extends Controller
 
     public function update(AdvertisingRequest $request, $id)
     {
-        $advertisement = Advertisement::findOrFail($id);
+        $advertisement = Order::findOrFail($id);
         $validator = $request->validated();
         DB::beginTransaction();
         if ($request->image) {
@@ -82,7 +83,7 @@ class UserAdvertisersController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $advertisement = Advertisement::findOrFail($id);
+        $advertisement = Order::findOrFail($id);
         if ($request->reason) {
             Notification::send($advertisement->user, new DeletedAdvertisementNotification([
                 'title' => 'حذف اعلان',
@@ -97,7 +98,7 @@ class UserAdvertisersController extends Controller
 
     public function approved($id)
     {
-        $item = Advertisement::findOrFail($id);
+        $item = Order::findOrFail($id);
         $item->update(['admin_reviewed' => 1]);
         toastr()->success('تم  اعتماد الاعلان بنجاح');
         return redirect()->back();

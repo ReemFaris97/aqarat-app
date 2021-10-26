@@ -93,7 +93,7 @@ class Order extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, ImageOperations, Prunable;
 
-    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special', 'admin_reviewed','special_until'];
+    protected $fillable = ['name', 'image', 'user_id', 'category_id', 'neighborhood_id', 'contract', 'advertiser', 'lat', 'lng', 'address', 'price', 'description', 'is_reviewed', 'is_active', 'type', 'is_special', 'admin_reviewed', 'special_until', 'advertisement_type_id'];
 
     protected $dates = ['special_until'];
 
@@ -151,7 +151,11 @@ class Order extends Model implements HasMedia
     {
 
         $query->when($request->type, function ($q) {
-            $q->where('type', \request('type'));
+            if (is_array(\request('type'))){
+                $q->whereIn('type', \request('type'));
+            }else{
+                $q->where('type', \request('type'));
+            }
         });
         $query->when($request->advertiser, function ($q) {
             $q->where('advertiser', \request('advertiser'));
@@ -283,5 +287,10 @@ class Order extends Model implements HasMedia
     public function chats()
     {
         return $this->morphMany(Chat::class, 'model');
+    }
+
+    function advertisementType()
+    {
+        return $this->belongsTo(AdvertisementType::class);
     }
 }

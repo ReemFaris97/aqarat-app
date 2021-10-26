@@ -8,6 +8,7 @@ use App\Http\Resources\ChatResource;
 use App\Http\Resources\InboxResource;
 use App\Http\Resources\MessagesResource;
 use App\Models\Chat;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -26,7 +27,7 @@ class ChatController extends Controller
             'receiver_id' => 'exists:users,id|required_without:chat_id|not_in:' . auth()->id(),
             'chat_id' => 'required_without:receiver_id|exists:chats,id',
             'message' => 'required|string',
-            'model_type' => 'required|in:Order,Advertisement',
+//            'model_type' => 'required|in:Order,Advertisement',
             'model_id' => 'required|string'
         ]);
 
@@ -35,7 +36,7 @@ class ChatController extends Controller
                 $q->where('user_id', $request['receiver_id']);
             })->whereHas('users', function ($q) use ($request) {
                 $q->where('user_id', auth()->id());
-            })->firstOrCreate(['model_type' => 'App\\Models\\' . $request['model_type'], 'model_id' => $request['model_id']]);
+            })->firstOrCreate(['model_type' =>Order::class, 'model_id' => $request['model_id']]);
             if ($chat->wasRecentlyCreated) {
                 $chat->users()->createMany([
                     ['user_id' => $request['receiver_id']]
@@ -62,9 +63,9 @@ class ChatController extends Controller
     {
         $inputs = $request->validate([
             'model_id' => 'required|int',
-            'model_type' => 'required|in:Order,Advertisement'
+//            'model_type' => 'required|in:Order,Advertisement'
         ]);
-        $model = ("App\\Models\\" . $request['model_type'])::findOrFail($request['model_id']);
+        $model = Order::findOrFail($request['model_id']);
         $chat = $model->chats()->whereHas('users', function ($q) {
             return $q->where('user_id', auth()->id());
         })->firstOrFail();
