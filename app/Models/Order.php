@@ -112,6 +112,7 @@ class Order extends Model implements HasMedia
                     $query->whereIn('neighborhoods.id',$order->neighborhoods()->pluck('neighborhoods.id'));
                 });
             })->where('users.id', '!=', $order->user_id)->get();
+            info($users);
             \Notification::send($users, new SimilarOrderNotification($order));
         });
 

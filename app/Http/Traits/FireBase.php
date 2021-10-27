@@ -77,6 +77,7 @@ class FireBase
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmFields));
         $result = curl_exec($ch);
         curl_close($ch);
+        info($result);
         return $result;
     }
 
