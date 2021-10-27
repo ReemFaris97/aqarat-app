@@ -109,7 +109,7 @@ class Order extends Model implements HasMedia
         static::created(function (Order $order) {
             if (in_array($order->type, ['offer', 'request'])) {
 
-                $users = User::whereHas('orders', function ($q) use ($order) {``
+                $users = User::whereHas('orders', function ($q) use ($order) {
                     $type = $order->type == 'request' ? 'offer' : 'request';
                     info(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id]);
                     $q->where(['contract' => $order->contract, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request']);
