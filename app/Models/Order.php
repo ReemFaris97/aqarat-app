@@ -107,25 +107,7 @@ class Order extends Model implements HasMedia
             }
         });
         static::created(function (Order $order) {
-            if (in_array($order->type, ['offer', 'request'])) {
 
-                $users = User::whereHas('orders', function ($q) use ($order) {
-                    $type = $order->type == 'request' ? 'offer' : 'request';
-
-                    $q->where(['contract' => $order->contract, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request'])
-                      ->when($type == 'offer', function ($q) use ($order) {
-                        $q->whereIn('neighborhood_id', $order->neighborhoods()->pluck('neighborhoods.id'));
-                    })
-
-                        ->when($type == 'request', function ($q) use ($order) {
-                        $q->whereHas('neighborhoods', function ($q) use ($order) {
-                            $q->where('neighborhoods.id', $order->neighborhood_id);
-                        });
-                    });
-                })->where('users.id', '!=', $order->user_id)->get();
-                info($users);
-                \Notification::send($users, new SimilarOrderNotification($order));
-            }
 
         });
 
