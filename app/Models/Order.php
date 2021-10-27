@@ -111,7 +111,7 @@ class Order extends Model implements HasMedia
 
                 $users = User::whereHas('orders', function ($q) use ($order) {
                     $type = $order->type == 'request' ? 'offer' : 'request';
-                    info(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id, 'type' => ]);
+                    info(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id]);
                     $q->where(['contract' => $order->contract, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request'])->when($type == 'offer', function ($q) use ($order) {
                         $q->whereIn('neighborhood_id', $order->neighborhoods()->pluck('id'));
                     })->when($type == 'request', function ($q) use ($order) {
