@@ -111,17 +111,18 @@ class Order extends Model implements HasMedia
 
                 $users = User::whereHas('orders', function ($q) use ($order) {
                     $type = $order->type == 'request' ? 'offer' : 'request';
-                    info(['contract' => $order->contract, 'neighborhood_id' => $order->neighborhood_id, 'category_id' => $order->category_id]);
-                    $q->where(['contract' => $order->contract, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request']);
-                       /* ->when($type == 'offer', function ($q) use ($order) {
+
+                    $q->where(['contract' => $order->contract, 'category_id' => $order->category_id, 'type' => $order->type == 'request' ? 'offer' : 'request'])
+                      ->when($type == 'offer', function ($q) use ($order) {
                         $q->whereIn('neighborhood_id', $order->neighborhoods()->pluck('neighborhoods.id'));
-                    })->when($type == 'request', function ($q) use ($order) {
+                    })
+
+                        ->when($type == 'request', function ($q) use ($order) {
                         $q->whereHas('neighborhoods', function ($q) use ($order) {
                             $q->where('neighborhoods.id', $order->neighborhood_id);
                         });
-                    });*/
+                    });
                 })->where('users.id', '!=', $order->user_id)->get();
-                info($users);
                 \Notification::send($users, new SimilarOrderNotification($order));
             }
 
@@ -278,8 +279,8 @@ class Order extends Model implements HasMedia
     public static function createWithAttributes($inputs)
     {
         foreach (Arr::get($inputs,'attributes',[])as $key => $value){
-           $attribute=Attribute::findOrFail($key);
-           throw_unless($attribute or !$value,ValidationException::withMessages([__("{$attribute->name} must be presented")]));
+            $attribute=Attribute::findOrFail($key);
+            throw_unless($attribute or !$value,ValidationException::withMessages([__("{$attribute->name} must be presented")]));
         }
         $order = self::create($inputs);
         if (Arr::has($inputs, 'images')) $order->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
