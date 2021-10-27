@@ -33,7 +33,7 @@ class StoreRequest extends FormRequest
             'contract' => 'required|in:buy,sell,rent',
             'advertiser' => 'required|in:owner,agent,marketer',
             'lat' => 'required|numeric|min:-90|max:90',
-            'lng' => 'required|numeric|min:180-|max:190',
+            'lng' => 'required|numeric|min:180-|max:180',
             'address' => 'required|string',
             'price' => 'required|numeric',
             'description' => 'required|string',
