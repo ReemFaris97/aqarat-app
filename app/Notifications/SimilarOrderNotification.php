@@ -22,12 +22,17 @@ class SimilarOrderNotification extends Notification
     public function __construct(Order $order)
     {
 
+        if ($order->type=='request'){
+            $body="تم اضافة طلب جديد يتوافق مع عرضك";
+        }else{
+            $body="تم اضافة عرض جديد يتوافق مع طلبك";
+        }
         $this->message=[
             'title'=>'aqar app || new order',
             'body'=>"There is a matching offer with your order specifications",
 
             'title_ar'=>'تطبيق عقار',
-            'body_ar'=>'تم اضافة اعلان جديد يتوافق مع طلبك',
+            'body_ar'=>$body,
             'model_type'=>'order',
             'model_id'=>$order->id
         ];
