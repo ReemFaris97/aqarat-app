@@ -123,6 +123,7 @@ class Order extends Model implements HasMedia
                         });
                     });
                 })->where('users.id', '!=', $order->user_id)->get();
+                info($users);
                 \Notification::send($users, new SimilarOrderNotification($order));
             }
 
