@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Http\Traits\ImageOperations;
-use App\Notifications\SimilarOrderNotification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -231,10 +230,10 @@ class Order extends Model implements HasMedia
     public function scopeSort($query, $sort)
     {
         switch ($sort) {
-            case "price_a":
+            case "price_d":
                 $query->orderBy('price', 'asc');
                 break;
-            case "price_d":
+            case "price_a":
                 $query->orderBy('price', 'desc');
                 break;
             case "latest":
