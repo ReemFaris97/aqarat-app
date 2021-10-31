@@ -36,7 +36,7 @@ class OrderResource extends JsonResource
             'distance' => (int)$this->distance,
             'is_favoured' => $this->is_favoured_exists ?? false,
             'created_at' => $this->created_at->toDateTimeString(),
-            'is_special' => $this->special_until >= now() ? true : false,
+            'is_special' => now()->lessThanOrEqualTo($this->special_until) ? true : false,
             'is_viewed' => $this->is_viewed_exists ?? false,
             'neighborhoods' => NeighborhoodResource::collection($this->neighborhoods),
 

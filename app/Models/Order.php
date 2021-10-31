@@ -158,8 +158,8 @@ class Order extends Model implements HasMedia
         $query->when($request->contract, function ($q) {
             $q->where('contract', \request('contract'));
         });
-        $query->when($request->is_special, function ($q) {
-            $q->where('is_special', \request('is_special'));
+        $query->when($request->has('is_special'), function ($q) {
+            $q->where('is_special', 1);
         });
         $query->when($request->category_id, function ($q) {
             $q->where('category_id', \request('category_id'));
