@@ -24,7 +24,7 @@ class OrderController extends Controller
             ->with('user', 'neighborhood','neighborhoods','neighborhoods.city','neighborhood.city','media','category.attributes', 'attributes', 'utilities')
             ->withExists('isFavoured')
             ->withExists('is_viewed')
-            ->limit(50)->withCount('views');
+            ->limit(100)->withCount('views');
         return \responder::success(OrderResource::collection($orders->get()));
     }
 
