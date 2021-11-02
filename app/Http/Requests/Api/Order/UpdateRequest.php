@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest
             'images' => 'sometimes|array',
             'neighborhood_id'=>'sometimes|exists:neighborhoods,id',
             'category_id' => 'sometimes|exists:categories,id',
-            'contract' => 'sometimes|in:buy,sell',
+            'contract' => 'sometimes|in:buy,sell,rent',
             'advertiser' => 'sometimes|in:owner,agent,marketer',
             'lat' => 'sometimes|numeric|min:-90|max:90',
             'lng' => 'sometimes|numeric|min:180-|max:190',
