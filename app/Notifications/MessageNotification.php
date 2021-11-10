@@ -29,7 +29,12 @@ class MessageNotification extends Notification
             'body_ar'=>'لديك رسالة جديدة',
             'model_type'=>'chat',
             'model_id'=>$message->chat_id,
-            'type'=>object_get($message->chat->model,'type','advertisement')
+            'type'=>object_get($message->chat->model,'type','advertisement'),
+            'order'=>[
+                'id'=>$message->chat->model->id,
+                'name'=>$message->chat->model->name,
+                'user_id'=>$message->chat->model->user_id
+            ]
         ];
 
     }
