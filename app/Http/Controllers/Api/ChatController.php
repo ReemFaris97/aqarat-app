@@ -28,7 +28,7 @@ class ChatController extends Controller
             'chat_id' => 'required_without:receiver_id|exists:chats,id',
             'message' => 'required|string',
 //            'model_type' => 'required|in:Order,Advertisement',
-            'model_id' => 'required|string'
+            'model_id' => 'required_without:chat_id|string'
         ]);
 
         if ($request->has('receiver_id')) {
