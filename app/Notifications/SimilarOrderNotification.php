@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Http\Resources\OrderResource;
 use App\Http\Traits\FireBase;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
@@ -35,7 +36,8 @@ class SimilarOrderNotification extends Notification
             'body_ar'=>$body,
             'type'=>$order->type,
             'model_type'=>'order',
-            'model_id'=>$order->id
+            'model_id'=>$order->id,
+            'model'=>new OrderResource($order)
         ];
     }
 
