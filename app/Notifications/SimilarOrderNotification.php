@@ -33,6 +33,7 @@ class SimilarOrderNotification extends Notification
 
             'title_ar'=>'تطبيق عقار',
             'body_ar'=>$body,
+            'type'=>$order->type,
             'model_type'=>'order',
             'model_id'=>$order->id
         ];
