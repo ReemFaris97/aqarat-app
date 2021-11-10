@@ -43,8 +43,8 @@ class OrderResource extends JsonResource
 
 
             'location'=>[
-                'lat'=>$this->lat,
-                'lng'=>$this->lng,
+                'lat'=>(double)$this->lat,
+                'lng'=>(double)$this->lng,
                 'address'=>$this->address,
             ],
 //            'Neighborhood'=>new NeighborhoodResource($this->neighborhood),
