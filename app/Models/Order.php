@@ -159,7 +159,10 @@ class Order extends Model implements HasMedia
             $q->where('contract', \request('contract'));
         });
         $query->when($request->has('is_special'), function ($q) {
+            if (\request('is_special'))
             $q->where('special_until', '>=',now()->toDateTimeString());
+            else
+            $q->where('special_until', '<=',now()->toDateTimeString());
         });
         $query->when($request->category_id, function ($q) {
             $q->where('category_id', \request('category_id'));
