@@ -162,7 +162,9 @@ class Order extends Model implements HasMedia
             if (\request('is_special'))
             $q->where('special_until', '>=',now()->toDateString());
             else
-            $q->where('special_until', '<=',now()->toDateString());
+            $q->where(function ($q){
+                $q->whereNull('special_until')->orWhere('special_until', '<=',now()->toDateString());
+            });
         });
         $query->when($request->category_id, function ($q) {
             $q->where('category_id', \request('category_id'));
