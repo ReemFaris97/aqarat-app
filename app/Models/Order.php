@@ -146,7 +146,7 @@ class Order extends Model implements HasMedia
     {
 
         $query->when($request->id, function ($q) {
-            $q->where('id','like','%'. \request('id').'%');
+            $q->where('id', \request('id'));
         });
         $query->when($request->type, function ($q) {
             if (is_array(\request('type'))) {
