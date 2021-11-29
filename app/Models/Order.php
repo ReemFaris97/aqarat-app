@@ -145,10 +145,13 @@ class Order extends Model implements HasMedia
     public function scopeFilter(Builder $query, Request $request)
     {
 
+        $query->when($request->id, function ($q) {
+            $q->where('id', \request('id'));
+        });
         $query->when($request->type, function ($q) {
-            if (is_array(\request('type'))){
+            if (is_array(\request('type'))) {
                 $q->whereIn('type', \request('type'));
-            }else{
+            } else {
                 $q->where('type', \request('type'));
             }
         });
