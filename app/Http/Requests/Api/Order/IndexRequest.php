@@ -24,8 +24,8 @@ class IndexRequest extends FormRequest
     public function rules()
     {
         return [
-            'lat'=>'required|min:-90|max:90|numeric',
-            'lng'=>'required|min:-180|max:180|numeric',
+            'lat'=>'sometimes|min:-90|max:90|numeric',
+            'lng'=>'sometimes|min:-180|max:180|numeric',
             'type'=>'sometimes',
             'advertiser'=>'sometimes|in:owner,agent,marketer',
             'price_from'=>'sometimes|numeric',
