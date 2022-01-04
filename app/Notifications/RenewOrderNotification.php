@@ -23,8 +23,8 @@ class RenewOrderNotification extends Notification
     {
 
         $this->message=[
-            'title'=>'aqar app || renew your order',
-            'body'=>"it has been 10 days since you posted your order renew your order",
+            'title'=>'تطبيق عقار|| تحديث اعلانك',
+            'body'=>'لقد مرت 10 ايام منذ اضافتك اعلانك يمكنك تحديث الاعلان',
 
             'title_ar'=>'تطبيق عقار|| تحديث اعلانك',
             'body_ar'=>'لقد مرت 10 ايام منذ اضافتك اعلانك يمكنك تحديث الاعلان',

@@ -21,8 +21,8 @@ class OrderRequestNotification extends Notification
     public function __construct(Order $order)
     {
         $this->message = [
-            'title' => 'aqar app',
-            'body' => "your specialize order request has been" . $order->status,
+            'title' => 'تطبيق عقار app',
+            'body' => sprintf("حالة طلب تميز طلبك هي %s", __($order->status, [], 'ar')),
             'title_ar' => 'تطبيق عقار',
             'body_ar' => sprintf("حالة طلب تميز طلبك هي %s", __($order->status, [], 'ar')),
             'model_type' => 'chat',

@@ -29,8 +29,8 @@ class SimilarOrderNotification extends Notification
             $body="تم اضافة عرض جديد يتوافق مع طلبك";
         }
         $this->message=[
-            'title'=>'aqar app || new order',
-            'body'=>"There is a matching offer with your order specifications",
+            'title'=>'تطبيق عقار',
+            'body'=>$body,
 
             'title_ar'=>'تطبيق عقار',
             'body_ar'=>$body,

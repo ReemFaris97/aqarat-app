@@ -22,8 +22,8 @@ class MessageNotification extends Notification
     public function __construct(ChatMessage $message)
     {
         $this->message=[
-            'title'=>'aqar app',
-            'body'=>"You have new Message",
+            'title'=>'تطبيق عقار',
+            'body'=>"لديك رسالة جديدة",
             'message'=>$message->message,
             'title_ar'=>'تطبيق عقار',
             'body_ar'=>'لديك رسالة جديدة',
